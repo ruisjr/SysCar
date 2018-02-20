@@ -1,3 +1,4 @@
+import static spark.Spark.get;
 import java.util.TimeZone;
 import javax.annotation.PostConstruct;
 import model.Usuario;
@@ -26,6 +27,8 @@ public class SysCar {
 		System.out.println("Salvo com sucesso");
 		
 		//dao.remove(Usuario.class, Long.valueOf("0"));
+		
+		get("/hello", (req, res) -> "Hello World");
 	}
 
 }
