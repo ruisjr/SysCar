@@ -3,23 +3,42 @@ package model;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import controller.EntidadeBase;
 
 
 @Entity
 @Table(name="usuarios")
+@TableGenerator(name="tab", initialValue=1, allocationSize=1)
 public class Usuario extends EntidadeBase {
 
-	private long id;
-	private String nome;
-	private String senha;
-	private Date ultimoLogin;
-	private Date dataAlteracao;
-	private int tipoUsuario;
-	
 	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="tab")
+	private long id;
+	
+	@Column(name="nome")
+	private String nome;
+	
+	@Column(name="senha")
+	private String senha;
+	
+	@Column(name="ultimoLogin")
+	@Temporal(TemporalType.TIMESTAMP)	
+	private Date ultimoLogin;
+	
+	@Column(name="dataAlteracao")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataAlteracao;
+	
+	@Column(name="tipoUsuario")
+	private EnumeratorTipoUsuario tipoUsuario;
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,17 +46,15 @@ public class Usuario extends EntidadeBase {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	@Column(name="nome")
+		
 	public String getNome() {
 		return nome;
 	}
 	
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
+	}	
 	
-	@Column(name="senha")
 	public String getSenha() {
 		return senha;
 	}
@@ -46,7 +63,6 @@ public class Usuario extends EntidadeBase {
 		this.senha = senha;
 	}
 	
-	@Column(name="ultimoLogin")
 	public Date getUltimoLogin() {
 		return ultimoLogin;
 	}
@@ -55,7 +71,7 @@ public class Usuario extends EntidadeBase {
 		this.ultimoLogin = ultimoLogin;
 	}
 	
-	@Column(name="dataAlteracao")
+	
 	public Date getDataAlteracao() {
 		return dataAlteracao;
 	}
@@ -64,20 +80,17 @@ public class Usuario extends EntidadeBase {
 		this.dataAlteracao = dataAlteracao;
 	}
 	
-	@Column(name="tipoUsuario")
-	public int getTipoUsuario() {
+	public EnumeratorTipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}
 	
-	public void setTipoUsuario(int tipoUsuario) {
+	public void setTipoUsuario(EnumeratorTipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
 	
-	public Usuario() {
-		
-	}
+	public Usuario() {}
 	
-	public Usuario(int id) {
-		this.id = id;
-	}		
+	public Usuario(Long value) {
+		id = value;
+	}
 }
