@@ -10,22 +10,24 @@ public class GenericDao<T extends EntidadeBase> {
 		return manager.find(clazz, Id);
 	}
 
-	public void save(T obj) {
+	@SuppressWarnings("hiding")
+	public <T> T save(T obj) {
 		try {
 			manager.getTransaction().begin();
 
-			if (obj.getId() == 0 || obj.getId().equals(Long.parseLong("0"))) {
+			if (((EntidadeBase) obj).getId() == null || ((EntidadeBase) obj).getId() == 0 || ((EntidadeBase) obj).getId().equals(Long.parseLong("0"))) {
 				manager.persist(obj);
 			} else {
 				manager.merge(obj);
 			}
 
 			manager.getTransaction().commit();
+			//manager.flush();
+			return obj;
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
+			e.printStackTrace();
 			throw e;
-		} finally {
-			manager.close();
 		}
 	}
 

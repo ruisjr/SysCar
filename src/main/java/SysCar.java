@@ -1,7 +1,6 @@
 import java.util.TimeZone;
 import javax.annotation.PostConstruct;
-import model.EnumeratorTipoUsuario;
-import model.Usuario;
+import model.Veiculo.Veiculo;
 
 public class SysCar {
 
@@ -13,20 +12,32 @@ public class SysCar {
 	public static void main(String[] args) {
 		System.out.println("Iniciando Aplicação.");
 
-		Usuario usu = new Usuario();
-		usu.remove();
-
-		// usu.setId(1);
-		usu.setNome("Rui");
-		usu.setSenha("senha");
-		usu.setTipoUsuario(EnumeratorTipoUsuario.ADMINISTRATOR);
-		usu.save();
-
-		// GenericDao<Usuario> dao = new GenericDao<Usuario>();
-		// dao.save(usu);
-		// dao.remove(Long.valueOf("1"));
-
-		// get("/hello", (req, res) -> "Hello World");
+		/*ModeloVeiculo modelo = new ModeloVeiculo();
+		modelo.setNome("2.0 MPFI");
+		modelo.save();
+		
+		MarcaVeiculo marca = new MarcaVeiculo();
+		marca.setNome("Chevrolet");
+		marca.save();
+		
+		Cor cor = new Cor();
+		cor.setNome("Preto");
+		cor.save();
+		
+		Veiculo veiculo = new Veiculo();
+		veiculo.setNome("Vectra");
+		veiculo.setMarca(marca);
+		veiculo.setModelo(modelo);
+		veiculo.setTipoVeiculo(EnumTipoVeiculo.GRANDE);
+		veiculo.setCor(cor);
+		veiculo.setValor(BigDecimal.valueOf(5.00));
+		veiculo.save();*/
+		
+		Veiculo veiculo = new Veiculo();
+		veiculo.setId(Long.parseLong("1"));
+		veiculo.findById();
+		
+		System.out.println("Finalizando Aplicação.");
 	}
 
 }

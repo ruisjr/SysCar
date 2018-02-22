@@ -15,11 +15,6 @@ public class EntidadeBase extends GenericDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void save() {
-		super.save(this);
-	}
-
-	@SuppressWarnings("unchecked")
 	public void remove() {
 		super.remove(this.getClass(), this.getId());
 	}
@@ -32,5 +27,10 @@ public class EntidadeBase extends GenericDao {
 	@SuppressWarnings("unchecked")
 	public void findById() {
 		super.findById(this.getClass(), this.getId());
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> T save() {
+		return (T) super.save(this);
 	}
 }
