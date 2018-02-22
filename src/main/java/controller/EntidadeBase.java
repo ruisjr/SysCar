@@ -1,6 +1,8 @@
 package controller;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @SuppressWarnings("rawtypes")
@@ -10,6 +12,7 @@ public class EntidadeBase extends GenericDao {
 
 	@Id
 	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="tab")
 	public Long getId() {
 		return id;
 	}

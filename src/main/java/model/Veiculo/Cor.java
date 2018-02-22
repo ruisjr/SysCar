@@ -21,6 +21,7 @@ public class Cor extends EntidadeBase {
 	@Column(name = "nome")
 	private String nome;
 
+	@Override
 	public Long getId() {
 		return id;
 	}

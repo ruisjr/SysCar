@@ -14,7 +14,8 @@ public class GenericDao<T extends EntidadeBase> {
 	public <T> T save(T obj) {
 		try {
 			manager.getTransaction().begin();
-
+			
+			
 			if (((EntidadeBase) obj).getId() == null || ((EntidadeBase) obj).getId() == 0 || ((EntidadeBase) obj).getId().equals(Long.parseLong("0"))) {
 				manager.persist(obj);
 			} else {
@@ -22,7 +23,6 @@ public class GenericDao<T extends EntidadeBase> {
 			}
 
 			manager.getTransaction().commit();
-			//manager.flush();
 			return obj;
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
