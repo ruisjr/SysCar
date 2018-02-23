@@ -1,6 +1,6 @@
+import static spark.Spark.get;
 import java.util.TimeZone;
 import javax.annotation.PostConstruct;
-import model.Veiculo.Veiculo;
 
 public class SysCar {
 
@@ -10,13 +10,11 @@ public class SysCar {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Iniciando Aplicação.");
-	
-		Veiculo veiculo = new Veiculo();
-		veiculo.setId(Long.parseLong("1"));
-		veiculo.findById();
-		
-		System.out.println("Finalizando Aplicação.");
+		get("/hello", (req, res) -> "Hello, world");
+
+		get("/hello/:name", (req, res) -> {
+			return "Hello, " + req.params(":name");
+		});
 	}
 
 }

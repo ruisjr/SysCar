@@ -47,7 +47,8 @@ dependencies {
     
     compile 'org.hibernate:hibernate-core:5.2.13.Final'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.9-rc'
-    compile 'com.sparkjava:spark-core:2.5.4'
+    compile 'com.sparkjava:spark-core:2.7.1'
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile 'com.google.code.gson:gson:2.8.2'
 }
 
