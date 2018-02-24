@@ -11,12 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import controller.EntidadeBase;
+import controller.EntityBasic;
 
 @Entity
 @Table(name = "veiculos")
 @TableGenerator(name = "tab", initialValue = 1, allocationSize = 1)
-public class Veiculo extends EntidadeBase {
+public class Veiculo extends EntityBasic<Object> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tab")

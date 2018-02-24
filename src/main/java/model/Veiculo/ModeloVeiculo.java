@@ -7,12 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import controller.EntidadeBase;
+import controller.EntityBasic;
 
 @Entity
 @Table(name = "modeloveiculo")
 @TableGenerator(name = "tab", initialValue = 1, allocationSize = 1)
-public class ModeloVeiculo extends EntidadeBase {
+public class ModeloVeiculo extends EntityBasic<Object> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tab")

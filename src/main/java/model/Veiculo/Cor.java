@@ -7,12 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import controller.EntidadeBase;
+import controller.EntityBasic;
 
 @Entity
 @Table(name = "cores")
 @TableGenerator(name = "tabCores", initialValue = 1, allocationSize = 1)
-public class Cor extends EntidadeBase {
+public class Cor extends EntityBasic<Object> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tabCores")
@@ -21,7 +21,6 @@ public class Cor extends EntidadeBase {
 	@Column(name = "nome")
 	private String nome;
 
-	@Override
 	public Long getId() {
 		return id;
 	}

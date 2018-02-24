@@ -1,48 +1,85 @@
 package controller;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class GenericDao<T extends EntidadeBase> {
+@SuppressWarnings("rawtypes")
+public class GenericDao<T extends EntityBasic> {
 
-	private static EntityManager manager = ConnectionFactory.getEntityManager();
+	static final Logger LOGGER = LoggerFactory.getLogger(GenericDao.class);
+	static EntityManager manager = ConnectionFactory.getEntityManager();
 
-	public T findById(Class<T> clazz, Long Id) {
-		return manager.find(clazz, Id);
-	}
+	@SuppressWarnings({ "hiding", "unchecked" })
+	public <T> T save(Class<T> entity) {
+		if (entity != null) {
+			try {
+				manager.getTransaction().begin();
+				manager.persist(entity);
+				manager.getTransaction().commit();
 
-	@SuppressWarnings("hiding")
-	public <T> T save(T obj) {
-		try {
-			manager.getTransaction().begin();
-			
-			
-			if (((EntidadeBase) obj).getId() == null || ((EntidadeBase) obj).getId() == 0 || ((EntidadeBase) obj).getId().equals(Long.parseLong("0"))) {
-				manager.persist(obj);
-			} else {
-				manager.merge(obj);
+				LOGGER.info(this.getClass().getName() + " saved.");
+			} catch (Exception e) {
+				manager.getTransaction().rollback();
+				LOGGER.error(e.getMessage());
 			}
+		}
+		return (T) entity;
+	}
 
+	public boolean delete(Class<T> entity) {
+		boolean result = false;
+		try {
+			manager.getTransaction().begin();
+			manager.remove(entity);
 			manager.getTransaction().commit();
-			return obj;
+			result = true;
+
+			LOGGER.info(this.getClass().getName() + " deleted.");
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
-			e.printStackTrace();
-			throw e;
+			LOGGER.error(e.getMessage());
+		}
+		return result;
+	}
+
+	@SuppressWarnings({ "hiding", "unchecked" })
+	public <T> T update(Class<T> entity) {
+		try {
+			manager.getTransaction().begin();
+			manager.merge(entity);
+			manager.getTransaction().commit();
+
+			LOGGER.info(this.getClass().getName() + " updated.");
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+			LOGGER.error(e.getMessage());
+		}
+		return (T) entity;
+	}
+
+	@SuppressWarnings({ "hiding", "unchecked" })
+	public <T> T find(Long primaryKey) {
+		if (primaryKey == null) {
+			return null;
+		} else {
+			return (T) manager.find(this.getClass(), primaryKey);
 		}
 	}
 
-	public void remove(Class<T> clazz, Long id) {
-		T obj = findById(clazz, id);
+	@SuppressWarnings("unchecked")
+	public List<T> findAll() {
+		String sqlStr = "Select e from " + this.getClass().getSimpleName() + " e";
+		return (List<T>) manager.createQuery(sqlStr, this.getClass()).getResultList();
+	}
 
-		try {
-			manager.getTransaction().begin();
-			manager.remove(obj);
-			manager.persist(obj);
-			manager.getTransaction().commit();
-		} catch (Exception e) {
-			manager.getTransaction().rollback();
-		} finally {
-			manager.close();
-		}
+	public Long count() {
+		String sqlStr = "Select count(e) from " + this.getClass().getSimpleName() + " e";
+		return (Long) manager.createQuery(sqlStr, Long.class).getSingleResult();
+	}
+
+	public boolean exists(Long primaryKey) {
+		return this.find(primaryKey) != null;
 	}
 }

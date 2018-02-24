@@ -6,15 +6,9 @@ import javax.persistence.Persistence;
 
 public class ConnectionFactory {
 
-	private static String entityName = "";
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory(entityName);
-
-	public static void setEntityName(String value) {
-		ConnectionFactory.entityName = value;
-	}
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("generic-dao");
 
 	public static EntityManager getEntityManager() {
 		return factory.createEntityManager();
 	}
-
 }
