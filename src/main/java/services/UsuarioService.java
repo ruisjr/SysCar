@@ -6,12 +6,11 @@ import model.Usuario.Usuario;
 
 public interface UsuarioService {
 
-	public static void addUser(Usuario user) {
-	}
+	public void addUser(Usuario user);
 
 	public Collection<Usuario> getUsers();
 
-	public Usuario getUser(String id);
+	public Usuario getUsuario(String id);
 
 	public Usuario editUser(Usuario user) throws UserException;
 

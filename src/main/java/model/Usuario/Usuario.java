@@ -88,8 +88,4 @@ public class Usuario extends EntityBasic<Object> {
 
 	public Usuario() {
 	}
-
-	public Usuario(Long value) {
-		id = value;
-	}
 }

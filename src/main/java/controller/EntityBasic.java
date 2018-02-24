@@ -7,22 +7,22 @@ public class EntityBasic<T> extends GenericDao {
 
 	@SuppressWarnings({ "unchecked", "hiding" })
 	public <T> T save() {
-		return (T) super.save(this.getClass());
+		return (T) super.save(this);
 	}
 
-	@SuppressWarnings("unchecked")
-	public final boolean delete() {
-		return super.delete(this.getClass());
+	public void delete(int primaryKey) {
+		super.delete(Long.parseLong(Integer.toString(primaryKey)));
 	}
 
 	@SuppressWarnings("unchecked")
 	public final T update() {
-		return (T) super.update(this.getClass());
+		return (T) super.update(this);
 	}
 
-	@SuppressWarnings({ "hiding", "unchecked" })
-	public final <T> T findById(Long primaryKey) {
-		return (T) super.find(primaryKey);
+	@SuppressWarnings("unchecked")
+	public T findById(int primaryKey) {
+		Long id = Long.valueOf(Integer.toString(primaryKey));
+		return (T) super.findById(this.getClass(), id);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -11,8 +11,8 @@ public class GenericDao<T extends EntityBasic> {
 	static final Logger LOGGER = LoggerFactory.getLogger(GenericDao.class);
 	static EntityManager manager = ConnectionFactory.getEntityManager();
 
-	@SuppressWarnings({ "hiding", "unchecked" })
-	public <T> T save(Class<T> entity) {
+	@SuppressWarnings({ "hiding" })
+	public <T> T save(T entity) {
 		if (entity != null) {
 			try {
 				manager.getTransaction().begin();
@@ -28,11 +28,15 @@ public class GenericDao<T extends EntityBasic> {
 		return (T) entity;
 	}
 
-	public boolean delete(Class<T> entity) {
+	@SuppressWarnings("unchecked")
+	public boolean delete(Long primaryKey) {
 		boolean result = false;
+
+		T obj = findById((Class<T>) this.getClass(), primaryKey);
+
 		try {
 			manager.getTransaction().begin();
-			manager.remove(entity);
+			manager.remove(obj);
 			manager.getTransaction().commit();
 			result = true;
 
@@ -44,8 +48,8 @@ public class GenericDao<T extends EntityBasic> {
 		return result;
 	}
 
-	@SuppressWarnings({ "hiding", "unchecked" })
-	public <T> T update(Class<T> entity) {
+	@SuppressWarnings({ "hiding" })
+	public <T> T update(T entity) {
 		try {
 			manager.getTransaction().begin();
 			manager.merge(entity);
@@ -59,12 +63,11 @@ public class GenericDao<T extends EntityBasic> {
 		return (T) entity;
 	}
 
-	@SuppressWarnings({ "hiding", "unchecked" })
-	public <T> T find(Long primaryKey) {
+	public T findById(Class<T> clazz, Long primaryKey) {
 		if (primaryKey == null) {
 			return null;
 		} else {
-			return (T) manager.find(this.getClass(), primaryKey);
+			return manager.find(clazz, primaryKey);
 		}
 	}
 
@@ -79,7 +82,8 @@ public class GenericDao<T extends EntityBasic> {
 		return (Long) manager.createQuery(sqlStr, Long.class).getSingleResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean exists(Long primaryKey) {
-		return this.find(primaryKey) != null;
+		return findById((Class<T>) this.getClass(), primaryKey) != null;
 	}
 }

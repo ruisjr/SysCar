@@ -4,9 +4,7 @@ import javax.annotation.PostConstruct;
 import com.google.gson.Gson;
 import model.Usuario.EnumeratorTipoUsuario;
 import model.Usuario.Usuario;
-import services.StandardResponse;
-import services.StatusResponse;
-import services.UsuarioService;
+import services.UsuarioServiceImpl;
 
 public class SysCar {
 
@@ -16,22 +14,34 @@ public class SysCar {
 	}
 
 	public static void main(String[] args) {
-		run();
+		//run();
 
-		get("/users", (request, response) -> {
+		/*get("/users", (request, response) -> {
 			response.type("application/json");
-			Usuario user = new Usuario();// new Gson().fromJson(request.body(), Usuario.class);
-			user.find(Long.valueOf("1"));
+			
+			Usuario user = new Gson().fromJson(request.body(), Usuario.class);
 			UsuarioService.addUser(user);
 
+			return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS), new Gson().toJson(UsuarioService.getUsuario()));
+		});*/
+
+		//get("/hello", (req, res) -> "Hello, world");
+
+		get("/users/:id", (request, response) -> {
+			response.type("application/json");
+			
+			String id = request.params(":id");
+			UsuarioServiceImpl service = new UsuarioServiceImpl();
+			Usuario usuario = service.getUsuario(id);
+			
+			return new Gson().toJson(new Gson().toJson(usuario));
+		});
+		
+		/*post("/users", (request, response) -> {
+			response.type("application/json");
+			
 			return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
-		});
-
-		get("/hello", (req, res) -> "Hello, world");
-
-		get("/hello/:name", (req, res) -> {
-			return "Hello, " + req.params(":name");
-		});
+		})*/;
 	}
 
 	public static void run() {
