@@ -64,10 +64,12 @@ public class GenericDao<T extends EntityBasic> {
 	}
 
 	public T findById(Class<T> clazz, Long primaryKey) {
+		T obj;
 		if (primaryKey == null) {
 			return null;
 		} else {
-			return manager.find(clazz, primaryKey);
+			obj = manager.find(clazz, primaryKey);
+			return obj;
 		}
 	}
 
