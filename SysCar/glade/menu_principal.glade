@@ -12,22 +12,22 @@
     <property name="default_height">768</property>
     <signal name="destroy" handler="onQuit" swapped="no"/>
     <child>
-      <object class="GtkBox" id="box_central">
+      <object class="GtkBox" id="box_main">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuBar" id="menu">
+          <object class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuItem" id="item_cadastros">
+              <object class="GtkMenuItem" id="item_arquivo">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Cadastros</property>
+                <property name="label" translatable="yes">_Arquivo</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu_cadatros">
+                  <object class="GtkMenu" id="menu_arquivo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -73,12 +73,13 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem5">
+                      <object class="GtkImageMenuItem" id="item_sair">
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="fechar" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -86,10 +87,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="item_Financeiro">
+              <object class="GtkMenuItem" id="menuitem2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Financeiro</property>
+                <property name="label" translatable="yes">_Edit</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu2">
@@ -170,8 +171,14 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>

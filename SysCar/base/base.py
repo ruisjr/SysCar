@@ -4,27 +4,32 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
 class WindowBase(object):
-	window = None
-
-	def main(self):
-		window = self.get_window()
 
 	def __init__(self):
 		self.__builder = Gtk.Builder()
+		self.__window = None
+
+		self.__builder.connect_signals(self)
 
 	def configure(self):
-		self.__builder.connect("destroy", self.onDestroy)
+		pass
 
 	def show(self):
-		self.__builder.show()
-
-	def get_window(self):
-		return self.__builder
+		self.__window.show_all()
 
     # Setters
 	def set_window(self, filename):
 		self.__builder.add_from_file(filename)
-		self.__builder.get_object("main")
+		self.__window = self.__builder.get_object("main")
+		
+		# Conecta o sinal para destruir a janela criada
+		self.__window.connect("destroy", self.onDestroy)
+
+	def get_window(self, widget):
+		return self.__window
+
+	def get_item(self, name):
+		return self.__builder.get_object(name)
 
     # Signals
 	def onDestroy(self, *args):
