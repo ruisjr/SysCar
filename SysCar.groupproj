@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9DEB3014-D963-4F7E-97B4-65EBF4573AF1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\SimpleORM\SimpleORM.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SysCar.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SimpleORM">
+        <MSBuild Projects="..\SimpleORM\SimpleORM.dproj"/>
+    </Target>
+    <Target Name="SimpleORM:Clean">
+        <MSBuild Projects="..\SimpleORM\SimpleORM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SimpleORM:Make">
+        <MSBuild Projects="..\SimpleORM\SimpleORM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SysCar">
+        <MSBuild Projects="SysCar.dproj"/>
+    </Target>
+    <Target Name="SysCar:Clean">
+        <MSBuild Projects="SysCar.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SysCar:Make">
+        <MSBuild Projects="SysCar.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SimpleORM;SysCar"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SimpleORM:Clean;SysCar:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SimpleORM:Make;SysCar:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

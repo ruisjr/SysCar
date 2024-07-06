@@ -1,0 +1,126 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, AdvPanel, JvExExtCtrls, JvExtComponent, JvPanel,
+  Vcl.Imaging.pngimage, AeroButtons,
+  { Classes de negócio }
+  uLogs, SimpleInterface, SimpleQueryFiredac, Vcl.ComCtrls, JvExComCtrls, JvStatusBar;
+
+type
+  TfrmPrincipal = class(TForm)
+    JvPanel1: TJvPanel;
+    btnClose: TAeroSpeedButton;
+    pnlEsquerda: TPanel;
+    btnVeiculos: TAeroSpeedButton;
+    btnMensalista: TAeroSpeedButton;
+    btnMovimento: TAeroSpeedButton;
+    pnlSubmenu: TPanel;
+    btnConfig: TAeroSpeedButton;
+    btnFormaPagamento: TAeroSpeedButton;
+    JvStatusBar1: TJvStatusBar;
+    pnlDireita: TPanel;
+    btnProdutos: TAeroSpeedButton;
+    procedure btnCloseMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnVeiculosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure btnMensalistaMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure btnMovimentoMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure btnMensalistaClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnVeiculosClick(Sender: TObject);
+    procedure btnFormaPagamentoClick(Sender: TObject);
+    procedure btnMovimentoClick(Sender: TObject);
+    procedure btnProdutosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure btnProdutosClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses
+    uUtil, uCallForm, uMovimento;
+
+procedure TfrmPrincipal.btnVeiculosClick(Sender: TObject);
+begin
+    TCallForm.CallFormCad('TFrmCadVeiculo', 0);
+end;
+
+procedure TfrmPrincipal.btnVeiculosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    btnVeiculos.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    TLog.New.info('Finalizando a aplicação');
+end;
+
+procedure TfrmPrincipal.btnProdutosClick(Sender: TObject);
+begin
+    TCallForm.CallFormCad('TFrmCadProduto', 0);
+end;
+
+procedure TfrmPrincipal.btnProdutosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    btnProdutos.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.btnCloseClick(Sender: TObject);
+begin
+    application.Terminate;
+end;
+
+procedure TfrmPrincipal.btnCloseMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    btnClose.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.btnFormaPagamentoClick(Sender: TObject);
+begin
+    TCallForm.CallFormCad('TFrmCadFormaPagto', 0);
+end;
+
+procedure TfrmPrincipal.btnMensalistaClick(Sender: TObject);
+begin
+    TCallForm.CallFormCad('TfrmCadMensalista', 0);
+end;
+
+procedure TfrmPrincipal.btnMensalistaMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    btnMensalista.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.btnMovimentoClick(Sender: TObject);
+var
+  vForm : TFrmMovimento;
+begin
+    vForm := TFrmMovimento.Create(pnlDireita);
+    vForm.Parent := pnlDireita;
+
+    vForm.Top := 0;
+    vForm.Left := 0;
+
+    vForm.BorderStyle := bsNone;
+    vForm.WindowState := TWindowState.wsMaximized;
+
+    vForm.Show;
+    VForm.SetFocus;
+end;
+
+procedure TfrmPrincipal.btnMovimentoMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    btnMovimento.Cursor := crHandPoint;
+end;
+
+end.

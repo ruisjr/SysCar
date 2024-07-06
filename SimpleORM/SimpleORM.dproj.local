@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/05/12 17:26:26.000.357,=rtl.dcp</Transaction>
+    <Transaction>2024/05/12 17:27:45.000.162,=rtl.dcp</Transaction>
+    <Transaction>2024/05/12 17:35:15.000.274,=rtl.dcp</Transaction>
+    <Transaction>2024/06/20 12:21:18.854,=rtl.dcp</Transaction>
+    <Transaction>2024/06/20 12:21:39.072,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleAttributes.pas</Transaction>
+    <Transaction>2024/06/20 12:21:39.148,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleDAO.DataSetToJSON.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.559,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleDao.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.582,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleDAOSQLAttribute.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.609,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleEntity.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.636,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleInterface.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.665,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleJSON.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.688,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleJSONUtil.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.744,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleQueryFiredac.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.771,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleQueryRestDW.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.802,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleQueryUnidac.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.854,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleQueryZeos.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.887,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleRTTI.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.920,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleRTTIHelper.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.977,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleSQL.pas</Transaction>
+    <Transaction>2024/06/20 12:21:40.999,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleTypes.pas</Transaction>
+    <Transaction>2024/06/20 12:21:41.021,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleUtil.pas</Transaction>
+    <Transaction>2024/06/20 12:21:41.075,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleValidator.pas</Transaction>
+    <Transaction>2024/06/20 12:21:41.096,=C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\uLogs.pas</Transaction>
+    <Transaction>2024/06/20 12:21:56.661,C:\Users\rui.junior\Documents\Embarcadero\Studio\Projects\SimpleORM.dproj=C:\Users\rui.junior\Documents\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2024/06/20 12:22:11.071,C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleDAO.DataSetToJSON.pas=</Transaction>
+    <Transaction>2024/06/20 12:22:11.098,C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleQueryRestDW.pas=</Transaction>
+    <Transaction>2024/06/20 12:22:11.106,C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleQueryUnidac.pas=</Transaction>
+    <Transaction>2024/06/20 12:22:11.116,C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleQueryZeos.pas=</Transaction>
+    <Transaction>2024/06/20 12:22:28.110,=vclimg.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.187,=vcl.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.238,=vclwinx.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.287,=bindengine.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.356,=xmlrtl.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.399,=dbrtl.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.453,=DbxCommonDriver.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.505,=bindcomp.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.568,=RESTComponents.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.601,=vclFireDAC.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.633,=FireDAC.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.687,=FireDACCommonDriver.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.722,=FireDACCommon.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.750,=FireDACPgDriver.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.798,=TMSVCLUIPackPkgDXE14.dcp</Transaction>
+    <Transaction>2024/06/20 12:22:28.832,=TMSVCLUIPackPkgExDXE14.dcp</Transaction>
+    <Transaction>2024/06/20 12:25:47.233,C:\Users\rui.junior\OneDrive\Sistemas\SimpleORM\SimpleORM.dproj=C:\Users\rui.junior\Documents\Embarcadero\Studio\Projects\SimpleORM.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,66 @@
+package SimpleORM;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vclimg,
+  vcl,
+  vclwinx,
+  bindengine,
+  xmlrtl,
+  dbrtl,
+  DbxCommonDriver,
+  bindcomp,
+  RESTComponents,
+  vclFireDAC,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
+  FireDACPgDriver,
+  TMSVCLUIPackPkgDXE14,
+  TMSVCLUIPackPkgExDXE14;
+
+contains
+  SimpleAttributes in 'SimpleAttributes.pas',
+  SimpleDao in 'SimpleDao.pas',
+  SimpleDAOSQLAttribute in 'SimpleDAOSQLAttribute.pas',
+  SimpleEntity in 'SimpleEntity.pas',
+  SimpleInterface in 'SimpleInterface.pas',
+  SimpleJSON in 'SimpleJSON.pas',
+  SimpleJSONUtil in 'SimpleJSONUtil.pas',
+  SimpleQueryFiredac in 'SimpleQueryFiredac.pas',
+  SimpleRTTI in 'SimpleRTTI.pas',
+  SimpleRTTIHelper in 'SimpleRTTIHelper.pas',
+  SimpleSQL in 'SimpleSQL.pas',
+  SimpleTypes in 'SimpleTypes.pas',
+  SimpleUtil in 'SimpleUtil.pas',
+  SimpleValidator in 'SimpleValidator.pas',
+  uLogs in 'uLogs.pas';
+
+end.
