@@ -40,6 +40,7 @@ Type
         FPrecoPrazo: Currency;
         FPrecoAnterior: Currency;
         FUnidadeMedida: String;
+        FTolerancia: Integer;
     public
         { Construtores e Destrutores }
         constructor Create;
@@ -68,6 +69,8 @@ Type
         property PrecoAnterior: Currency read FPrecoAnterior write FPrecoAnterior;
         [DBField('unidade_medida')]
         property UnidadeMedida: String read FUnidadeMedida write FUnidadeMedida;
+        [DBField('tolerancia')]
+        property Tolerancia: Integer read FTolerancia write FTolerancia;
     end;
 
 implementation

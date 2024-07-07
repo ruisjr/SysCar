@@ -4663,4 +4663,9 @@ object frmPrincipal: TfrmPrincipal
     BevelOuter = bvNone
     TabOrder = 3
   end
+  object ApplicationEvents1: TApplicationEvents
+    OnException = ApplicationEvents1Exception
+    Left = 599
+    Top = 183
+  end
 end

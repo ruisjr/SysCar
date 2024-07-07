@@ -104,7 +104,6 @@ var
     aDataEntradaComp: TDateTime;
     aDataSaidaComp: TDateTime;
     aDias, aHoras: Integer;
-    sDia: String;
 
     function getDiaExtenso(aDias: Integer): String;
     begin
@@ -129,11 +128,11 @@ var
 begin
     aDataEntradaComp := aDataEntrada + aHoraEntrada;
     aDataSaidaComp := aDataSaida + aHoraSaida;
+    aDias := (DaysBetween(aDataSaidaComp, aDataEntradaComp));
+    aHoras := HoursBetween(IncDay(aDataSaidaComp, -aDias), aDataEntradaComp);
 
     if DaysBetween(aDataSaidaComp, aDataEntradaComp) > 0 then
     begin
-        aDias := (DaysBetween(aDataSaidaComp, aDataEntradaComp));
-        aHoras := HoursBetween(IncDay(aDataSaidaComp, -aDias), aDataEntradaComp);
         lblTempoTotal.Caption := getDiaExtenso(aDias) +
                                  getHoraExtenso(aHoras) +
                                  getMinutoExtenso(MinutesBetween(IncHour(IncDay(aDataSaidaComp, -aDias),-aHoras), aDataEntradaComp));
@@ -149,13 +148,11 @@ procedure TFrmFinalizaVenda.AtualizaPagamentos;
 var
     DAOMovimento: iSimpleDao<TMovimento>;
     oMovimento: TMovimento;
-    aData: TDateTime;
     aDataSai: TDateTime;
 begin
     DAOMovimento := TSimpleDao<TMovimento>.New(DM.GetConn);
+    oMovimento := DAOMovimento.Find('ticket = ' + self.Ticket.ToString);
     try
-        oMovimento := DAOMovimento.Find('ticket = ' + self.Ticket.ToString);
-
         aDataSai := Now;
         lblTicket.Caption := oMovimento.Ticket.ToString;
         lblEntrada.Caption := DateToStr(oMovimento.DataEntrada) + ' - ' + TimeToStr(oMovimento.HoraEntrada);
@@ -196,7 +193,8 @@ var
     DAOProduto: iSimpleDao<TProduto>;
     oProduto: TProduto;
     aDias,
-    aHoras: Integer;
+    aHoras,
+    aMinutos: Integer;
 begin
     DAOProduto := TSimpleDao<TProduto>.New(DM.GetConn);
     try
@@ -210,7 +208,12 @@ begin
         begin
             oProduto := DAOProduto.Find('tipo = 1 AND unidade_medida = ' + QuotedStr('DIA'));
             aDias := DaysBetween(Now, StrToDateTime(lblEntrada.Caption));
-            edtTotalPagar.Value := aDias * oProduto.PrecoUnitario;
+            aMinutos := MinutesBetween(Now, StrToDateTime(lblEntrada.Caption));
+
+            if aMinutos <= oProduto.Tolerancia then
+                edtTotalpagar.Value := 0
+            else
+                edtTotalPagar.Value := aDias * oProduto.PrecoUnitario;
         end;
     finally
         oProduto.Free;
@@ -288,7 +291,6 @@ end;
 procedure TFrmFinalizaVenda.InserirModelo1Click(Sender: TObject);
 var
     Frm: TfrmFinalizaVendaFormaPagto;
-    ix: Integer;
 begin
     Frm := TfrmFinalizaVendaFormaPagto.Create(nil, '', (StrToFloat(edtTotalPagar.Text) - StrToFloat(edtSaldoPagar.Text)));
     try
@@ -353,10 +355,8 @@ end;
 procedure TFrmFinalizaVenda.edtPercentualDescontoChange(Sender: TObject);
 var
     saldo: Currency;
-    percent: Currency;
 begin
     saldo := (StrToFloat(edtTotalpagar.Text) * StrToFloat(edtPercentualDesconto.Text)) / 100;
-    percent := (StrToFloat(edtPercentualDesconto.Text) / 100) * StrToFloat(edtTotalpagar.Text) * 100;
     edtValorDesconto.Text := FloatToStr(saldo);
 end;
 

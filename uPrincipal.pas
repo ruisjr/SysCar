@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, AdvPanel, JvExExtCtrls, JvExtComponent, JvPanel,
   Vcl.Imaging.pngimage, AeroButtons,
   { Classes de negócio }
-  uLogs, SimpleInterface, SimpleQueryFiredac, Vcl.ComCtrls, JvExComCtrls, JvStatusBar;
+  uLogs, SimpleInterface, SimpleQueryFiredac, Vcl.ComCtrls, JvExComCtrls, JvStatusBar, Vcl.AppEvnts;
 
 type
   TfrmPrincipal = class(TForm)
@@ -23,6 +23,7 @@ type
     JvStatusBar1: TJvStatusBar;
     pnlDireita: TPanel;
     btnProdutos: TAeroSpeedButton;
+    ApplicationEvents1: TApplicationEvents;
     procedure btnCloseMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure btnCloseClick(Sender: TObject);
     procedure btnVeiculosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -35,6 +36,7 @@ type
     procedure btnMovimentoClick(Sender: TObject);
     procedure btnProdutosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure btnProdutosClick(Sender: TObject);
+    procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
   private
     { Private declarations }
   public
@@ -74,6 +76,35 @@ end;
 procedure TfrmPrincipal.btnProdutosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
     btnProdutos.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.ApplicationEvents1Exception(Sender: TObject; E: Exception);
+var
+    aFilePath: String;
+    LogFile: TextFile;
+    DataHora: String;
+begin
+    aFilePath := ExtractFilePath(Application.ExeName) + 'log\LogExceptions.log';
+    AssignFile(LogFile, AFilePath);
+
+    if FileExists(aFilePath) then
+        Append(LogFile)
+    else
+        Rewrite(LogFile);
+
+    DataHora := FormatDateTime('dd-mm-yyyy_hh-nn-ss', Now);
+
+
+    Writeln(LogFile, 'Data/Hora........: ' + DataHora);
+    Writeln(LogFile, 'Mensagem.........: ' + E.Message);
+    Writeln(LogFile, 'Classe...........: ' + E.ClassName);
+    Writeln(LogFile, 'Formulário.......: ' + Screen.ActiveForm.Name);
+    Writeln(LogFile, 'Unit.............: ' + Sender.UnitName);
+    Writeln(LogFile, 'Controle Visual..: ' + Screen.ActiveControl.Name);
+    Writeln(LogFile, 'Versão Windows...: ' + GetSOVersion);
+    CloseFile(LogFile);
+
+    InfoMessage(Application.ExeName, E.ClassName);
 end;
 
 procedure TfrmPrincipal.btnCloseClick(Sender: TObject);

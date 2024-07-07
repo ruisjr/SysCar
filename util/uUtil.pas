@@ -3,7 +3,7 @@ unit uUtil;
 interface
 
 uses
-    System.SysUtils, Vcl.Controls, System.Types, Vcl.Forms, AdvMenus, System.Classes,
+    System.SysUtils, Vcl.Controls, System.Types, Vcl.Forms, AdvMenus, System.Classes, System.Win.Registry, Winapi.Windows,
     { Classes de négócio }
     uLogs, uMessages;
 
@@ -15,6 +15,8 @@ uses
     function getProcessReturn(aReturn: TMessageReturn): Integer;
     function getDataAtual: TDate;
     function Split(aDelimiter: Char; aValue: String; aLeft: Boolean = True): String;
+    function GetWindowsVersion: string;
+    function GetSOVersion: String;
 
     { Procedures }
     procedure SubMenuPopUp(Sender: TObject; var advMenu: TAdvPopupMenu);
@@ -140,5 +142,55 @@ begin
         Result := aListString[1].Trim;
 end;
 
+function GetWindowsVersion: string;
+begin
+  case System.SysUtils.Win32MajorVersion of
+    5:
+      case System.SysUtils.Win32MinorVersion of
+        1: result := 'Windows XP';
+      end;
+    6:
+      case System.SysUtils.Win32MinorVersion of
+        0: result := 'Windows Vista';
+        1: result := 'Windows 7';
+        2: result := 'Windows 8';
+        3: result := 'Windows 8.1';
+      end;
+    10:
+      case System.SysUtils.Win32MinorVersion of
+        0: result := 'Windows 10';
+      end;
+  end;
+end;
+
+function GetSOVersion: String;
+var
+    vNome, vVersao, vCurrentBuild: String;
+    Reg: TRegistry;
+begin
+    Result := '';
+
+    Reg := TRegistry.Create; // Criando um Registro na Memória
+    try
+        Reg.Access := KEY_READ; // Colocando nosso Registro em modo Leitura
+        Reg.RootKey := HKEY_LOCAL_MACHINE; // Definindo a Raiz
+
+        // Abrindo a chave desejada
+        if Reg.OpenKey('\SOFTWARE\Microsoft\Windows NT\CurrentVersion\', false) then
+        begin
+            // Obtendo os Parâmetros desejados
+            vNome := Reg.ReadString('ProductName');
+            vVersao := Reg.ReadString('CurrentVersion');
+            vCurrentBuild := Reg.ReadString('CurrentBuild');
+
+            // Montando uma String com a versão e detalhes
+            Result := vNome + ' - ' + vVersao + ' - ' + vCurrentBuild;
+        end
+        else
+            Result := 'Erro ao abrir a chave do Registro.';
+    finally
+        Reg.Free;
+    end;
+end;
 
 end.

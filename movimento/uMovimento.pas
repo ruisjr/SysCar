@@ -96,10 +96,9 @@ begin
                 FieldByName('dt_entrada').AsDateTime := oLista[ix].DataEntrada;
                 FieldByName('hr_entrada').AsDateTime := oLista[ix].HoraEntrada;
 
+                oModelo := DAOModelo.Find('id = '+oLista[ix].Modelo.ToString);
+                oVeiculo := DAOVeiculo.Find('id = '+oLista[ix].Veiculo.ToString);
                 try
-                    oModelo := DAOModelo.Find('id = '+oLista[ix].Modelo.ToString);
-                    oVeiculo := DAOVeiculo.Find('id = '+oLista[ix].Veiculo.ToString);
-
                     FieldByName('modelo').AsInteger := oLista[ix].Modelo;
                     FieldByName('veiculo').AsInteger := oLista[ix].Veiculo;
                     FieldByName('nome_veiculo').AsString := oVeiculo.Nome + ' ' + oModelo.Nome;
