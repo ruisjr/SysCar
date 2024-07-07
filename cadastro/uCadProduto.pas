@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormDefault, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls, Vcl.StdCtrls, AdvEdit,
   Vcl.WinXCtrls, Vcl.ComCtrls, AdvDateTimePicker, AdvCombo, System.Generics.Collections,
   { Classes de Negócio }
-  uProduto, SimpleInterface, SimpleDao, SimpleAttributes, JvRadioGroup;
+  uProduto, SimpleInterface, SimpleDao, SimpleAttributes, JvRadioGroup, Vcl.Mask, AdvSpin;
 
 type
   TfrmCadProduto = class(TfrmFormDefault)
@@ -45,16 +45,23 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label5: TLabel;
+    GroupBox1: TGroupBox;
+    Label6: TLabel;
+    edtTolerancia: TAdvSpinEdit;
+    lblToleranciaMinutos: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnLocalizarClick(Sender: TObject);
     procedure edtCodigoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure rdgTipoMercadoriaClick(Sender: TObject);
+    procedure cbxUnidMedChange(Sender: TObject);
   private
     { Private declarations }
     FProduto: TProduto;
     DAOProduto: iSimpleDao<TProduto>;
 
     procedure LoadUnidadeMedida;
+    procedure HabilitaTolerancia;
   public
     { Public declarations }
 
@@ -99,6 +106,21 @@ begin
         edtDataCadastro.Date := getDataAtual;
 end;
 
+procedure TfrmCadProduto.HabilitaTolerancia;
+begin
+    if (rdgTipoMercadoria.ItemIndex = 1) and (cbxUnidMed.Text = 'H') then
+    begin
+        edtTolerancia.Enabled := True;
+        lblToleranciaMinutos.Enabled := True;
+        edtTolerancia.Value := 0;
+    end
+    else
+    begin
+        edtTolerancia.Enabled := False;
+        lblToleranciaMinutos.Enabled := False;
+    end;
+end;
+
 procedure TfrmCadProduto.Insert;
 begin
     inherited;
@@ -128,6 +150,12 @@ begin
     end;
 end;
 
+procedure TfrmCadProduto.rdgTipoMercadoriaClick(Sender: TObject);
+begin
+  inherited;
+    HabilitaTolerancia;
+end;
+
 procedure TfrmCadProduto.Update;
 begin
     inherited;
@@ -147,6 +175,12 @@ begin
         FProduto.Loads(Self, FProduto);
         self.ID := FProduto.Id;
     end;
+end;
+
+procedure TfrmCadProduto.cbxUnidMedChange(Sender: TObject);
+begin
+  inherited;
+    HabilitaTolerancia;
 end;
 
 procedure TfrmCadProduto.Delete;

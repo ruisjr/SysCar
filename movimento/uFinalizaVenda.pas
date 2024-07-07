@@ -81,6 +81,7 @@ type
     { Procedimentos }
     procedure PesquisaMensalista(aCodigo: Integer; aSendMsg: Boolean = False);
     procedure AtualizaPagamentos;
+    procedure CalcularTotais;
     procedure AtualizaBaixa(aHoraEntrada, aDataEntrada: TDateTime; aHoraSaida, aDataSaida: TDateTime);
   public
     { Public declarations }
@@ -96,7 +97,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule, uPessoa, uCallForm, uUtil, uFinalizaVendaFormaPagto, DateUtils;
+uses uDataModule, uPessoa, uCallForm, uUtil, uFinalizaVendaFormaPagto, DateUtils, uProduto;
 
 procedure TFrmFinalizaVenda.AtualizaBaixa(aHoraEntrada, aDataEntrada: TDateTime; aHoraSaida, aDataSaida: TDateTime);
 var
@@ -190,6 +191,32 @@ begin
     SubMenuPopUp(Sender, ppmMenuLateral);
 end;
 
+procedure TFrmFinalizaVenda.CalcularTotais;
+var
+    DAOProduto: iSimpleDao<TProduto>;
+    oProduto: TProduto;
+    aDias,
+    aHoras: Integer;
+begin
+    DAOProduto := TSimpleDao<TProduto>.New(DM.GetConn);
+    try
+        if DaysBetween(Now, StrToDateTime(lblEntrada.Caption)) = 0 then
+        begin
+            oProduto := DAOProduto.Find('tipo = 1 AND unidade_medida = ' + QuotedStr('H'));
+            aHoras := HoursBetween(Now, StrToDateTime(lblEntrada.Caption));
+            edtTotalPagar.Value := aHoras * oProduto.PrecoUnitario;
+        end
+        else
+        begin
+            oProduto := DAOProduto.Find('tipo = 1 AND unidade_medida = ' + QuotedStr('DIA'));
+            aDias := DaysBetween(Now, StrToDateTime(lblEntrada.Caption));
+            edtTotalPagar.Value := aDias * oProduto.PrecoUnitario;
+        end;
+    finally
+        oProduto.Free;
+    end;
+end;
+
 constructor TFrmFinalizaVenda.Create(AWoner: TComponent; aTicket: Integer);
 begin
     inherited Create(AWoner);
@@ -238,6 +265,7 @@ begin
         FreeAndNil(oLista);
     end;
     AtualizaPagamentos;
+    CalcularTotais;
 end;
 
 procedure TFrmFinalizaVenda.FormDestroy(Sender: TObject);
@@ -295,9 +323,9 @@ var
 begin
     if aCodigo > 0 then
     begin
+        DaoPessoa := TSimpleDao<TPessoa>.New(DM.GetConn);
+        oMensalista := DaoPessoa.Find(aCodigo);
         try
-            DaoPessoa := TSimpleDao<TPessoa>.New(DM.GetConn);
-            oMensalista := DaoPessoa.Find(aCodigo);
             if (oMensalista.Id = 0) and aSendMsg then
             begin
                 InfoMessage('Finaliza Venda', 'Cliente não encontrado para finalizar a venda');

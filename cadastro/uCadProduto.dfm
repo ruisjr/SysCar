@@ -287,6 +287,7 @@ inherited frmCadProduto: TfrmCadProduto
       LabelFont.Style = []
       ParentFont = False
       TabOrder = 5
+      OnChange = cbxUnidMedChange
     end
     object grpPrecos: TGroupBox
       Left = 8
@@ -458,6 +459,72 @@ inherited frmCadProduto: TfrmCadProduto
         'Mercadoria'
         'Servi'#231'o')
       TabOrder = 6
+      OnClick = rdgTipoMercadoriaClick
+    end
+    object GroupBox1: TGroupBox
+      Left = 343
+      Top = 235
+      Width = 290
+      Height = 155
+      Caption = 'Op'#231#245'es'
+      TabOrder = 11
+      object Label6: TLabel
+        Left = 10
+        Top = 30
+        Width = 68
+        Height = 20
+        Caption = 'Toler'#226'ncia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+      object lblToleranciaMinutos: TLabel
+        Left = 63
+        Top = 60
+        Width = 53
+        Height = 20
+        Caption = 'Minutos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+      object edtTolerancia: TAdvSpinEdit
+        Left = 10
+        Top = 56
+        Width = 47
+        Height = 28
+        Color = clWhite
+        Value = 0
+        DateValue = 45480.000443692130000000
+        HexDigits = 0
+        HexValue = 0
+        FlatLineColor = 11250603
+        BorderColor = 11250603
+        FocusColor = clNone
+        FocusFontColor = 3881787
+        IncrementFloat = 0.100000000000000000
+        IncrementFloatPage = 1.000000000000000000
+        LabelFont.Charset = DEFAULT_CHARSET
+        LabelFont.Color = clBlack
+        LabelFont.Height = -15
+        LabelFont.Name = 'Segoe UI'
+        LabelFont.Style = []
+        TabOrder = 0
+        Visible = True
+        Version = '2.0.2.6'
+        ButtonColor = clWhite
+        ButtonColorHot = 15917525
+        ButtonColorDown = 14925219
+        ButtonTextColor = 2303013
+        ButtonTextColorHot = 2303013
+        ButtonTextColorDown = 2303013
+      end
     end
   end
 end
