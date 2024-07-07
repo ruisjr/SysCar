@@ -19,6 +19,7 @@ CREATE TABLE produto (
 	,preco_prazo numeric(18,2)
 	,preco_anterior numeric(18,2)
 	,unidade_medida varchar(4)
+	,tolerancia integer default 0
 	);
 
 ALTER TABLE produto ADD CONSTRAINT pk_produto UNIQUE (id);
