@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFiltroDefault, Data.DB, Vcl.StdCtrls, AdvEdit, AdvCombo, JvExStdCtrls, JvGroupBox, Vcl.Grids, Vcl.DBGrids,
   JvExDBGrids, JvDBGrid, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls,
   { Classes de Negócio}
-  SimpleDao, SimpleInterface, uPessoa;
+  SimpleDao, SimpleInterface, uPessoa, AdvUtil, AdvObj, BaseGrid, AdvGrid, DBAdvGrid;
 
 type
   TfrmFiltroPessoa = class(TFrmFiltroDefault)
