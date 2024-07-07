@@ -103,6 +103,7 @@ var
     oLista: TObjectList<TVeiculo>;
 begin
   inherited;
+    btnSalvar.Enabled := False;
     btnInserir.Enabled := False;
     btnExcluir.Enabled := False;
     pnlDivisor.Enabled := False;

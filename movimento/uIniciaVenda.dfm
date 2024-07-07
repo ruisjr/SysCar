@@ -59,13 +59,18 @@ inherited frmIniciaVenda: TfrmIniciaVenda
         Left = 495
         ExplicitLeft = 495
       end
-      inherited btnInserir: TAeroSpeedButton
+      inherited btnSalvar: TAeroSpeedButton
         Left = 439
+        ExplicitLeft = 419
+        ExplicitTop = -4
+      end
+      inherited btnInserir: TAeroSpeedButton
+        Left = 383
         ExplicitLeft = 439
       end
       inherited pnlDivisor: TPanel
         Left = 551
-        ExplicitLeft = 551
+        ExplicitLeft = 495
       end
     end
     object cbxVeiculo: TAdvComboBox
