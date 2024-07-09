@@ -17,11 +17,36 @@ inherited frmFiltroPessoa: TfrmFiltroPessoa
       end
     end
     inherited grdFiltro: TDBAdvGrid
-      ColCount = 2
+      ColCount = 4
       Font.Color = clBlack
       ParentFont = False
-      FixedColWidth = 99
+      FixedColWidth = 18
       Columns = <
+        item
+          Borders = []
+          BorderPen.Color = clSilver
+          ButtonHeight = 18
+          CheckFalse = 'N'
+          CheckTrue = 'Y'
+          Color = clWindow
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clBlack
+          HeaderFont.Height = -15
+          HeaderFont.Name = 'Segoe UI'
+          HeaderFont.Style = []
+          PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
+          PrintFont.Charset = DEFAULT_CHARSET
+          PrintFont.Color = clBlack
+          PrintFont.Height = -15
+          PrintFont.Name = 'Segoe UI'
+          PrintFont.Style = []
+          Width = 18
+        end
         item
           Alignment = taRightJustify
           Borders = []
@@ -36,6 +61,7 @@ inherited frmFiltroPessoa: TfrmFiltroPessoa
           Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Header = 'C'#243'digo'
           HeaderFont.Charset = DEFAULT_CHARSET
           HeaderFont.Color = clBlack
           HeaderFont.Height = -15
@@ -62,6 +88,35 @@ inherited frmFiltroPessoa: TfrmFiltroPessoa
           Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Header = 'Nome'
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clBlack
+          HeaderFont.Height = -15
+          HeaderFont.Name = 'Segoe UI'
+          HeaderFont.Style = []
+          Name = 'nome'
+          PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
+          PrintFont.Charset = DEFAULT_CHARSET
+          PrintFont.Color = clBlack
+          PrintFont.Height = -15
+          PrintFont.Name = 'Segoe UI'
+          PrintFont.Style = []
+          Width = 300
+        end
+        item
+          Borders = []
+          BorderPen.Color = clSilver
+          ButtonHeight = 18
+          CheckFalse = 'N'
+          CheckTrue = 'Y'
+          Color = clWindow
+          FieldName = 'cpf'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Header = 'CPF'
           HeaderFont.Charset = DEFAULT_CHARSET
           HeaderFont.Color = clBlack
           HeaderFont.Height = -15
@@ -73,14 +128,17 @@ inherited frmFiltroPessoa: TfrmFiltroPessoa
           PrintFont.Height = -15
           PrintFont.Name = 'Segoe UI'
           PrintFont.Style = []
-          Width = 200
+          Width = 150
         end>
+      ExplicitLeft = 4
+      ExplicitTop = 44
+      ExplicitWidth = 857
+      ExplicitHeight = 256
       ColWidths = (
+        18
         99
-        200)
-      RowHeights = (
-        25
-        25)
+        300
+        150)
     end
   end
 end

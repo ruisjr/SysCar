@@ -24,6 +24,7 @@ type
     pnlDireita: TPanel;
     btnProdutos: TAeroSpeedButton;
     ApplicationEvents1: TApplicationEvents;
+    btnFormasPagamento: TAeroSpeedButton;
     procedure btnCloseMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure btnCloseClick(Sender: TObject);
     procedure btnVeiculosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -32,11 +33,11 @@ type
     procedure btnMensalistaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVeiculosClick(Sender: TObject);
-    procedure btnFormaPagamentoClick(Sender: TObject);
     procedure btnMovimentoClick(Sender: TObject);
     procedure btnProdutosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure btnProdutosClick(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
+    procedure btnFormasPagamentoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -94,7 +95,7 @@ begin
 
     DataHora := FormatDateTime('dd-mm-yyyy_hh-nn-ss', Now);
 
-
+    Writeln(LogFile, '---------------------------------------------------------------------------');
     Writeln(LogFile, 'Data/Hora........: ' + DataHora);
     Writeln(LogFile, 'Mensagem.........: ' + E.Message);
     Writeln(LogFile, 'Classe...........: ' + E.ClassName);
@@ -102,9 +103,10 @@ begin
     Writeln(LogFile, 'Unit.............: ' + Sender.UnitName);
     Writeln(LogFile, 'Controle Visual..: ' + Screen.ActiveControl.Name);
     Writeln(LogFile, 'Versão Windows...: ' + GetSOVersion);
+    Writeln(LogFile, '---------------------------------------------------------------------------');
     CloseFile(LogFile);
-
-    InfoMessage(Application.ExeName, E.ClassName);
+    TLog.New.error(E.Message);
+    InfoMessage(Application.ExeName, E.Message);
 end;
 
 procedure TfrmPrincipal.btnCloseClick(Sender: TObject);
@@ -117,7 +119,7 @@ begin
     btnClose.Cursor := crHandPoint;
 end;
 
-procedure TfrmPrincipal.btnFormaPagamentoClick(Sender: TObject);
+procedure TfrmPrincipal.btnFormasPagamentoClick(Sender: TObject);
 begin
     TCallForm.CallFormCad('TFrmCadFormaPagto', 0);
 end;

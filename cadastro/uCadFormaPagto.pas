@@ -46,16 +46,17 @@ type
     procedure FormCreate(Sender: TObject);
     procedure cbxTipoRecebimentoChange(Sender: TObject);
     procedure btnLocalizarClick(Sender: TObject);
+    procedure edtCodigoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     FFormaPagto: TFormaPagamento;
     DAO: iSimpleDAO<TFormaPagamento>;
-
+  public
     { métodos de sobrescrita }
     procedure Insert; override;
     procedure Update; override;
     procedure Delete; override;
-  public
+
     { Public declarations }
   end;
 
@@ -102,6 +103,23 @@ procedure TFrmCadFormaPagto.Delete;
 begin
   inherited;
     DAO.Delete('id', IntToStr(self.ID));
+end;
+
+procedure TFrmCadFormaPagto.edtCodigoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+    oFormaPagto: TFormaPagamento;
+begin
+  inherited;
+    if (key = VK_RETURN) and (not edtCodigo.Text.IsEmpty) and (edtCodigo.Text.ToInteger > 0) then
+    begin
+        oFormaPagto := DAO.Find(edtCodigo.Text.ToInteger);
+        try
+            oFormaPagto.Loads(self, oFormaPagto);
+            self.ID := oFormaPagto.ID;
+        finally
+            oFormaPagto.Free
+        end;
+    end;
 end;
 
 procedure TFrmCadFormaPagto.FormCreate(Sender: TObject);

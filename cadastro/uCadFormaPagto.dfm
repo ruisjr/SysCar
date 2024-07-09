@@ -8,6 +8,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
   inherited pnlFundo: TPanel
     Width = 725
     TabOrder = 1
+    ExplicitWidth = 725
     object lblCodigo: TLabel [0]
       Left = 8
       Top = 55
@@ -77,24 +78,34 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       Width = 717
       Caption = 'Cadastro de Formas de Pagamento'
       TabOrder = 3
+      ExplicitWidth = 717
       inherited btnClose: TAeroSpeedButton
         Left = 679
+        ExplicitLeft = 679
       end
     end
     inherited pnlBotoes: TJvPanel
       Width = 717
       TabOrder = 8
+      ExplicitWidth = 717
       inherited btnLocalizar: TAeroSpeedButton
         Left = 664
+        ExplicitLeft = 664
       end
       inherited btnExcluir: TAeroSpeedButton
-        Left = 580
+        Left = 524
+        ExplicitLeft = 580
+      end
+      inherited btnSalvar: TAeroSpeedButton
+        Left = 608
       end
       inherited btnInserir: TAeroSpeedButton
-        Left = 524
+        Left = 468
+        ExplicitLeft = 524
       end
       inherited pnlDivisor: TPanel
-        Left = 636
+        Left = 580
+        ExplicitLeft = 580
       end
     end
     object edtCodigo: TAdvEdit
@@ -129,6 +140,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       TabOrder = 0
       Text = '0'
       Visible = True
+      OnKeyDown = edtCodigoKeyDown
       Version = '4.0.5.0'
     end
     object tglAtivo: TToggleSwitch

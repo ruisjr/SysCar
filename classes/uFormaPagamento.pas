@@ -28,25 +28,25 @@ Type
         constructor Create;
         destructor Destroy; override;
     published
-        [DBField('id'), PK, AutoInc, NotNull]
+        [DBField('id'), PK, AutoInc, NotNull, Display('Código')]
         property ID: Integer read FId write FId;
-        [DBField('nome'), NotNull]
+        [DBField('nome'), NotNull, Display('Nome')]
         property Nome: String read FNome write FNome;
-        [DBField('ativo'), NotNull]
+        [DBField('ativo'), NotNull, Display('Ativo')]
         property Ativo: Boolean read FAtivo write FAtivo;
         [DBField('utilizar_cr')]
         property UtilizaEmCR: Boolean read FUtilizaCR write FUtilizaCR;
         [DBField('utilizar_cp')]
         property UtilizaEmCP: Boolean read FUtilizaCP write FUtilizaCP;
-        [DBField('tipo'), NotNull]
+        [DBField('tipo'), NotNull, Display('Tipo')]
         property Tipo: Integer read FTipo write FTipo;
-        [DBField('tipo_recebimento'), NotNull]
+        [DBField('tipo_recebimento'), NotNull, Display('Tipo Recebimento')]
         property TipoRecebimento: Integer read FTipoRecebimento write FTipoRecebimento;
         [DBField('moeda')]
         property Moeda: Integer read FMoeda write FMoeda;
         [DBField('permite_troco')]
         property PermiteTroco: Boolean read FPermiteTroca write FPermiteTroca;
-        [DBField('parcelas'), NotNull]
+        [DBField('parcelas'), NumberNotNull, Display('Parcelas')]
         property Parcelas: Integer read FParcelas write FParcelas;
         [DBField('dia_primeira_parcela')]
         property DiaPrimeiraParcela: Integer read FDiaPrimeiraParcela write FDiaPrimeiraParcela;

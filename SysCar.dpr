@@ -27,7 +27,8 @@ uses
   ucMovimento in 'classes\ucMovimento.pas',
   uCadProduto in 'cadastro\uCadProduto.pas' {frmCadProduto},
   uProduto in 'classes\uProduto.pas',
-  uFiltroProduto in 'cadastro\uFiltroProduto.pas' {frmFiltroProduto};
+  uFiltroProduto in 'cadastro\uFiltroProduto.pas' {frmFiltroProduto},
+  uLancamento in 'classes\uLancamento.pas';
 
 {$R *.res}
 

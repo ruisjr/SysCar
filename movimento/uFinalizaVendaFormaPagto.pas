@@ -61,7 +61,7 @@ begin
 
     Valor := StrToFloat(edtValorRecebido.Text);
     FormaPagtoId := cbxFormaPagamento.ItemIndex;
-    FormaPagtoNome := cbxFormaPagamento.Text;
+    FormaPagtoNome := split('-', cbxFormaPagamento.Text, False);
     Close;
 end;
 

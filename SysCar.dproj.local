@@ -1,2 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject/>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2024/07/08 08:55:12.898,=C:\Users\rui.junior\OneDrive\Sistemas\Syscar\Unit1.pas</Transaction>
+    <Transaction>2024/07/08 08:55:21.112,C:\Users\rui.junior\OneDrive\Sistemas\Syscar\classes\uLancamento.pas=C:\Users\rui.junior\OneDrive\Sistemas\Syscar\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

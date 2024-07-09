@@ -75,7 +75,7 @@ begin
         DAOModelo := TSimpleDao<TModelo>.New(DM.GetConn);
         DAOVeiculo := TSimpleDao<TVeiculo>.New(DM.GetConn);
 
-        DAO.SQL.OrderBy('ticket').&End.Find(oLista);
+        DAO.SQL.Where('situacao = ' + QuotedStr('A')).OrderBy('ticket').&End.Find(oLista);
 
         with cdsMovimento do
         begin
@@ -142,6 +142,7 @@ begin
     try
         vFinaliza := TFrmFinalizaVenda.Create(self, cdsMovimento.FieldByName('ticket').AsInteger);
         vFinaliza.ShowModal;
+        atualizaMovimento;
     finally
         FreeAndNil(vFinaliza);
     end;

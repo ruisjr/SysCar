@@ -70,17 +70,17 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnLocalizarClick(Sender: TObject);
+    procedure edtCodigoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     DAO: iSimpleDAO<TPessoa>;
     FPessoa: TPessoa;
-
+  public
     { métodos de sobrescrita }
     procedure Insert; override;
     procedure Update; override;
     procedure Delete; override;
 
-  public
     { Public declarations }
   end;
 
@@ -113,6 +113,23 @@ procedure TfrmCadMensalista.Delete;
 begin
     inherited;
     DAO.Delete('id', IntToStr(self.ID));
+end;
+
+procedure TfrmCadMensalista.edtCodigoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+    oPessoa: TPessoa;
+begin
+  inherited;
+    if (key = VK_RETURN) and (not edtCodigo.Text.IsEmpty) and (edtCodigo.Text.ToInteger > 0) then
+    begin
+        oPessoa := DAO.Find(edtCodigo.Text.ToInteger);
+        try
+            oPessoa.Loads(self, oPessoa);
+            self.ID := oPessoa.ID;
+        finally
+            oPessoa.Free
+        end;
+    end;
 end;
 
 procedure TfrmCadMensalista.FormCreate(Sender: TObject);

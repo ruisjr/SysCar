@@ -196,8 +196,8 @@ begin
   inherited;
     if (key = VK_RETURN) and (not edtCodigo.Text.IsEmpty) and (edtCodigo.Text.ToInteger > 0) then
     begin
+        oProduto := DAOProduto.Find(edtCodigo.Text.ToInteger);
         try
-            oProduto := DAOProduto.Find(edtCodigo.Text.ToInteger);
             oProduto.Loads(self, oProduto);
             self.ID := oProduto.ID;
         finally

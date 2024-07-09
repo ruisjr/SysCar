@@ -42,14 +42,14 @@ type
     DSModelo: TDataSource;
     FVeiculo: TVeiculo;
 
+    procedure setModelo(aVeiculo: String);
+    procedure SetVeiculoLogo(aVeiculo: String);
+  public
     { métodos de sobrescrita }
     procedure Insert; override;
     procedure Update; override;
     procedure Delete; override;
 
-    procedure setModelo(aVeiculo: String);
-    procedure SetVeiculoLogo(aVeiculo: String);
-  public
     { Public declarations }
   end;
 
@@ -150,7 +150,6 @@ end;
 
 procedure TfrmCadVeiculo.setModelo(aVeiculo: String);
 var
-    ix: Integer;
     sWhere: String;
     oLista: TObjectList<TModelo>;
 begin
@@ -158,7 +157,6 @@ begin
         oLista := TObjectList<TModelo>.Create;
         try
             sWhere := 'veiculo = (SELECT id FROM veiculo WHERE nome = ' + QuotedStr(aVeiculo)+')';
-            //sWhere := sWhere + ' AND tipo = '+IntToStr(grpTipo.ItemIndex);
             DAOModelo.SQL.Where(sWhere).OrderBy('nome').&End.Find(oLista);
         finally
             oLista.Free;

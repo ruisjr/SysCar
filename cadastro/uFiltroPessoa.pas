@@ -18,9 +18,7 @@ type
   private
     { Private declarations }
     DAO: iSimpleDao<TPessoa>;
-    FPessoa: TPessoa;
     FRetorno: Integer;
-    FCaption: String;
   public
     { Public declarations }
   end;
@@ -66,7 +64,7 @@ begin
   inherited;
     if edtPesquisa.Text.IsEmpty then
     begin
-        DAO.SQL.Fields('id, nome')
+        DAO.SQL.Fields(self.Fields)
           .OrderBy('id').Limit(edtLimite.Text)
           .&end
         .find;
@@ -75,7 +73,7 @@ begin
     begin
         if cbxFiltro.ItemIndex = cPESQ_CODIGO then
         begin
-            DAO.SQL.Fields('id, nome')
+            DAO.SQL.Fields(self.Fields)
               .Where(getWhere('id', edtPesquisa.Text))
               .OrderBy('id').Limit(edtLimite.Text)
               .&end
@@ -84,7 +82,7 @@ begin
         else
         begin
             DAO.SQL
-                .Fields('id, nome')
+                .Fields(self.Fields)
                     .Where(getWhere('nome', edtPesquisa.Text))
                     .OrderBy('nome').Limit(edtLimite.Text)
                 .&end
@@ -96,9 +94,10 @@ end;
 procedure TfrmFiltroPessoa.FormCreate(Sender: TObject);
 begin
   inherited;
+    self.Fields := 'id, nome, cpf';
     DAO := TSimpleDao<TPessoa>.New(DM.GetConn).DataSource(self.DSDados);
     DAO.SQL
-        .Fields('id, nome')
+        .Fields(self.Fields)
             .Where('nome ilike ' + QuotedStr('%'+edtPesquisa.Text+'%'))
             .OrderBy('id').Limit(edtLimite.Text)
         .&end

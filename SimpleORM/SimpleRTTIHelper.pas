@@ -13,6 +13,7 @@ type
     function Tem<T: TCustomAttribute>: Boolean;
     function GetAttribute<T: TCustomAttribute>: T;
     function IsNotNull: Boolean;
+    function IsNumberNotNull: Boolean;
     function IsIgnore: Boolean;
     function IsEnum: Boolean;
     function IsAutoInc: Boolean;
@@ -113,6 +114,11 @@ end;
 function TRttiPropertyHelper.IsNotNull: Boolean;
 begin
   Result := Tem<NotNull>
+end;
+
+function TRttiPropertyHelper.IsNumberNotNull: Boolean;
+begin
+  Result := Tem<NumberNotNull>
 end;
 
 function TRttiPropertyHelper.IsIgnore: Boolean;

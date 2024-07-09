@@ -3,7 +3,7 @@ unit ucMovimento;
 interface
 
 uses
-    SimpleEntity, SimpleAttributes, uPessoa, uVeiculo;
+    SimpleEntity, SimpleAttributes, uVeiculo;
 
 type
     [Table('movimento')]
@@ -16,9 +16,10 @@ type
         FDataSaida: TDate;
         FDataEntrada: TDate;
         FPlaca: String;
-        FMensalista: TPessoa;
+        FMensalista: Integer;
         FModelo: Integer;
         FVeiculo: Integer;
+        FSituacao: String;
 
     public
         { Construtores e Destrutores }
@@ -46,7 +47,9 @@ type
         [DBField('hr_saida')]
         property HoraSaida: TTime read FHoraSaida write FHoraSaida;
         [DBField('mensalista'), FK]
-        property Mensalista: TPessoa read FMensalista write FMensalista;
+        property Mensalista: Integer read FMensalista write FMensalista;
+        [DBField('situacao')]
+        property Situacao: String read FSituacao write FSituacao;
     end;
 
 implementation
@@ -56,12 +59,10 @@ implementation
 constructor TMovimento.Create;
 begin
     inherited Create;
-    FMensalista := TPessoa.Create;
 end;
 
 destructor TMovimento.Destroy;
 begin
-    FMensalista.Free;
   inherited Destroy;
 end;
 

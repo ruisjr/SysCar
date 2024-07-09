@@ -57,7 +57,7 @@
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <SanitizedProjectName>Config</SanitizedProjectName>
+        <SanitizedProjectName>SysCar</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>FireDACIBDriver;vclwinx;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FireDACCommonDriver;appanalytics;IndyProtocols;vclx;IndyIPClient;dbxcds;vcledge;bindcompvclwinx;bindcompfmx;TMSVCLUIPackPkgDXE14;JvBands;inetdb;vclribbon;JvAppFrm;FireDACSqliteDriver;DbxClientDriver;JclVcl;soapmidas;vclactnband;fmxFireDAC;dbexpress;Jcl;JvManagedThreads;DBXMySQLDriver;VclSmp;inet;JvPascalInterpreter;vcltouch;fmxase;JvPluginSystem;JvDB;JvTimeFramework;dbrtl;fmxdae;FireDACMSAccDriver;JvCustom;CustomIPTransport;JvSystem;JclDeveloperTools;JvControls;vcldsnap;JvCrypt;DBXInterBaseDriver;JvJans;JvWizards;IndySystem;JvMM;JvGlobus;vcldb;JclContainers;JvPageComps;vclFireDAC;JvCore;bindcomp;FireDACCommon;IndyCore;RESTBackendComponents;bindcompdbx;rtl;FireDACMySQLDriver;FireDACADSDriver;RESTComponents;DBXSqliteDriver;vcl;IndyIPServer;dsnapxml;dsnapcon;adortl;JvHMI;JvDotNetCtrls;TMSVCLUIPackPkgExDXE14;TMSVCLUIPackPkgWizDXE14;JvRuntimeDesign;JvXPCtrls;vclimg;FireDACPgDriver;FireDAC;inetdbxpress;JvPrintPreview;xmlrtl;tethering;JvStdCtrls;JvDlgs;JvDocking;TMSVCLUIPackPkgXlsDXE14;bindcompvcl;dsnap;JvCmp;CloudService;fmxobj;bindcompvclsmp;soaprtl;soapserver;JvNet;SimpleORM;$(DCC_UsePackage)</DCC_UsePackage>
@@ -178,6 +178,7 @@
             <Form>frmFiltroProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="classes\uLancamento.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

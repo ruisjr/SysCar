@@ -628,14 +628,17 @@ begin
                 begin
                     if prpRtti.IsForeignKey then
                     begin
+                        if prpRtti.GetValue(Pointer(FInstance)).AsInteger = 0 then
+                            Continue;
+
                         aObj := prpRtti.GetValue(Pointer(FInstance)).AsObject;
                         prpFKType := prpRtti.GetFKField(aObj);
 
-                     if (prpFKType <> nil) and (prpFKType.getValue(aObj).asInteger = 0) then
-                        Continue;
+                        if (prpFKType <> nil) and (prpFKType.getValue(aObj).asInteger = 0) then
+                            Continue;
 
-                     if (prpFKType <> nil) then
-                        aDictionary.Add(prpRtti.fieldname, prpFKType.getValue(aObj).asinteger)
+                        if (prpFKType <> nil) then
+                            aDictionary.Add(prpRtti.fieldname, prpFKType.getValue(aObj).asinteger)
                     end;
                 end;
                 tkEnumeration:
@@ -939,6 +942,10 @@ begin
 
             if prpRtti.IsAutoInc then
                 Continue;
+
+            if prpRtti.IsForeignKey then
+                if prpRtti.GetValue(Pointer(FInstance)).AsInteger = 0 then
+                    Continue;
 
             if prpRtti.IsEnum then
             begin

@@ -154,11 +154,14 @@ inherited frmCadMensalista: TfrmCadMensalista
         ExplicitLeft = 695
       end
       inherited btnExcluir: TAeroSpeedButton
-        Left = 605
+        Left = 549
         ExplicitLeft = 611
       end
+      inherited btnSalvar: TAeroSpeedButton
+        Left = 605
+      end
       inherited btnInserir: TAeroSpeedButton
-        Left = 549
+        Left = 493
         ExplicitLeft = 555
       end
       inherited pnlDivisor: TPanel
@@ -198,6 +201,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     TabOrder = 0
     Text = ''
     Visible = True
+    OnKeyDown = edtCodigoKeyDown
     Version = '4.0.5.0'
   end
   object edtNome: TAdvEdit

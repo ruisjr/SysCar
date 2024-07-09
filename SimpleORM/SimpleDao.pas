@@ -65,6 +65,7 @@ implementation
 uses
     System.SysUtils,
     SimpleAttributes,
+    SimpleValidator,
     System.TypInfo,
     SimpleRTTI,
     SimpleSQL,
@@ -231,6 +232,9 @@ begin
             FQuery.SQL.Add(aSQL);
             TLog.New.debug(aSQL);
             TSimpleRTTI<T>.New(nil).BindFormToClass(FForm, Entity);
+
+            TSimpleValidator.Validate(Entity);
+
             Self.FillParameter(Entity);
             FQuery.ExecSQL;
         finally
@@ -280,11 +284,13 @@ end;
 
 function TSimpleDAO<T>.Insert(aValue: T): iSimpleDAO<T>;
 var
-    i: Integer;
     aSQL: String;
 begin
     try
         Result := Self;
+
+        TSimpleValidator.Validate(aValue);
+
         TSimpleSQL<T>.New(aValue).Insert(aSQL);
         FQuery.SQL.Clear;
         FQuery.SQL.Add(aSQL);
@@ -293,7 +299,10 @@ begin
         FQuery.ExecSQL;
     except
         on E: Exception do
-            TLog.New.error('Ocorreu erro ao inserir o registro!' + #13 + 'Detalhes: ' + E.Message)
+        begin
+            TLog.New.error('Ocorreu erro ao inserir o registro!' + #13 + 'Detalhes: ' + E.Message);
+            raise;
+        end;
     end;
 end;
 
@@ -378,6 +387,9 @@ var
 begin
     try
         Result := Self;
+
+        TSimpleValidator.Validate(aValue);
+
         TSimpleSQL<T>.New(aValue).Update(aSQL);
         FQuery.SQL.Clear;
         FQuery.SQL.Add(aSQL);

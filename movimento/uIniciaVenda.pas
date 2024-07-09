@@ -59,6 +59,7 @@ begin
             oMovimento.HoraEntrada := Now;
             oMovimento.Veiculo := oVeiculo.ID;
             oMovimento.Modelo := oModelo.ID;
+            oMovimento.Situacao := 'A';
 
             DAOMovimento.Insert(oMovimento);
         except
