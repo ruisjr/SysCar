@@ -11,9 +11,9 @@ CREATE TABLE lancamento (
 	id BIGINT NOT NULL DEFAULT nextval('lancamento_seq')
 	,data timestamp NOT NULL
 	,valor numeric(18,2) not null
-	,documento integer not null
+	,documento varchar(30) not null
 	,movimento integer
-	,produto integer
+	,tipo varchar(1) not null default 'E'
 	);
 
 ALTER TABLE lancamento ADD CONSTRAINT pk_lancamento UNIQUE (id);

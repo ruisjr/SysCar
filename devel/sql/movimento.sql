@@ -18,6 +18,7 @@ CREATE TABLE movimento (
 	,dt_saida date
 	,hr_saida date
 	,mensalista integer
+	,situacao varchar(1)
 	);
 
 ALTER TABLE movimento ADD CONSTRAINT pk_movimento UNIQUE (id);
