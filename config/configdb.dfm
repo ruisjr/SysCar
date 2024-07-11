@@ -11,6 +11,7 @@ object frmConfigDB: TfrmConfigDB
   Font.Name = 'Segoe UI'
   Font.Style = []
   Menu = MainMenu1
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
@@ -144,6 +145,15 @@ object frmConfigDB: TfrmConfigDB
         Height = 23
         TabOrder = 0
       end
+      object Button1: TButton
+        Left = 116
+        Top = 104
+        Width = 100
+        Height = 25
+        Caption = 'Executar DB'
+        TabOrder = 3
+        OnClick = Button1Click
+      end
     end
     object Panel4: TPanel
       AlignWithMargins = True
@@ -160,9 +170,11 @@ object frmConfigDB: TfrmConfigDB
         Top = 1
         Width = 715
         Height = 433
-        ActivePage = tbPrimaryKey
+        ActivePage = tbsFields
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 711
+        ExplicitHeight = 432
         object tbsFields: TTabSheet
           Caption = 'Fields'
           ImageIndex = 3
@@ -534,10 +546,7 @@ object frmConfigDB: TfrmConfigDB
             FixedColor = clWhite
             RowCount = 2
             FixedRows = 1
-            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goAlwaysShowEditor, goFixedRowDefAlign]
             TabOrder = 0
-            GridLineColor = 13948116
-            GridFixedLineColor = 11250603
             OnGetEditorType = grdFieldsGetEditorType
             OnGetEditorProp = grdFieldsGetEditorProp
             ActiveCellFont.Charset = DEFAULT_CHARSET
@@ -550,6 +559,7 @@ object frmConfigDB: TfrmConfigDB
             BorderColor = 11250603
             ControlLook.FixedGradientFrom = clWhite
             ControlLook.FixedGradientTo = clWhite
+            ControlLook.FixedGradientHoverFrom = clGray
             ControlLook.FixedGradientHoverTo = clWhite
             ControlLook.FixedGradientHoverMirrorFrom = clWhite
             ControlLook.FixedGradientHoverMirrorTo = clWhite
@@ -603,7 +613,7 @@ object frmConfigDB: TfrmConfigDB
             FixedColWidth = 15
             FixedRowHeight = 22
             FixedFont.Charset = DEFAULT_CHARSET
-            FixedFont.Color = 3881787
+            FixedFont.Color = clWindowText
             FixedFont.Height = -11
             FixedFont.Name = 'Segoe UI'
             FixedFont.Style = [fsBold]
@@ -613,6 +623,7 @@ object frmConfigDB: TfrmConfigDB
             HTMLSettings.ImageBaseName = 'img'
             Look = glCustom
             Navigation.AllowInsertRow = True
+            Navigation.AlwaysEdit = True
             Navigation.AdvanceOnEnter = True
             Navigation.AdvanceAutoEdit = False
             PrintSettings.DateFormat = 'dd/mm/yyyy'
@@ -653,6 +664,7 @@ object frmConfigDB: TfrmConfigDB
             SearchFooter.MatchCaseCaption = 'Match case'
             SearchFooter.ResultFormat = '(%d of %d)'
             SelectionColor = 13744549
+            SelectionTextColor = clWindowText
             SortSettings.HeaderColor = clWhite
             SortSettings.HeaderColorTo = clWhite
             SortSettings.HeaderMirrorColor = clWhite
@@ -1069,6 +1081,9 @@ object frmConfigDB: TfrmConfigDB
               60
               190
               64)
+            RowHeights = (
+              22
+              22)
           end
           object edtNomeField: TEdit
             Left = 10
@@ -1300,7 +1315,7 @@ object frmConfigDB: TfrmConfigDB
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            OnClick = btnInserirClick
+            OnClick = btnConstraintsInserirClick
           end
           object btnConstraintsExcluir: TSpeedButton
             Left = 59
@@ -1461,7 +1476,7 @@ object frmConfigDB: TfrmConfigDB
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            OnClick = btnDeletarClick
+            OnClick = btnConstraintsExcluirClick
           end
           object Label1: TLabel
             Left = 216
@@ -1498,22 +1513,21 @@ object frmConfigDB: TfrmConfigDB
             Top = 31
             Width = 200
             Height = 23
+            CharCase = ecUpperCase
             TabOrder = 0
           end
-          object DBAdvGrid1: TDBAdvGrid
+          object grdConstraints: TDBAdvGrid
             Left = 0
             Top = 115
             Width = 707
             Height = 288
             Align = alBottom
-            ColCount = 6
+            ColCount = 7
             DrawingStyle = gdsClassic
             FixedColor = clWhite
             RowCount = 2
             FixedRows = 1
             TabOrder = 5
-            GridLineColor = 13948116
-            GridFixedLineColor = 11250603
             OnGetEditorType = grdFieldsGetEditorType
             OnGetEditorProp = grdFieldsGetEditorProp
             ActiveCellFont.Charset = DEFAULT_CHARSET
@@ -1580,7 +1594,7 @@ object frmConfigDB: TfrmConfigDB
             FixedColWidth = 15
             FixedRowHeight = 22
             FixedFont.Charset = DEFAULT_CHARSET
-            FixedFont.Color = 3881787
+            FixedFont.Color = clWindowText
             FixedFont.Height = -11
             FixedFont.Name = 'Segoe UI'
             FixedFont.Style = [fsBold]
@@ -1631,6 +1645,7 @@ object frmConfigDB: TfrmConfigDB
             SearchFooter.MatchCaseCaption = 'Match case'
             SearchFooter.ResultFormat = '(%d of %d)'
             SelectionColor = 13744549
+            SelectionTextColor = clWindowText
             SortSettings.HeaderColor = clWhite
             SortSettings.HeaderColorTo = clWhite
             SortSettings.HeaderMirrorColor = clWhite
@@ -1759,19 +1774,19 @@ object frmConfigDB: TfrmConfigDB
                 CheckFalse = 'N'
                 CheckTrue = 'Y'
                 Color = clWindow
-                FieldName = 'tabelafk'
+                FieldName = 'campo_fk'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -12
                 Font.Name = 'Segoe UI'
                 Font.Style = []
-                Header = 'Tabela'
+                Header = 'Campo'
                 HeaderFont.Charset = DEFAULT_CHARSET
                 HeaderFont.Color = clWindowText
                 HeaderFont.Height = -12
                 HeaderFont.Name = 'Segoe UI'
                 HeaderFont.Style = []
-                Name = 'tabelafk'
+                Name = 'campo_fk'
                 PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
                 PrintFont.Charset = DEFAULT_CHARSET
                 PrintFont.Color = clWindowText
@@ -1787,19 +1802,47 @@ object frmConfigDB: TfrmConfigDB
                 CheckFalse = 'N'
                 CheckTrue = 'Y'
                 Color = clWindow
-                FieldName = 'campofk'
+                FieldName = 'tabela_fk'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -12
                 Font.Name = 'Segoe UI'
                 Font.Style = []
-                Header = 'Campo'
+                Header = 'Tabela'
                 HeaderFont.Charset = DEFAULT_CHARSET
                 HeaderFont.Color = clWindowText
                 HeaderFont.Height = -12
                 HeaderFont.Name = 'Segoe UI'
                 HeaderFont.Style = []
-                Name = 'campofk'
+                Name = 'tabela_fk'
+                PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
+                PrintFont.Charset = DEFAULT_CHARSET
+                PrintFont.Color = clWindowText
+                PrintFont.Height = -12
+                PrintFont.Name = 'Segoe UI'
+                PrintFont.Style = []
+                Width = 64
+              end
+              item
+                Borders = []
+                BorderPen.Color = clSilver
+                ButtonHeight = 18
+                CheckFalse = 'N'
+                CheckTrue = 'Y'
+                Color = clWindow
+                FieldName = 'campo_tabela_fk'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = []
+                Header = 'Campo Tabela FK'
+                HeaderFont.Charset = DEFAULT_CHARSET
+                HeaderFont.Color = clWindowText
+                HeaderFont.Height = -12
+                HeaderFont.Name = 'Segoe UI'
+                HeaderFont.Style = []
+                Name = 'campo_tabela_fk'
                 PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
                 PrintFont.Charset = DEFAULT_CHARSET
                 PrintFont.Color = clWindowText
@@ -1946,13 +1989,19 @@ object frmConfigDB: TfrmConfigDB
               80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
               FFC003FF}
             ShowUnicode = False
+            ExplicitTop = 114
+            ExplicitWidth = 703
             ColWidths = (
               15
               40
               200
               150
               64
+              64
               64)
+            RowHeights = (
+              22
+              22)
           end
           object cbxTipoConstraint: TComboBox
             Left = 216
@@ -1960,18 +2009,20 @@ object frmConfigDB: TfrmConfigDB
             Width = 116
             Height = 23
             Style = csDropDownList
+            CharCase = ecUpperCase
             TabOrder = 1
             OnChange = cbxTipoConstraintChange
             Items.Strings = (
-              'Primary Key'
-              'Foreign Key'
-              'Index')
+              'PRIMARY KEY'
+              'FOREIGN KEY'
+              'INDEX')
           end
           object edtTabelaForeignKey: TEdit
             Left = 462
             Top = 31
             Width = 118
             Height = 23
+            CharCase = ecUpperCase
             Enabled = False
             TabOrder = 3
           end
@@ -1980,6 +2031,7 @@ object frmConfigDB: TfrmConfigDB
             Top = 31
             Width = 118
             Height = 23
+            CharCase = ecUpperCase
             Enabled = False
             TabOrder = 4
           end
@@ -1989,6 +2041,7 @@ object frmConfigDB: TfrmConfigDB
             Width = 118
             Height = 23
             Style = csDropDownList
+            CharCase = ecUpperCase
             TabOrder = 2
           end
         end
@@ -2000,6 +2053,16 @@ object frmConfigDB: TfrmConfigDB
     Top = 94
     object Operaes1: TMenuItem
       Caption = 'Opera'#231#245'es'
+      object ConectaDB1: TMenuItem
+        Caption = 'Conectar Database'
+        OnClick = ConectaDB1Click
+      end
+      object ManutenodeBase1: TMenuItem
+        Caption = 'Manuten'#231#227'o de Base'
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
       object InserirTabelasdeControle1: TMenuItem
         Caption = 'Inserir Tabelas de Controle'
         OnClick = InserirTabelasdeControle1Click
@@ -2019,6 +2082,7 @@ object frmConfigDB: TfrmConfigDB
     end
     object RemoverTabela1: TMenuItem
       Caption = 'Remover Tabela'
+      OnClick = RemoverTabela1Click
     end
   end
   object dsTabelas: TDataSource
@@ -2043,6 +2107,7 @@ object frmConfigDB: TfrmConfigDB
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QueryFieldstabela: TIntegerField
       FieldName = 'tabela'
@@ -2077,6 +2142,7 @@ object frmConfigDB: TfrmConfigDB
     end
   end
   object dsConstraints: TDataSource
+    DataSet = QueryConstraints
     Left = 832
     Top = 344
   end

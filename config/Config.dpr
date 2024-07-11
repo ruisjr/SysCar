@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   configdb in 'configdb.pas' {frmConfigDB},
   uUtil in 'uUtil.pas',
-  dataModule in 'dataModule.pas' {DM: TDataModule};
+  dataModule in 'dataModule.pas' {DM: TDataModule},
+  uConectarDataBase in 'uConectarDataBase.pas' {frmCarregarDatabase};
 
 {$R *.res}
 
