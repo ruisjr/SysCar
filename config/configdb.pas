@@ -73,7 +73,7 @@ type
     cbxCampoFK: TComboBox;
     N1: TMenuItem;
     ManutenodeBase1: TMenuItem;
-    Button1: TButton;
+    btnAtualizarTabelaIndividual: TButton;
     ConectaDB1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure NovaTabela1Click(Sender: TObject);
@@ -92,7 +92,7 @@ type
     procedure btnConstraintsExcluirClick(Sender: TObject);
     procedure RemoverTabela1Click(Sender: TObject);
     procedure ConectaDB1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnAtualizarTabelaIndividualClick(Sender: TObject);
   private
     { Private declarations }
     QueryTables: TFDQuery;
@@ -101,8 +101,9 @@ type
     procedure CarregarFields(aIdTabela: Integer);
     procedure CarregarConstraints(aIdTabela: Integer);
     procedure CarregarFieldsToConstraints;
-    procedure CreateTableDatabase(aQuery, aTabela: String);
-    procedure CreateFieldsDatabase(aQuery, aTabela: String);
+    procedure CreateTableDatabase(aTabela: String);
+    procedure CreateFieldsDatabase(aTabela: String);
+    procedure CreateConstraints(aTabela: String);
   public
     { Public declarations }
   end;
@@ -114,7 +115,7 @@ implementation
 
 {$R *.dfm}
 
-uses dataModule, uUtil, uConectarDataBase;
+uses dataModule, uUtil, uConectarDataBase, uLogs;
 
 procedure TfrmConfigDB.btnConstraintsExcluirClick(Sender: TObject);
 var
@@ -131,6 +132,7 @@ begin
                 SQL.Text := 'DELETE FROM constraints WHERE id = :id AND tabela = :tabela';
                 ParamByName('id').AsInteger := QueryConstraints.FieldByName('id').AsInteger;
                 ParamByName('tabela').AsInteger := QueryConstraints.FieldByName('tabela').AsInteger;
+                TLog.New.debug(QueryFields.SQL.Text);
                 Prepare;
                 ExecSQL;
             end;
@@ -160,6 +162,7 @@ begin
             ParamByName('tabela_fk').AsString := edtTabelaForeignKey.Text;
             ParamByName('campo_tabela_fk').AsString := edtCampoForeignKey.Text;
             ParamByName('tabela').AsInteger := QueryTables.FieldByName('id').AsInteger;
+            TLog.New.debug(Qry.SQL.Text);
             Prepare;
             ExecSQL;
         end;
@@ -175,9 +178,11 @@ procedure TfrmConfigDB.btnCriarTabelaClick(Sender: TObject);
 var
     oQuery: TFDQuery;
 begin
+    TLog.New.info('Criando a tabela ' + edtNomeTabela.Text);
     oQuery := getQuery;
     try
         oQuery.SQL.Text := 'INSERT INTO tabelas (nome) VALUES (' + QuotedStr(edtNomeTabela.Text) + ')';
+        TLog.New.debug(oQuery.SQL.Text);
         oQuery.Prepare;
         oQuery.ExecSQL;
         QueryTables.Close;
@@ -236,6 +241,7 @@ end;
 
 procedure TfrmConfigDB.FormCreate(Sender: TObject);
 begin
+    TLog.New.info('Acessando a tela ' + self.Caption);
     QueryTables := getQuery;
     QueryFields := getQuery;
 
@@ -257,16 +263,21 @@ begin
 
         QueryTables.SQL.Clear;
         QueryTables.SQL.Text := 'SELECT * FROM tabelas';
+        TLog.New.debug(QueryTables.SQL.Text);
         QueryTables.Prepare;
         QueryTables.Open;
     except
         on E: Exception do
         begin
+            TLog.New.debug(getTableTabelas);
             DM.Command.Execute(getTableTabelas);
+            TLog.New.debug(getTableFields);
             DM.Command.Execute(getTableFields);
+            TLog.New.debug(getTableConstraints);
             DM.Command.Execute(getTableConstraints);
 
             QueryTables.SQL.Text := 'SELECT * FROM tabelas';
+            TLog.New.debug(QueryTables.SQL.Text);
             QueryTables.Prepare;
             QueryTables.Open;
         end;
@@ -333,6 +344,7 @@ begin
                 SQL.Clear;
                 SQL.Text := 'DELETE FROM tabelas WHERE id = :id';
                 ParamByName('id').AsInteger := QueryTables.FieldByName('id').AsInteger;
+                TLog.New.debug(QueryTables.SQL.Text);
                 Prepare;
                 ExecSQL;
             end;
@@ -353,8 +365,9 @@ var
     qry: TFDQuery;
 begin
     if edtIdTabela.Text = '' then
-        Abort;
+        Exit;
 
+    TLog.New.info('Inserindo o campo ' + edtNomeField.Text);
     qry := getQuery;
     try
         With qry do
@@ -363,6 +376,7 @@ begin
             SQL.Clear;
             SQL.Text := 'INSERT INTO fields (nome, tipo, tamanho, precisao, nao_nulo, valor_padrao, tabela) '+
                         'VALUES (:nome, :tipo, :tamanho, :precisao, :nao_nulo, :valor_padrao, :tabela)';
+            TLog.New.debug(Qry.SQL.Text);
             ParamByName('nome').AsString := edtNomeField.Text;
             ParamByName('tipo').AsString := cbxTipoField.Text;
             ParamByName('tamanho').AsInteger := edtTamanhoField.Value;
@@ -381,73 +395,17 @@ begin
     end;
 end;
 
-procedure TfrmConfigDB.Button1Click(Sender: TObject);
-var
-    ix: Integer;
-    aQuery: String;
-    aArray: Array of string;
-
-    function getNotNull(aNotNull: Boolean): String;
-    begin
-        Result := '';
-        if aNotNull then
-        begin
-            Result := ' NOT NULL ';
-        end;
-    end;
-
-    function getDefault(aValue: String): String;
-    begin
-        Result := '';
-        if not aValue.IsEmpty then
-            Result := ' DEFAULT ' + aValue;
-    end;
-
-    function getStringField(aTamanho: String): String;
-    begin
-        Result := '';
-        if not aTamanho.IsEmpty then
-        begin
-            Result := Format(' VARCHAR(%s) ', [aTamanho]);
-        end;
-    end;
-
-    function getNumericField(aTamanho, aPrecisao: String): String;
-    begin
-        Result := '';
-        if not aTamanho.IsEmpty and not aPrecisao.IsEmpty then
-            Result := Format(' NUMERIC(%s, %s) ', [aTamanho, aPrecisao])
-        else if not aTamanho.IsEmpty and aPrecisao.IsEmpty then
-            Result := Format(' NUMERIC(%s) ', [aTamanho]);
-    end;
+procedure TfrmConfigDB.btnAtualizarTabelaIndividualClick(Sender: TObject);
 begin
-    ix := 0;
-    With QueryFields do
+    if edtIdTabela.Text = '' then
     begin
-        if QueryFields.RecordCount > 0 then
-        begin
-            SetLength(aArray, QueryFields.RecordCount);
-            First;
-            while not EOF do
-            begin
-                if FieldByName('tipo').AsString = 'INTEGER' then
-                    aArray[ix] := FieldByName('nome').AsString + ' ' + FieldByName('tipo').AsString + getNotNull(FieldByName('nao_nulo').AsBoolean) + getDefault(FieldByName('valor_padrao').AsString)
-                else if FieldByName('tipo').AsString = 'STRING' then
-                    aArray[ix] := FieldByName('nome').AsString + getStringField(FieldByName('tamanho').AsString) + getNotNull(FieldByName('nao_nulo').AsBoolean) + getDefault(FieldByName('valor_padrao').AsString)
-                else if FieldByName('tipo').AsString = 'NUMERIC' then
-                    aArray[ix] := FieldByName('nome').AsString + getNumericField(FieldByName('tamanho').AsString, FieldByName('precisao').AsString) + getNotNull(FieldByName('nao_nulo').AsBoolean) + getDefault(FieldByName('valor_padrao').AsString)
-                else
-                    aArray[ix] := FieldByName('nome').AsString + ' ' +FieldByName('tipo').AsString + getNotNull(FieldByName('nao_nulo').AsBoolean) + getDefault(FieldByName('valor_padrao').AsString);
-
-                ix := ix + 1;
-                Next;
-            end;
-            aQuery := getScriptCreateTable(edtNomeTabela.Text) + getScriptFields(aArray) + ')';
-        end;
+        ShowMessage('Nenhuma tabela foi selecionada!',[tfCanBeMinimized]);
+        Exit;
     end;
 
-    CreateTableDatabase(aQuery, edtNomeTabela.Text);
-    CreateFieldsDatabase('', edtNomeTabela.Text);
+    CreateTableDatabase(edtNomeTabela.Text);
+    CreateFieldsDatabase(edtNomeTabela.Text);
+    CreateConstraints(edtNomeTabela.Text);
 end;
 
 procedure TfrmConfigDB.CarregarConstraints(aIdTabela: Integer);
@@ -458,6 +416,7 @@ begin
             Close;
             SQL.Clear;
             SQL.Text := getSelectConstraints(aIdTabela);
+            TLog.New.debug(QueryConstraints.SQL.Text);
             Prepare;
             Active := True;
         end;
@@ -474,6 +433,7 @@ begin
             Close;
             SQL.Clear;
             SQL.Text := getSelectFields(aIdTabela);
+            TLog.New.debug(QueryFields.SQL.Text);
             Prepare;
             Active := True;
         end;
@@ -496,6 +456,7 @@ begin
             Close;
             SQL.Clear;
             SQL.Text := getSelectConstraints(StrToInt(edtIdTabela.Text));
+            TLog.New.debug(Qry.SQL.Text);
             Prepare;
             Active := True;
         end;
@@ -560,91 +521,111 @@ begin
     end;
 end;
 
-procedure TfrmConfigDB.CreateFieldsDatabase(aQuery, aTabela: String);
+procedure TfrmConfigDB.CreateConstraints(aTabela: String);
 var
-    aQueryAux: String;
-    encontrou: Boolean;
+    Qry, QueryFields: TFDQuery;
+    aQuery: String;
+begin
+    Qry := getQuery;
+    QueryFields := getQuery;
+    try
+        with QueryFields do
+        begin
+            SQL.Text := Format('SELECT c.* FROM constraints c JOIN tabelas t ON t.id = c.tabela AND t.nome = %s', [QuotedStr(aTabela)]);
+            Open;
+
+            First;
+            while not QueryFields.Eof do
+            begin
+                if FieldByName('tipo').AsString.ToUpper = 'PRIMARY KEY' then
+                    aQuery := Format('ALTER TABLE %s ADD CONSTRAINT %s %s (%s)', [atabela, FieldByName('nome').AsString, FieldByName('tipo').AsString, FieldByName('campo_fk').AsString])
+                else if FieldByName('tipo').AsString.ToUpper = 'FOREIGN KEY' then
+                    aQuery := Format('ALTER TABLE %s ADD CONSTRAINT %s %s (%s) REFERENCES %s (%s)', [atabela, FieldByName('nome').AsString, FieldByName('tipo').AsString, FieldByName('campo_fk').AsString, FieldByName('tabela_fk').AsString, FieldByName('campo_tabela_fk').AsString])
+                else if FieldByName('tipo').AsString.ToUpper = 'INDEX' then
+                    aQuery := Format('ALTER TABLE %s ADD CONSTRAINT %s %s (%s) REFERENCES %s (%s)', [atabela, FieldByName('nome').AsString, FieldByName('tipo').AsString, FieldByName('campo_fk').AsString, FieldByName('tabela_fk').AsString, FieldByName('campo_tabela_fk').AsString]);
+
+
+                Qry.Close;
+                Qry.SQL.Clear;
+                Qry.SQL.Text := aQuery;
+                TLog.New.debug(aQuery);
+//                Qry.Prepare;
+//                Qry.ExecSQL;
+
+                Next
+            end;
+        end;
+    finally
+        Qry.Free;
+        QueryFields.Free;
+    end;
+end;
+
+procedure TfrmConfigDB.CreateFieldsDatabase(aTabela: String);
+var
+    aFieldExists: Boolean;
+    qryDataBase: TFDQuery;
     qryFields: TFDQuery;
+    qryCommand: TFDQuery;
 begin
     {
         1. Valida se os campos existem.
         2. Se o campo não existe, cria.
         3. Se o campo existe, verifica se o tipo e outras caracteriscas são iguais aos configurados.
     }
+    qryDataBase := getQueryDatabase;
     qryFields := getQuery;
+    qryCommand := getQuery;
     try
         { Fields da estrutura }
         qryFields.Close;
         qryFields.SQL.Clear;
         qryFields.SQL.Text := Format('SELECT * FROM fields WHERE tabela = %d', [StrToInt(edtIdTabela.Text)]);
+        TLog.New.debug(qryFields.SQL.Text);
         qryFields.Prepare;
         qryFields.Open;
 
-        with getQueryDatabase do
+        { Dados do que existe no banco }
+        qryDataBase.Close;
+        qryDataBase.SQL.Clear;
+        qryDataBase.SQL.Text := Format('SELECT column_name, column_default, is_nullable, data_type FROM information_schema.columns WHERE table_name = %s', [QuotedStr(aTabela)]);
+        TLog.New.debug(qryDataBase.SQL.Text);
+        qryDataBase.Prepare;
+        qryDataBase.Open;
+
+        qryFields.First;
+        while not qryFields.EOF do
         begin
-            Close;
-            SQL.Clear;
-            SQL.Text := Format('SELECT column_name FROM information_schema.columns WHERE table_name = %s', [QuotedStr(aTabela)]);
-            Prepare;
-            Open;
+            aFieldExists := False;
+            if FieldExists(aTabela, qryFields.FieldByName('nome').AsString) then
+                aFieldExists := True;
 
-            First;
-            while not EOF do
-            begin
-                qryFields.First;
-                while not qryFields.Eof do
-                begin
-                    if FieldByName('column_name').AsString.ToLower = qryFields.FieldByName('nome').AsString then
-                    begin
-                        encontrou := True;
-                        break;
-                    end;
+            AdicionarEditarCampos(aTabela, qryFields.FieldByName('nome').AsString, qryFields.FieldByName('tipo').AsString, qryFields.FieldByName('tamanho').AsString, qryFields.FieldByName('precisao').AsString, aFieldExists);
+            AplicarNotNull(aTabela, qryFields.FieldByName('nome').AsString, qryFields.FieldByName('nao_nulo').AsBoolean);
+            AplicarDefault(aTabela, qryFields.FieldByName('nome').AsString, qryFields.FieldByName('valor_padrao').AsString);
 
-                    if encontrou then
-                    begin
-                        aQueryAux := Format('ALTER TABLE %s ADD COLUMN %s %s', [aTabela, qryFields.FieldByName('nome').AsString, qryFields.FieldByName('tipo').AsString]);
-                        DM.Command.Execute(aQueryAux);
-                    end;
-
-                    qryFields.Next;
-                end;
-                Next;
-            end;
-
-//            if not encontrou then
-//                DM.Command.Execute(aQuery);
+            qryFields.Next;
         end;
     finally
         qryFields.Free;
+        qryCommand.Free;
     end;
 end;
 
-procedure TfrmConfigDB.CreateTableDatabase(aQuery, aTabela: String);
+procedure TfrmConfigDB.CreateTableDatabase(aTabela: String);
 var
-    encontrou: Boolean;
+    aQuery: String;
+    Qry: TFDQuery;
 begin
-    encontrou := False;
-    with getQueryDatabase do
-    begin
-        Close;
-        SQL.Clear;
-        SQL.Text := Format('SELECT table_name FROM information_schema.tables WHERE table_schema = %s', [QuotedStr('public')]);
-        Prepare;
-        Open;
-
-        First;
-        while not EOF do
-        begin
-            if FieldByName('table_name').AsString.ToLower = LowerCase(aTabela) then
-            begin
-                encontrou := True;
-                break;
-            end;
-            Next;
-        end;
-
-        if not encontrou then
-            DM.Command.Execute(aQuery);
+    Qry := getQueryDatabase;
+    try
+        aQuery := Format('CREATE TABLE IF NOT EXISTS %s ()', [aTabela]);
+        TLog.New.debug(aQuery);
+        Qry.SQL.Text := aQuery;
+        Qry.Prepare;
+        Qry.ExecSQL;
+    finally
+        Qry.Free;
     end;
 end;
 
@@ -663,6 +644,7 @@ begin
                 SQL.Text := 'DELETE FROM fields WHERE id = :id AND tabela = :tabela';
                 ParamByName('id').AsInteger := QueryFields.FieldByName('id').AsInteger;
                 ParamByName('tabela').AsInteger := QueryFields.FieldByName('tabela').AsInteger;
+                TLog.New.debug(qry.SQL.Text);
                 Prepare;
                 ExecSQL;
             end;

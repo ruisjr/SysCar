@@ -3,9 +3,10 @@ program Config;
 uses
   Vcl.Forms,
   configdb in 'configdb.pas' {frmConfigDB},
-  uUtil in 'uUtil.pas',
   dataModule in 'dataModule.pas' {DM: TDataModule},
-  uConectarDataBase in 'uConectarDataBase.pas' {frmCarregarDatabase};
+  uConectarDataBase in 'uConectarDataBase.pas' {frmCarregarDatabase},
+  uUtil in 'uUtil.pas',
+  uLogs in 'uLogs.pas';
 
 {$R *.res}
 

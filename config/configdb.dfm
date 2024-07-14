@@ -145,14 +145,14 @@ object frmConfigDB: TfrmConfigDB
         Height = 23
         TabOrder = 0
       end
-      object Button1: TButton
+      object btnAtualizarTabelaIndividual: TButton
         Left = 116
         Top = 104
-        Width = 100
+        Width = 133
         Height = 25
-        Caption = 'Executar DB'
+        Caption = 'Executar DB (Tabela)'
         TabOrder = 3
-        OnClick = Button1Click
+        OnClick = btnAtualizarTabelaIndividualClick
       end
     end
     object Panel4: TPanel
@@ -170,7 +170,7 @@ object frmConfigDB: TfrmConfigDB
         Top = 1
         Width = 715
         Height = 433
-        ActivePage = tbsFields
+        ActivePage = tbPrimaryKey
         Align = alClient
         TabOrder = 0
         ExplicitWidth = 711
@@ -1071,6 +1071,8 @@ object frmConfigDB: TfrmConfigDB
               80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
               FFC003FF}
             ShowUnicode = False
+            ExplicitTop = 114
+            ExplicitWidth = 703
             ColWidths = (
               15
               40
@@ -1989,8 +1991,6 @@ object frmConfigDB: TfrmConfigDB
               80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
               FFC003FF}
             ShowUnicode = False
-            ExplicitTop = 114
-            ExplicitWidth = 703
             ColWidths = (
               15
               40
@@ -2015,7 +2015,8 @@ object frmConfigDB: TfrmConfigDB
             Items.Strings = (
               'PRIMARY KEY'
               'FOREIGN KEY'
-              'INDEX')
+              'INDEX'
+              'INDEX UNIQUE')
           end
           object edtTabelaForeignKey: TEdit
             Left = 462

@@ -105,7 +105,6 @@
             <Form>frmConfigDB</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uUtil.pas"/>
         <DCCReference Include="dataModule.pas">
             <Form>DM</Form>
             <FormType>dfm</FormType>
@@ -115,6 +114,8 @@
             <Form>frmCarregarDatabase</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uUtil.pas"/>
+        <DCCReference Include="uLogs.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -141,7 +142,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
-                <DeployFile LocalName="Win32\Debug\Config.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Config.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Config.exe</RemoteName>
                         <Overwrite>true</Overwrite>
