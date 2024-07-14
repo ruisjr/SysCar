@@ -541,16 +541,15 @@ begin
                     aQuery := Format('ALTER TABLE %s ADD CONSTRAINT %s %s (%s)', [atabela, FieldByName('nome').AsString, FieldByName('tipo').AsString, FieldByName('campo_fk').AsString])
                 else if FieldByName('tipo').AsString.ToUpper = 'FOREIGN KEY' then
                     aQuery := Format('ALTER TABLE %s ADD CONSTRAINT %s %s (%s) REFERENCES %s (%s)', [atabela, FieldByName('nome').AsString, FieldByName('tipo').AsString, FieldByName('campo_fk').AsString, FieldByName('tabela_fk').AsString, FieldByName('campo_tabela_fk').AsString])
-                else if FieldByName('tipo').AsString.ToUpper = 'INDEX' then
-                    aQuery := Format('ALTER TABLE %s ADD CONSTRAINT %s %s (%s) REFERENCES %s (%s)', [atabela, FieldByName('nome').AsString, FieldByName('tipo').AsString, FieldByName('campo_fk').AsString, FieldByName('tabela_fk').AsString, FieldByName('campo_tabela_fk').AsString]);
-
+                else if (FieldByName('tipo').AsString.ToUpper = 'INDEX') or (FieldByName('tipo').AsString.ToUpper = 'UNIQUE INDEX') then
+                    aQuery := Format('CREATE %s IF NOT EXISTS %s ON %s (%s)', [FieldByName('tipo').AsString, FieldByName('nome').AsString, aTabela, FieldByName('campo_fk').AsString]);
 
                 Qry.Close;
                 Qry.SQL.Clear;
                 Qry.SQL.Text := aQuery;
                 TLog.New.debug(aQuery);
-//                Qry.Prepare;
-//                Qry.ExecSQL;
+                Qry.Prepare;
+                Qry.ExecSQL;
 
                 Next
             end;
