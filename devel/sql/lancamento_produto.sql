@@ -15,7 +15,7 @@ CREATE TABLE lancamento_produto (
 	,produto integer not null
 	);
 	
-ALTER TABLE lancamento_produto ADD CONSTRAINT pk_lancamento_produto UNIQUE (id);
+ALTER TABLE lancamento_produto ADD CONSTRAINT pk_lancamento_produto PRIMARY KEY (id);
 ALTER TABLE lancamento_produto ADD CONSTRAINT fk_lanc_prod_lancamento FOREIGN KEY (lancamento) REFERENCES lancamento(id);
 ALTER TABLE lancamento_produto ADD CONSTRAINT fk_lanc_prod_produto FOREIGN KEY (produto) REFERENCES produto(id);
 

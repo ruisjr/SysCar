@@ -28,6 +28,10 @@ const
     RET_NO = 3;
     RET_CANCEL = 4;
 
+const
+    cPESQ_CODIGO = 0;
+    cPESQ_NOME = 1;
+
 implementation
 
 

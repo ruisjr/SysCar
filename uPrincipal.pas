@@ -20,11 +20,12 @@ type
     pnlSubmenu: TPanel;
     btnConfig: TAeroSpeedButton;
     btnFormaPagamento: TAeroSpeedButton;
-    JvStatusBar1: TJvStatusBar;
+    stsBar: TJvStatusBar;
     pnlDireita: TPanel;
     btnProdutos: TAeroSpeedButton;
     ApplicationEvents1: TApplicationEvents;
     btnFormasPagamento: TAeroSpeedButton;
+    btnEmpresa: TAeroSpeedButton;
     procedure btnCloseMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure btnCloseClick(Sender: TObject);
     procedure btnVeiculosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -38,6 +39,12 @@ type
     procedure btnProdutosClick(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
     procedure btnFormasPagamentoClick(Sender: TObject);
+    procedure btnEmpresaClick(Sender: TObject);
+    procedure btnEmpresaMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure FormShow(Sender: TObject);
+    procedure JvPanel1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure btnConfigClick(Sender: TObject);
+    procedure JvPanel1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,6 +74,26 @@ end;
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
     TLog.New.info('Finalizando a aplicação');
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+    stsBar.Panels[0].Width := Round((Screen.Width * 40) /100);
+    stsBar.Panels[1].Width := Round((Screen.Width * 30) /100);
+    stsBar.Panels[2].Width := Round((Screen.Width * 30) /100);
+end;
+
+procedure TfrmPrincipal.JvPanel1DblClick(Sender: TObject);
+begin
+    self.WindowState := wsMaximized;
+end;
+
+procedure TfrmPrincipal.JvPanel1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+const
+   sc_DragMove = $f012;
+begin
+    ReleaseCapture;
+    Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
 procedure TfrmPrincipal.btnProdutosClick(Sender: TObject);
@@ -117,6 +144,21 @@ end;
 procedure TfrmPrincipal.btnCloseMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
     btnClose.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.btnConfigClick(Sender: TObject);
+begin
+    TCallForm.CallFormCad('TfrmConfiguracoes', 1);
+end;
+
+procedure TfrmPrincipal.btnEmpresaClick(Sender: TObject);
+begin
+    TCallForm.CallFormCad('TFrmCadEmpresa', 0);
+end;
+
+procedure TfrmPrincipal.btnEmpresaMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    btnEmpresa.Cursor := crHandPoint;
 end;
 
 procedure TfrmPrincipal.btnFormasPagamentoClick(Sender: TObject);

@@ -28,7 +28,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule;
+uses uDataModule, uUtil;
 
 procedure TfrmFiltroProduto.btnConfirmarClick(Sender: TObject);
 begin

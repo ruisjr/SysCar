@@ -57,6 +57,8 @@ implementation
 
 {$R *.dfm}
 
+uses uLogs;
+
 { TFrmMessage }
 
 procedure TFrmMessage.btnNaoClick(Sender: TObject);
@@ -144,17 +146,22 @@ end;
 
 procedure TFrmMessage.loadImage;
 begin
-    case FTipo of
-        mtInfo:
-            imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Info_70px.png');
-        mtWarning:
-            imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Attention_70px.png');
-        mtError:
-            imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Cancel_70px.png');
-        mtQuestion:
-            imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Help_70px.png');
-    else
-        imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Megaphone_70px.png');
+    try
+        case FTipo of
+            mtInfo:
+                imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Info_70px.png');
+            mtWarning:
+                imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Attention_70px.png');
+            mtError:
+                imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Cancel_70px.png');
+            mtQuestion:
+                imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Help_70px.png');
+        else
+            imgMessage.Picture.LoadFromFile(ExtractFilePath(Application.ExeName) + '\img\Megaphone_70px.png');
+        end;
+    except
+        on E: Exception do
+            TLog.New.error('Não foi possível localizar a imagem para o tipo.');
     end;
 end;
 

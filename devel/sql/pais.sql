@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS pais;
+DROP SEQUENCE IF EXISTS pais_seq;
+
+CREATE SEQUENCE pais_seq
+	start 1 
+	increment 1 
+	NO MAXVALUE CACHE 1;
+
+CREATE TABLE pais (
+	id 				INTEGER NOT NULL DEFAULT nextval('pais_seq')
+	,nome 			VARCHAR(100) NOT NULL);
+	
+ALTER TABLE pais ADD CONSTRAINT pk_pais PRIMARY KEY (id);
+
+SELECT * FROM pais

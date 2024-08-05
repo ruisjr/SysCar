@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFiltroDefault, Data.DB, Vcl.StdCtrls, AdvEdit, AdvCombo, JvExStdCtrls, JvGroupBox, Vcl.Grids, Vcl.DBGrids,
   JvExDBGrids, JvDBGrid, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls,
   { Classes de negócio}
-  SimpleInterface, SimpleDao, uVeiculo;
+  SimpleInterface, SimpleDao, uVeiculo, AdvUtil, AdvObj, BaseGrid, AdvGrid, DBAdvGrid;
 
 type
   TFrmFiltroVeiculo = class(TFrmFiltroDefault)
@@ -28,7 +28,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule;
+uses uDataModule, uUtil;
 
 
 procedure TFrmFiltroVeiculo.btnConfirmarClick(Sender: TObject);

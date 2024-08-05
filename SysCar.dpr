@@ -28,17 +28,23 @@ uses
   uCadProduto in 'cadastro\uCadProduto.pas' {frmCadProduto},
   uProduto in 'classes\uProduto.pas',
   uFiltroProduto in 'cadastro\uFiltroProduto.pas' {frmFiltroProduto},
-  uLancamento in 'classes\uLancamento.pas';
+  uLancamento in 'classes\uLancamento.pas',
+  uCadEmpresa in 'cadastro\uCadEmpresa.pas' {frmCadEmpresa},
+  uFiltroPais in 'cadastro\uFiltroPais.pas' {FrmFiltroPais},
+  uPais in 'classes\uPais.pas',
+  uMunicipio in 'classes\uMunicipio.pas',
+  uFiltroEmpresa in 'cadastro\uFiltroEmpresa.pas' {FrmFiltroEmpresa},
+  uFiltroMunicipio in 'cadastro\uFiltroMunicipio.pas' {FrmFiltroMunicipio},
+  uCadConfiguracoes in 'cadastro\uCadConfiguracoes.pas' {frmConfiguracoes},
+  uConfiguracoes in 'classes\uConfiguracoes.pas';
 
 {$R *.res}
 
 begin
     Application.Initialize;
     Application.MainFormOnTaskbar := True;
-    Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TDM, DM);
-  Application.CreateForm(TfrmCadProduto, frmCadProduto);
-  Application.CreateForm(TfrmFiltroProduto, frmFiltroProduto);
+    Application.CreateForm(TDM, DM);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   TLog.New.info('Inicializando a aplicação');
 
     Application.Run;

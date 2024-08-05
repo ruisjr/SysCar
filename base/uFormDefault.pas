@@ -88,23 +88,30 @@ end;
 procedure TfrmFormDefault.Clear;
 var
   nIndex: Integer;
+  aCampo: String;
 begin
     for nIndex := 0 to Self.ComponentCount-1 do
     begin
         if Components[nIndex] is TCustomEdit then
-            (Components[nIndex] as TCustomEdit).Clear;
+        begin
+            aCampo := Split('t', (Components[nIndex] as TCustomEdit).Name, False);
+            if aCampo = 'Codigo' then
+                (Components[nIndex] as TCustomEdit).Text := '0'
+            else
+                (Components[nIndex] as TCustomEdit).Clear
+        end;
 
         if Components[nIndex] is TCustomComboBox then
             (Components[nIndex] as TCustomComboBox).ItemIndex := -1;
 
         if Components[nIndex] is TDateTimePicker then
-            (Components[nIndex] as TDateTimePicker).DateTime := 0;
+            (Components[nIndex] as TDateTimePicker).DateTime := Now;
 
         if Components[nIndex] is TAdvToggleSwitch then
             (Components[nIndex] as TAdvToggleSwitch).On := False;
 
         if Components[nIndex] is TToggleSwitch then
-            (Components[nIndex] as TToggleSwitch).State := tssOff;
+            (Components[nIndex] as TToggleSwitch).State := tssOn;
 
         if Components[nIndex] is TJvRadioGroup then
             (Components[nIndex] as TJvRadioGroup).ItemIndex := 0;

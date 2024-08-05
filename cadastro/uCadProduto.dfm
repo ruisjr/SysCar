@@ -1,5 +1,6 @@
 inherited frmCadProduto: TfrmCadProduto
   Caption = 'Cadastro de Produto'
+  Color = clBtnFace
   OnShow = FormShow
   TextHeight = 20
   inherited pnlFundo: TPanel
@@ -11,7 +12,7 @@ inherited frmCadProduto: TfrmCadProduto
       Height = 20
       Caption = 'C'#243'digo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -24,7 +25,7 @@ inherited frmCadProduto: TfrmCadProduto
       Height = 20
       Caption = 'Nome'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -37,7 +38,7 @@ inherited frmCadProduto: TfrmCadProduto
       Height = 20
       Caption = 'Nome Reduzido'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -50,7 +51,7 @@ inherited frmCadProduto: TfrmCadProduto
       Height = 20
       Caption = 'Data Cadastro'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -63,7 +64,7 @@ inherited frmCadProduto: TfrmCadProduto
       Height = 20
       Caption = 'C'#243'digo de barra'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -76,7 +77,7 @@ inherited frmCadProduto: TfrmCadProduto
       Height = 20
       Caption = 'Unid. Med.'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -85,9 +86,18 @@ inherited frmCadProduto: TfrmCadProduto
     inherited pnlTitulo: TJvPanel
       Caption = 'Cadastro de Produto'
       TabOrder = 8
+      ExplicitLeft = 5
+      ExplicitTop = 5
+      ExplicitWidth = 808
     end
     inherited pnlBotoes: TJvPanel
       TabOrder = 9
+      ExplicitLeft = 5
+      ExplicitTop = 411
+      ExplicitWidth = 808
+      inherited pnlDivisor: TPanel
+        ExplicitLeft = 727
+      end
     end
     object edtCodigo: TAdvEdit
       Left = 8
@@ -128,7 +138,7 @@ inherited frmCadProduto: TfrmCadProduto
       Top = 85
       Width = 91
       Height = 22
-      Color = clWhite
+      Color = clBtnFace
       StateCaptions.CaptionOn = 'Ativo'
       StateCaptions.CaptionOff = 'Ativo'
       TabOrder = 10
@@ -303,7 +313,7 @@ inherited frmCadProduto: TfrmCadProduto
         Height = 20
         Caption = 'Pre'#231'o Unit'#225'rio'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Style = []
@@ -316,7 +326,7 @@ inherited frmCadProduto: TfrmCadProduto
         Height = 20
         Caption = 'Pre'#231'o a Prazo'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Style = []
@@ -329,7 +339,7 @@ inherited frmCadProduto: TfrmCadProduto
         Height = 20
         Caption = 'Pre'#231'o Anterior'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Style = []
@@ -475,7 +485,7 @@ inherited frmCadProduto: TfrmCadProduto
         Height = 20
         Caption = 'Toler'#226'ncia'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Style = []
@@ -488,7 +498,7 @@ inherited frmCadProduto: TfrmCadProduto
         Height = 20
         Caption = 'Minutos'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Style = []

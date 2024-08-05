@@ -99,6 +99,7 @@ object FrmMessage: TFrmMessage
   object WSDLHTMLPublish1: TWSDLHTMLPublish
     WebDispatch.MethodType = mtAny
     WebDispatch.PathInfo = 'wsdl*'
+    TargetNamespace = 'http://tempuri.org/'
     Left = 856
     Top = 232
   end

@@ -110,7 +110,7 @@ inherited frmFiltroPessoa: TfrmFiltroPessoa
           CheckFalse = 'N'
           CheckTrue = 'Y'
           Color = clWindow
-          FieldName = 'cpf'
+          FieldName = 'cpf_cnpj'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -130,10 +130,6 @@ inherited frmFiltroPessoa: TfrmFiltroPessoa
           PrintFont.Style = []
           Width = 150
         end>
-      ExplicitLeft = 4
-      ExplicitTop = 44
-      ExplicitWidth = 857
-      ExplicitHeight = 256
       ColWidths = (
         18
         99

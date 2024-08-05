@@ -5,7 +5,7 @@ object FrmFiltroDefault: TFrmFiltroDefault
   Caption = 'FrmFiltroDefault'
   ClientHeight = 450
   ClientWidth = 865
-  Color = 8017159
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWhite
   Font.Height = -15
@@ -23,7 +23,6 @@ object FrmFiltroDefault: TFrmFiltroDefault
     Width = 865
     Height = 450
     Align = alClient
-    Color = 8017159
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -15
@@ -473,6 +472,7 @@ object FrmFiltroDefault: TFrmFiltroDefault
       Height = 87
       Align = alBottom
       Caption = 'Op'#231#245'es'
+      Color = clBtnFace
       DefaultHeaderFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -484,6 +484,8 @@ object FrmFiltroDefault: TFrmFiltroDefault
       HeaderFont.Height = -15
       HeaderFont.Name = 'Segoe UI'
       HeaderFont.Style = [fsBold]
+      ParentBackground = False
+      ParentColor = False
       ParentFont = False
       TabOrder = 2
       PropagateEnable = True
@@ -663,8 +665,6 @@ object FrmFiltroDefault: TFrmFiltroDefault
       Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect, goFixedRowDefAlign]
       TabOrder = 3
       OnDblClick = grdFiltroDblClick
-      GridLineColor = 13948116
-      GridFixedLineColor = 11250603
       ActiveCellFont.Charset = DEFAULT_CHARSET
       ActiveCellFont.Color = 4474440
       ActiveCellFont.Height = -12
@@ -729,7 +729,7 @@ object FrmFiltroDefault: TFrmFiltroDefault
       FixedColWidth = 20
       FixedRowHeight = 25
       FixedFont.Charset = DEFAULT_CHARSET
-      FixedFont.Color = 3881787
+      FixedFont.Color = clWindowText
       FixedFont.Height = -11
       FixedFont.Name = 'Segoe UI'
       FixedFont.Style = [fsBold]
@@ -776,6 +776,7 @@ object FrmFiltroDefault: TFrmFiltroDefault
       SearchFooter.MatchCaseCaption = 'Match case'
       SearchFooter.ResultFormat = '(%d of %d)'
       SelectionColor = 13744549
+      SelectionTextColor = clWindowText
       SortSettings.HeaderColor = clWhite
       SortSettings.HeaderColorTo = clWhite
       SortSettings.HeaderMirrorColor = clWhite
@@ -1004,14 +1005,13 @@ object FrmFiltroDefault: TFrmFiltroDefault
         80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
         FFC003FF}
       ShowUnicode = False
-      ExplicitLeft = 232
-      ExplicitTop = 104
-      ExplicitWidth = 400
-      ExplicitHeight = 250
       ColWidths = (
         20
         100
         300)
+      RowHeights = (
+        25
+        25)
     end
   end
 end

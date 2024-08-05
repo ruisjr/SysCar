@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS lancamento;
-
 DROP SEQUENCE IF EXISTS lancamento_seq;
 
 CREATE SEQUENCE lancamento_seq
@@ -16,8 +15,7 @@ CREATE TABLE lancamento (
 	,tipo varchar(1) not null default 'E'
 	);
 
-ALTER TABLE lancamento ADD CONSTRAINT pk_lancamento UNIQUE (id);
+ALTER TABLE lancamento ADD CONSTRAINT pk_lancamento PRIMARY KEY (id);
 ALTER TABLE lancamento ADD CONSTRAINT fk_lanc_movimento FOREIGN KEY (movimento) REFERENCES movimento(id);
-ALTER TABLE lancamento ADD CONSTRAINT fk_lanc_produto FOREIGN KEY (produto) REFERENCES produto(id);
 
 SELECT * FROM lancamento;

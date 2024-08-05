@@ -24,7 +24,7 @@ object frmFormDefault: TfrmFormDefault
     Width = 818
     Height = 469
     Align = alClient
-    Color = 8017159
+    BevelInner = bvLowered
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -15
@@ -35,9 +35,9 @@ object frmFormDefault: TfrmFormDefault
     TabOrder = 0
     object pnlTitulo: TJvPanel
       AlignWithMargins = True
-      Left = 4
-      Top = 4
-      Width = 810
+      Left = 5
+      Top = 5
+      Width = 808
       Height = 40
       HotTrackFont.Charset = DEFAULT_CHARSET
       HotTrackFont.Color = clWindowText
@@ -61,7 +61,7 @@ object frmFormDefault: TfrmFormDefault
       OnMouseDown = pnlTituloMouseDown
       object btnClose: TAeroSpeedButton
         AlignWithMargins = True
-        Left = 772
+        Left = 770
         Top = 8
         Width = 30
         Height = 24
@@ -177,9 +177,9 @@ object frmFormDefault: TfrmFormDefault
     end
     object pnlBotoes: TJvPanel
       AlignWithMargins = True
-      Left = 4
-      Top = 412
-      Width = 810
+      Left = 5
+      Top = 411
+      Width = 808
       Height = 53
       HotTrackFont.Charset = DEFAULT_CHARSET
       HotTrackFont.Color = clWindowText
@@ -200,7 +200,7 @@ object frmFormDefault: TfrmFormDefault
       TabOrder = 1
       object btnLocalizar: TAeroSpeedButton
         AlignWithMargins = True
-        Left = 757
+        Left = 755
         Top = 3
         Width = 50
         Height = 47
@@ -455,7 +455,7 @@ object frmFormDefault: TfrmFormDefault
       end
       object btnExcluir: TAeroSpeedButton
         AlignWithMargins = True
-        Left = 673
+        Left = 671
         Top = 3
         Width = 50
         Height = 47
@@ -710,7 +710,7 @@ object frmFormDefault: TfrmFormDefault
       end
       object btnSalvar: TAeroSpeedButton
         AlignWithMargins = True
-        Left = 617
+        Left = 615
         Top = 3
         Width = 50
         Height = 47
@@ -966,7 +966,7 @@ object frmFormDefault: TfrmFormDefault
       end
       object btnInserir: TAeroSpeedButton
         AlignWithMargins = True
-        Left = 561
+        Left = 559
         Top = 3
         Width = 50
         Height = 47
@@ -1221,7 +1221,7 @@ object frmFormDefault: TfrmFormDefault
       end
       object pnlDivisor: TPanel
         AlignWithMargins = True
-        Left = 729
+        Left = 727
         Top = 3
         Width = 22
         Height = 47

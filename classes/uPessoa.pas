@@ -29,6 +29,8 @@ Type
     FCidade: String;
     FEstado: String;
     FMensalista: Boolean;
+    FEmpresa: Boolean;
+    FPais: String;
   public
     constructor Create;
     destructor Destroy; override;
@@ -45,7 +47,7 @@ Type
     property Email: String read FEmail write FEmail;
     [DBField('dt_nascimento')]
     property DataNascimento: TDateTime read FDataNascimento write FDataNascimento;
-    [DBField('cpf')]
+    [DBField('cpf_cnpj')]
     property Cpf: String read FCPF write FCPF;
     [DBField('sexo')]
     property Sexo: String read FSexo write FSexo;
@@ -67,8 +69,12 @@ Type
     property Estado: String read FEstado write FEstado;
     [DBField('bairro')]
     property Bairro: String read FBairro write FBairro;
+    [DBField('pais')]
+    property Pais: String read FPais write FPais;
     [DBField('mensalista')]
     property Mensalista: Boolean read FMensalista write FMensalista;
+    [DBField('empresa')]
+    property Empresa: Boolean read FEmpresa write FEmpresa;
   end;
 
 implementation

@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS movimento;
-
 DROP SEQUENCE IF EXISTS movimento_seq;
 
 CREATE SEQUENCE movimento_seq
@@ -16,12 +15,12 @@ CREATE TABLE movimento (
 	,dt_entrada date not null
 	,hr_entrada time not null
 	,dt_saida date
-	,hr_saida date
+	,hr_saida time
 	,mensalista integer
 	,situacao varchar(1)
 	);
 
-ALTER TABLE movimento ADD CONSTRAINT pk_movimento UNIQUE (id);
+ALTER TABLE movimento ADD CONSTRAINT pk_movimento PRIMARY KEY (id);
 ALTER TABLE movimento ADD CONSTRAINT fk_movimento_mensalista  FOREIGN KEY (mensalista) REFERENCES pessoa (id);
 ALTER TABLE movimento ADD CONSTRAINT fk_movimento_veiculo  FOREIGN KEY (veiculo) REFERENCES veiculo (id);
 ALTER TABLE movimento ADD CONSTRAINT fk_movimento_modelo  FOREIGN KEY (modelo) REFERENCES modelo (id);

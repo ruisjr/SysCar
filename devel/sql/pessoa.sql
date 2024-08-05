@@ -11,11 +11,14 @@ CREATE SEQUENCE pessoa_seq
 CREATE TABLE pessoa (
 	id				bigint NOT NULL DEFAULT nextval('pessoa_seq'),
 	nome 			varchar(100) not null,
+	nome_reduzido   varchar(50),
 	dt_cadastro 	date not null default now(),
 	ativo			boolean not null default True,
 	email       	varchar(150),
 	dt_nascimento 	date,
-	cpf		    	varchar(16),
+	cpf_cnpj    	varchar(18),
+	inscr_est		varchar(15),
+	inscr_municipal varchar(20),
 	sexo			varchar(9),
 	telefone		varchar(16),
 	celular			varchar(16),
@@ -26,9 +29,12 @@ CREATE TABLE pessoa (
 	complemento 	varchar(100),
 	cidade			varchar(150),
 	estado			varchar(2),
-	mensalista		boolean default False
+	pais			varchar(100),
+	mensalista		boolean default False,
+	empresa			boolean default False,
+	funcionario 	boolean default False
 );
 
-alter table pessoa add constraint pk_pessoa unique (id);
+alter table pessoa add constraint pk_pessoa primary key (id);
 
 select * from pessoa;

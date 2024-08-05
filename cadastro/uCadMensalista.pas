@@ -17,7 +17,7 @@ type
     edtCodigo: TAdvEdit;
     [Bind('nome')]
     edtNome: TAdvEdit;
-    [Bind('cpf')]
+    [Bind('cpf_cnpj')]
     edtCPF: TAdvMaskEdit;
     [Bind('dt_cadastro')]
     edtDataCadastro: TAdvDateTimePicker;
@@ -26,9 +26,7 @@ type
     [Bind('sexo')]
     cbxSexo: TAdvComboBox;
     [Bind('telefone')]
-    edtTelefone: TAdvMaskEdit;
     [Bind('celular')]
-    edtCelular: TAdvMaskEdit;
     gbxEndereco: TGroupBox;
     [Bind('logradouro')]
     edtLogradouro: TAdvEdit;
@@ -66,6 +64,8 @@ type
     lblDataCadastro: TLabel;
     lblCodigo: TLabel;
     lblEmail: TLabel;
+    edtTelefone: TAdvMaskEdit;
+    edtCelular: TAdvMaskEdit;
 
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);

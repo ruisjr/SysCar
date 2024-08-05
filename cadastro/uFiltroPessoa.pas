@@ -5,9 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFiltroDefault, Data.DB, Vcl.StdCtrls, AdvEdit, AdvCombo, JvExStdCtrls, JvGroupBox, Vcl.Grids, Vcl.DBGrids,
-  JvExDBGrids, JvDBGrid, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls,
+  JvExDBGrids, JvDBGrid, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls,AdvUtil, AdvObj, BaseGrid, AdvGrid, DBAdvGrid,
   { Classes de Negócio}
-  SimpleDao, SimpleInterface, uPessoa, AdvUtil, AdvObj, BaseGrid, AdvGrid, DBAdvGrid;
+  SimpleDao, SimpleInterface, uPessoa;
 
 type
   TfrmFiltroPessoa = class(TFrmFiltroDefault)
@@ -28,7 +28,7 @@ var
 
 implementation
 
-uses uDataModule;
+uses uDataModule, uUtil;
 
 
 {$R *.dfm}
@@ -65,6 +65,7 @@ begin
     if edtPesquisa.Text.IsEmpty then
     begin
         DAO.SQL.Fields(self.Fields)
+          .Where('mensalista = True')
           .OrderBy('id').Limit(edtLimite.Text)
           .&end
         .find;
@@ -74,7 +75,7 @@ begin
         if cbxFiltro.ItemIndex = cPESQ_CODIGO then
         begin
             DAO.SQL.Fields(self.Fields)
-              .Where(getWhere('id', edtPesquisa.Text))
+              .Where(getWhere('id', edtPesquisa.Text) + ' AND mensalista = True')
               .OrderBy('id').Limit(edtLimite.Text)
               .&end
             .find;
@@ -83,7 +84,7 @@ begin
         begin
             DAO.SQL
                 .Fields(self.Fields)
-                    .Where(getWhere('nome', edtPesquisa.Text))
+                    .Where(getWhere('nome', edtPesquisa.Text, cPESQ_NOME) + ' AND mensalista = True')
                     .OrderBy('nome').Limit(edtLimite.Text)
                 .&end
             .find;
@@ -94,11 +95,11 @@ end;
 procedure TfrmFiltroPessoa.FormCreate(Sender: TObject);
 begin
   inherited;
-    self.Fields := 'id, nome, cpf';
+    self.Fields := 'id, nome, cpf_cnpj';
     DAO := TSimpleDao<TPessoa>.New(DM.GetConn).DataSource(self.DSDados);
     DAO.SQL
         .Fields(self.Fields)
-            .Where('nome ilike ' + QuotedStr('%'+edtPesquisa.Text+'%'))
+            .Where('nome ilike ' + QuotedStr('%'+edtPesquisa.Text+'%') + ' AND mensalista = True')
             .OrderBy('id').Limit(edtLimite.Text)
         .&end
     .find;

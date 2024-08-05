@@ -179,6 +179,29 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="classes\uLancamento.pas"/>
+        <DCCReference Include="cadastro\uCadEmpresa.pas">
+            <Form>frmCadEmpresa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uFiltroPais.pas">
+            <Form>FrmFiltroPais</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\uPais.pas"/>
+        <DCCReference Include="classes\uMunicipio.pas"/>
+        <DCCReference Include="cadastro\uFiltroEmpresa.pas">
+            <Form>FrmFiltroEmpresa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uFiltroMunicipio.pas">
+            <Form>FrmFiltroMunicipio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uCadConfiguracoes.pas">
+            <Form>frmConfiguracoes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\uConfiguracoes.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

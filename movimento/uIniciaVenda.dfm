@@ -2,6 +2,7 @@ inherited frmIniciaVenda: TfrmIniciaVenda
   Caption = 'Iniciar Atendimento'
   ClientHeight = 230
   ClientWidth = 640
+  Color = clBtnFace
   Constraints.MaxHeight = 230
   Constraints.MaxWidth = 640
   Constraints.MinHeight = 230
@@ -12,6 +13,7 @@ inherited frmIniciaVenda: TfrmIniciaVenda
   inherited pnlFundo: TPanel
     Width = 640
     Height = 230
+    Font.Color = clBlack
     ExplicitWidth = 640
     ExplicitHeight = 230
     object Label1: TLabel [0]
@@ -20,6 +22,14 @@ inherited frmIniciaVenda: TfrmIniciaVenda
       Width = 48
       Height = 20
       Caption = 'Ve'#237'culo'
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
     end
     object Label2: TLabel [1]
       Left = 321
@@ -27,6 +37,14 @@ inherited frmIniciaVenda: TfrmIniciaVenda
       Width = 52
       Height = 20
       Caption = 'Modelo'
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
     end
     object Label4: TLabel [2]
       Left = 10
@@ -34,43 +52,54 @@ inherited frmIniciaVenda: TfrmIniciaVenda
       Width = 35
       Height = 20
       Caption = 'Placa'
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
     end
     inherited pnlTitulo: TJvPanel
-      Width = 632
+      Width = 630
       Caption = 'Iniciar Atendimento'
       TabOrder = 3
-      ExplicitWidth = 632
+      ExplicitLeft = 5
+      ExplicitTop = 5
+      ExplicitWidth = 630
       inherited btnClose: TAeroSpeedButton
-        Left = 594
+        Left = 592
         ExplicitLeft = 594
       end
     end
     inherited pnlBotoes: TJvPanel
-      Top = 173
-      Width = 632
+      Top = 172
+      Width = 630
       TabOrder = 4
-      ExplicitTop = 173
-      ExplicitWidth = 632
+      ExplicitLeft = 5
+      ExplicitTop = 172
+      ExplicitWidth = 630
       inherited btnLocalizar: TAeroSpeedButton
-        Left = 579
+        Left = 577
         ExplicitLeft = 579
       end
       inherited btnExcluir: TAeroSpeedButton
-        Left = 495
+        Left = 493
         ExplicitLeft = 495
       end
       inherited btnSalvar: TAeroSpeedButton
-        Left = 439
+        Left = 437
         ExplicitLeft = 419
         ExplicitTop = -4
       end
       inherited btnInserir: TAeroSpeedButton
-        Left = 383
+        Left = 381
         ExplicitLeft = 439
       end
       inherited pnlDivisor: TPanel
-        Left = 551
-        ExplicitLeft = 495
+        Left = 549
+        ExplicitLeft = 549
       end
     end
     object cbxVeiculo: TAdvComboBox

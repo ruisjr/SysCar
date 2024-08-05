@@ -7,7 +7,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
   ClientWidth = 1300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
+  Font.Color = clBlack
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
@@ -23,7 +23,6 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
     Height = 644
     Align = alClient
     BevelOuter = bvNone
-    Color = 8017159
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -15
@@ -460,7 +459,6 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       Height = 533
       Align = alRight
       BevelOuter = bvNone
-      Color = 8017159
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -15
@@ -486,7 +484,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AutoSize = False
           Caption = 'R$ Total a pagar'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
+          Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -504,6 +502,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           FlatLineColor = 11250603
           FocusColor = 8017159
           FocusFontColor = clWhite
+          DisabledColor = clBtnFace
           Precision = 2
           LabelFont.Charset = DEFAULT_CHARSET
           LabelFont.Color = clWindowText
@@ -518,7 +517,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Separator = ';'
           BorderStyle = bsNone
           CharCase = ecUpperCase
-          Color = 8017159
+          Color = clWindow
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -549,7 +548,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AutoSize = False
           Caption = 'R$ Descontos'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
+          Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -562,7 +561,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Height = 29
           Caption = '%'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
+          Font.Color = clBlack
           Font.Height = -24
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -575,7 +574,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Height = 29
           Caption = '/ R$'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
+          Font.Color = clBlack
           Font.Height = -24
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -590,9 +589,9 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           EditType = etFloat
           EmptyText = '0,00'
           EmptyTextStyle = []
-          FlatLineColor = 8017159
-          FocusColor = 8017159
-          FocusFontColor = clWhite
+          FlatLineColor = clWhite
+          FocusColor = clWhite
+          FocusFontColor = clBlack
           Precision = 2
           LabelFont.Charset = DEFAULT_CHARSET
           LabelFont.Color = clWindowText
@@ -607,9 +606,9 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Separator = ';'
           BorderStyle = bsNone
           CharCase = ecUpperCase
-          Color = 8017159
+          Color = clWindow
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -24
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -629,9 +628,9 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           EditType = etFloat
           EmptyText = '0,00'
           EmptyTextStyle = []
-          FlatLineColor = 8017159
-          FocusColor = 8017159
-          FocusFontColor = clWhite
+          FlatLineColor = clWhite
+          FocusColor = clWhite
+          FocusFontColor = clBlack
           Precision = 2
           LabelFont.Charset = DEFAULT_CHARSET
           LabelFont.Color = clWindowText
@@ -646,9 +645,9 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Separator = ';'
           BorderStyle = bsNone
           CharCase = ecUpperCase
-          Color = 8017159
+          Color = clWindow
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -24
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -677,7 +676,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AutoSize = False
           Caption = 'R$ Troco'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
+          Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -695,6 +694,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           FlatLineColor = 8017159
           FocusColor = 8017159
           FocusFontColor = clWhite
+          DisabledColor = clBtnFace
           Precision = 2
           Prefix = 'R$ '
           LabelFont.Charset = DEFAULT_CHARSET
@@ -710,7 +710,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Separator = ';'
           BorderStyle = bsNone
           CharCase = ecUpperCase
-          Color = 8017159
+          Color = clWindow
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -747,6 +747,12 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Alignment = taRightJustify
           AutoSize = False
           Caption = 'Entrada........:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object Label9: TLabel
           Left = 8
@@ -756,6 +762,12 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Alignment = taRightJustify
           AutoSize = False
           Caption = 'Sa'#237'da...........:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object Label10: TLabel
           Left = 8
@@ -766,7 +778,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AutoSize = False
           Caption = 'Tempo Total'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -24
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -780,7 +792,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Alignment = taRightJustify
           AutoSize = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -17
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -794,7 +806,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Alignment = taRightJustify
           AutoSize = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -17
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -809,7 +821,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AutoSize = False
           Caption = '0'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -20
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -824,6 +836,12 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Alignment = taRightJustify
           AutoSize = False
           Caption = 'Ticket..........:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object lblTicket: TLabel
           Left = 116
@@ -834,7 +852,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AutoSize = False
           Caption = '0'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -17
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -858,7 +876,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AutoSize = False
           Caption = 'R$ Saldo a Pagar'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
+          Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -876,6 +894,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           FlatLineColor = 11250603
           FocusColor = clWindow
           FocusFontColor = 3881787
+          DisabledColor = clBtnFace
           Precision = 2
           Prefix = 'R$ '
           LabelFont.Charset = DEFAULT_CHARSET
@@ -2077,7 +2096,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
             Height = 230
             Align = alRight
             BevelOuter = bvNone
-            Color = 8017159
+            Color = clBlack
             ParentBackground = False
             TabOrder = 1
             object btnMenuContato: TAdvGlowButton
@@ -2155,6 +2174,12 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Width = 49
           Height = 20
           Caption = 'Cliente:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
         end
         object edtCodigoMensalista: TAdvEdit
           Left = 65
@@ -2179,6 +2204,12 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Separator = ';'
           CharCase = ecUpperCase
           Color = clWindow
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
           Text = '0'
           Visible = True
@@ -2192,7 +2223,6 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Height = 28
           Alignment = taLeftJustify
           BorderWidth = 2
-          Color = 8017159
           ParentBackground = False
           TabOrder = 1
         end

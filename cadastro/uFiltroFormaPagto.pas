@@ -29,7 +29,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule;
+uses uDataModule, uUtil;
 
 procedure TFrmFiltroFormaPagto.btnConfirmarClick(Sender: TObject);
 begin

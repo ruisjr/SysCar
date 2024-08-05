@@ -154,10 +154,6 @@ inherited frmFiltroProduto: TfrmFiltroProduto
           PrintFont.Style = []
           Width = 150
         end>
-      ExplicitLeft = 4
-      ExplicitTop = 44
-      ExplicitWidth = 857
-      ExplicitHeight = 256
       ColWidths = (
         20
         100

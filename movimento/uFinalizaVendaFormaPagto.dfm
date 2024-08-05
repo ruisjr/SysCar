@@ -21,7 +21,6 @@ object frmFinalizaVendaFormaPagto: TfrmFinalizaVendaFormaPagto
     Width = 455
     Height = 175
     Align = alClient
-    Color = 8017159
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -15
@@ -36,6 +35,12 @@ object frmFinalizaVendaFormaPagto: TfrmFinalizaVendaFormaPagto
       Width = 142
       Height = 20
       Caption = 'Forma de Pagamento'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
     end
     object pnlTitulo: TJvPanel
       AlignWithMargins = True
@@ -496,7 +501,7 @@ object frmFinalizaVendaFormaPagto: TfrmFinalizaVendaFormaPagto
       Top = 76
       Width = 271
       Height = 28
-      Color = clWhite
+      Color = clWindow
       Version = '2.0.0.8'
       Visible = True
       ButtonWidth = 17

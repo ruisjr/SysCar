@@ -3,6 +3,7 @@ inherited frmCadMensalista: TfrmCadMensalista
   Caption = 'Cadastro de Mensalista'
   ClientHeight = 470
   ClientWidth = 750
+  Color = clBtnFace
   Constraints.MaxHeight = 470
   Constraints.MaxWidth = 750
   Constraints.MinHeight = 470
@@ -15,7 +16,7 @@ inherited frmCadMensalista: TfrmCadMensalista
   inherited pnlFundo: TPanel
     Width = 750
     Height = 470
-    TabOrder = 11
+    TabOrder = 9
     ExplicitWidth = 750
     ExplicitHeight = 470
     object lblCelular: TLabel [0]
@@ -25,7 +26,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Celular'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -38,7 +39,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Telefone'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -51,7 +52,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Sexo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -64,7 +65,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Nome'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -77,7 +78,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'CPF'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -90,7 +91,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'RG'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -103,7 +104,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Data Cadastro'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -116,7 +117,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'C'#243'digo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -125,48 +126,49 @@ inherited frmCadMensalista: TfrmCadMensalista
     object lblEmail: TLabel [8]
       Left = 386
       Top = 175
-      Width = 46
+      Width = 43
       Height = 20
-      Caption = 'Celular'
+      Caption = 'E-mail'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     inherited pnlTitulo: TJvPanel
-      Width = 742
+      Width = 740
       Caption = 'Cadastro de Mensalista'
-      ExplicitWidth = 742
+      ExplicitWidth = 740
       inherited btnClose: TAeroSpeedButton
-        Left = 704
+        Left = 702
         ExplicitLeft = 695
       end
     end
     inherited pnlBotoes: TJvPanel
-      Top = 413
-      Width = 742
-      ExplicitTop = 413
-      ExplicitWidth = 742
+      Top = 412
+      Width = 740
+      ExplicitTop = 412
+      ExplicitWidth = 740
       inherited btnLocalizar: TAeroSpeedButton
-        Left = 689
+        Left = 687
         ExplicitLeft = 695
       end
       inherited btnExcluir: TAeroSpeedButton
-        Left = 549
+        Left = 547
         ExplicitLeft = 611
       end
       inherited btnSalvar: TAeroSpeedButton
-        Left = 605
+        Left = 603
+        ExplicitLeft = 605
       end
       inherited btnInserir: TAeroSpeedButton
-        Left = 493
+        Left = 491
         ExplicitLeft = 555
       end
       inherited pnlDivisor: TPanel
-        Left = 661
-        ExplicitLeft = 661
+        Left = 659
+        ExplicitLeft = 659
       end
     end
   end
@@ -180,8 +182,8 @@ inherited frmCadMensalista: TfrmCadMensalista
     FocusColor = clWindow
     FocusFontColor = 3881787
     LabelFont.Charset = DEFAULT_CHARSET
-    LabelFont.Color = clWindowText
-    LabelFont.Height = -12
+    LabelFont.Color = clBlack
+    LabelFont.Height = -15
     LabelFont.Name = 'Segoe UI'
     LabelFont.Style = []
     Lookup.Font.Charset = DEFAULT_CHARSET
@@ -193,7 +195,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     CharCase = ecUpperCase
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
@@ -227,7 +229,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     CharCase = ecUpperCase
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
@@ -248,7 +250,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     Enabled = True
     EditMask = '000\.000\.000\-00;1;_'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
@@ -269,7 +271,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     LabelPosition = lpLeftTop
     LabelTransparent = False
     LabelFont.Charset = DEFAULT_CHARSET
-    LabelFont.Color = clWindowText
+    LabelFont.Color = clBlack
     LabelFont.Height = -15
     LabelFont.Name = 'Segoe UI'
     LabelFont.Style = []
@@ -287,7 +289,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     Time = 0.971273148148611700
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
@@ -300,7 +302,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     DateTime = 45459.971273148150000000
     Version = '1.3.6.6'
     LabelFont.Charset = DEFAULT_CHARSET
-    LabelFont.Color = clWindowText
+    LabelFont.Color = clBlack
     LabelFont.Height = -15
     LabelFont.Name = 'Segoe UI'
     LabelFont.Style = []
@@ -316,7 +318,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     Enabled = True
     EditMask = '00\.000\.000\-A;1;_'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
@@ -337,7 +339,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     LabelPosition = lpLeftTop
     LabelTransparent = False
     LabelFont.Charset = DEFAULT_CHARSET
-    LabelFont.Color = clWindowText
+    LabelFont.Color = clBlack
     LabelFont.Height = -15
     LabelFont.Name = 'Segoe UI'
     LabelFont.Style = []
@@ -360,7 +362,7 @@ inherited frmCadMensalista: TfrmCadMensalista
     DropWidth = 0
     Enabled = True
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
@@ -370,92 +372,12 @@ inherited frmCadMensalista: TfrmCadMensalista
       'FEMININO'
       'MASCULINO')
     LabelFont.Charset = DEFAULT_CHARSET
-    LabelFont.Color = clWindowText
+    LabelFont.Color = clBlack
     LabelFont.Height = -15
     LabelFont.Name = 'Segoe UI'
     LabelFont.Style = []
     ParentFont = False
     TabOrder = 5
-  end
-  object edtTelefone: TAdvMaskEdit
-    Left = 134
-    Top = 201
-    Width = 120
-    Height = 28
-    CharCase = ecUpperCase
-    Color = clWhite
-    DefaultHandling = True
-    Enabled = True
-    EditMask = '!\(99\) 00000-0000;1;_'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -15
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    MaxLength = 15
-    ParentFont = False
-    TabOrder = 6
-    Text = '(  )      -    '
-    Visible = True
-    AutoFocus = False
-    Flat = False
-    FlatLineColor = 11250603
-    FlatParentColor = True
-    ShowModified = False
-    FocusColor = clWhite
-    FocusBorder = False
-    FocusFontColor = 3881787
-    LabelAlwaysEnabled = False
-    LabelPosition = lpLeftTop
-    LabelTransparent = False
-    LabelFont.Charset = DEFAULT_CHARSET
-    LabelFont.Color = clWindowText
-    LabelFont.Height = -15
-    LabelFont.Name = 'Segoe UI'
-    LabelFont.Style = []
-    ModifiedColor = clRed
-    SelectFirstChar = False
-    Version = '4.0.5.0'
-  end
-  object edtCelular: TAdvMaskEdit
-    Left = 260
-    Top = 201
-    Width = 120
-    Height = 28
-    CharCase = ecUpperCase
-    Color = clWhite
-    DefaultHandling = True
-    Enabled = True
-    EditMask = '!\(99\) 00000-0000;1;_'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -15
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    MaxLength = 15
-    ParentFont = False
-    TabOrder = 7
-    Text = '(  )      -    '
-    Visible = True
-    AutoFocus = False
-    Flat = False
-    FlatLineColor = 11250603
-    FlatParentColor = True
-    ShowModified = False
-    FocusColor = clWhite
-    FocusBorder = False
-    FocusFontColor = 3881787
-    LabelAlwaysEnabled = False
-    LabelPosition = lpLeftTop
-    LabelTransparent = False
-    LabelFont.Charset = DEFAULT_CHARSET
-    LabelFont.Color = clWindowText
-    LabelFont.Height = -15
-    LabelFont.Name = 'Segoe UI'
-    LabelFont.Style = []
-    ModifiedColor = clRed
-    SelectFirstChar = False
-    Version = '4.0.5.0'
   end
   object gbxEndereco: TGroupBox
     Left = 8
@@ -463,13 +385,16 @@ inherited frmCadMensalista: TfrmCadMensalista
     Width = 732
     Height = 166
     Caption = 'Endere'#231'o'
+    Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
+    Font.Color = clBlack
     Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
+    ParentBackground = False
+    ParentColor = False
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 7
     object lblCep: TLabel
       Left = 8
       Top = 30
@@ -477,7 +402,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Cep'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -490,7 +415,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Logradouro'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -503,7 +428,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Nr.'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -516,7 +441,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Bairro'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -529,7 +454,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Cidade'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -542,7 +467,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'UF'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -555,7 +480,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Height = 20
       Caption = 'Complemento'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -571,8 +496,8 @@ inherited frmCadMensalista: TfrmCadMensalista
       FocusColor = clWindow
       FocusFontColor = 3881787
       LabelFont.Charset = DEFAULT_CHARSET
-      LabelFont.Color = clWindowText
-      LabelFont.Height = -12
+      LabelFont.Color = clBlack
+      LabelFont.Height = -15
       LabelFont.Name = 'Segoe UI'
       LabelFont.Style = []
       Lookup.Font.Charset = DEFAULT_CHARSET
@@ -584,7 +509,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       CharCase = ecUpperCase
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -604,8 +529,8 @@ inherited frmCadMensalista: TfrmCadMensalista
       FocusColor = clWindow
       FocusFontColor = 3881787
       LabelFont.Charset = DEFAULT_CHARSET
-      LabelFont.Color = clWindowText
-      LabelFont.Height = -12
+      LabelFont.Color = clBlack
+      LabelFont.Height = -15
       LabelFont.Name = 'Segoe UI'
       LabelFont.Style = []
       Lookup.Font.Charset = DEFAULT_CHARSET
@@ -616,7 +541,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Lookup.Separator = ';'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -637,7 +562,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       Enabled = True
       EditMask = '00000\-999;1;_'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -658,7 +583,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       LabelPosition = lpLeftTop
       LabelTransparent = False
       LabelFont.Charset = DEFAULT_CHARSET
-      LabelFont.Color = clWindowText
+      LabelFont.Color = clBlack
       LabelFont.Height = -15
       LabelFont.Name = 'Segoe UI'
       LabelFont.Style = []
@@ -742,8 +667,8 @@ inherited frmCadMensalista: TfrmCadMensalista
       FocusColor = clWindow
       FocusFontColor = 3881787
       LabelFont.Charset = DEFAULT_CHARSET
-      LabelFont.Color = clWindowText
-      LabelFont.Height = -12
+      LabelFont.Color = clBlack
+      LabelFont.Height = -15
       LabelFont.Name = 'Segoe UI'
       LabelFont.Style = []
       Lookup.Font.Charset = DEFAULT_CHARSET
@@ -755,7 +680,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       CharCase = ecUpperCase
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -775,8 +700,8 @@ inherited frmCadMensalista: TfrmCadMensalista
       FocusColor = clWindow
       FocusFontColor = 3881787
       LabelFont.Charset = DEFAULT_CHARSET
-      LabelFont.Color = clWindowText
-      LabelFont.Height = -12
+      LabelFont.Color = clBlack
+      LabelFont.Height = -15
       LabelFont.Name = 'Segoe UI'
       LabelFont.Style = []
       Lookup.Font.Charset = DEFAULT_CHARSET
@@ -788,7 +713,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       CharCase = ecUpperCase
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -813,7 +738,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       DropWidth = 0
       Enabled = True
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -848,7 +773,7 @@ inherited frmCadMensalista: TfrmCadMensalista
         'SE'
         'TO')
       LabelFont.Charset = DEFAULT_CHARSET
-      LabelFont.Color = clWindowText
+      LabelFont.Color = clBlack
       LabelFont.Height = -15
       LabelFont.Name = 'Segoe UI'
       LabelFont.Style = []
@@ -865,8 +790,8 @@ inherited frmCadMensalista: TfrmCadMensalista
       FocusColor = clWindow
       FocusFontColor = 3881787
       LabelFont.Charset = DEFAULT_CHARSET
-      LabelFont.Color = clWindowText
-      LabelFont.Height = -12
+      LabelFont.Color = clBlack
+      LabelFont.Height = -15
       LabelFont.Name = 'Segoe UI'
       LabelFont.Style = []
       Lookup.Font.Charset = DEFAULT_CHARSET
@@ -878,7 +803,7 @@ inherited frmCadMensalista: TfrmCadMensalista
       CharCase = ecUpperCase
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -892,12 +817,18 @@ inherited frmCadMensalista: TfrmCadMensalista
   object tglAtivo: TToggleSwitch
     Left = 114
     Top = 85
-    Width = 91
+    Width = 101
     Height = 22
-    Color = clWhite
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -15
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
     StateCaptions.CaptionOn = 'Ativo'
-    StateCaptions.CaptionOff = 'Ativo'
-    TabOrder = 10
+    StateCaptions.CaptionOff = 'Inativo'
+    TabOrder = 8
   end
   object edtEmail: TAdvEdit
     Left = 386
@@ -927,9 +858,89 @@ inherited frmCadMensalista: TfrmCadMensalista
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 6
     Text = ''
     Visible = True
+    Version = '4.0.5.0'
+  end
+  object edtTelefone: TAdvMaskEdit
+    Left = 134
+    Top = 201
+    Width = 120
+    Height = 28
+    CharCase = ecUpperCase
+    Color = clWhite
+    DefaultHandling = True
+    Enabled = True
+    EditMask = '!\(99\) 00000-0000;1;_'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -15
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    MaxLength = 15
+    ParentFont = False
+    TabOrder = 10
+    Text = '(  )      -    '
+    Visible = True
+    AutoFocus = False
+    Flat = False
+    FlatLineColor = 11250603
+    FlatParentColor = True
+    ShowModified = False
+    FocusColor = clWhite
+    FocusBorder = False
+    FocusFontColor = 3881787
+    LabelAlwaysEnabled = False
+    LabelPosition = lpLeftTop
+    LabelTransparent = False
+    LabelFont.Charset = DEFAULT_CHARSET
+    LabelFont.Color = clBlack
+    LabelFont.Height = -15
+    LabelFont.Name = 'Segoe UI'
+    LabelFont.Style = []
+    ModifiedColor = clRed
+    SelectFirstChar = False
+    Version = '4.0.5.0'
+  end
+  object edtCelular: TAdvMaskEdit
+    Left = 260
+    Top = 201
+    Width = 120
+    Height = 28
+    CharCase = ecUpperCase
+    Color = clWhite
+    DefaultHandling = True
+    Enabled = True
+    EditMask = '!\(99\) 00000-0000;1;_'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -15
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    MaxLength = 15
+    ParentFont = False
+    TabOrder = 11
+    Text = '(  )      -    '
+    Visible = True
+    AutoFocus = False
+    Flat = False
+    FlatLineColor = 11250603
+    FlatParentColor = True
+    ShowModified = False
+    FocusColor = clWhite
+    FocusBorder = False
+    FocusFontColor = 3881787
+    LabelAlwaysEnabled = False
+    LabelPosition = lpLeftTop
+    LabelTransparent = False
+    LabelFont.Charset = DEFAULT_CHARSET
+    LabelFont.Color = clBlack
+    LabelFont.Height = -15
+    LabelFont.Name = 'Segoe UI'
+    LabelFont.Style = []
+    ModifiedColor = clRed
+    SelectFirstChar = False
     Version = '4.0.5.0'
   end
 end

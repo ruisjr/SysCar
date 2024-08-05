@@ -5,11 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  JvExDBGrids, JvDBGrid, Vcl.StdCtrls, JvExStdCtrls, JvGroupBox, AdvCombo, AdvEdit, AdvUtil, AdvObj, BaseGrid, AdvGrid, DBAdvGrid;
+  JvExDBGrids, JvDBGrid, Vcl.StdCtrls, JvExStdCtrls, JvGroupBox, AdvCombo, AdvEdit, AdvUtil, AdvObj, BaseGrid, AdvGrid, DBAdvGrid,
+  {Classes de negócio}
+  uUtil;
 
-const
-    cPESQ_CODIGO = 0;
-    cPESQ_NOME = 1;
 
 type
   TFrmFiltroDefault = class(TForm)
@@ -45,6 +44,7 @@ type
     FDsDados: TDataSource;
     FRetorno: Integer;
     procedure setFields(const Value: String);
+    procedure loadConfig;
   public
 
 
@@ -65,7 +65,7 @@ implementation
 
 {$R *.dfm}
 
-uses uLogs;
+uses uLogs, uConfiguracoes, SimpleInterface, SimpleDao, uDataModule;
 
 procedure TFrmFiltroDefault.btnCloseClick(Sender: TObject);
 begin
@@ -115,8 +115,7 @@ procedure TFrmFiltroDefault.FormShow(Sender: TObject);
 begin
     edtPesquisa.SetFocus;
 
-    cbxFiltro.ItemIndex := 0;
-    cbxTipo.ItemIndex := 0;
+    loadConfig;
 end;
 
 procedure TFrmFiltroDefault.pnlTituloMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -169,6 +168,21 @@ end;
 procedure TFrmFiltroDefault.grdFiltroDblClick(Sender: TObject);
 begin
     btnConfirmarClick(self);
+end;
+
+procedure TFrmFiltroDefault.loadConfig;
+var
+    DAO: iSimpleDao<TConfiguracoes>;
+    oConfiguracoes: TConfiguracoes;
+begin
+    DAO := TSimpleDao<TConfiguracoes>.New(DM.GetConn);
+    oConfiguracoes := DAO.Find(1);
+    try
+        cbxTipo.ItemIndex := oConfiguracoes.TipoPesquisa;
+        cbxFiltro.ItemIndex := oConfiguracoes.FiltrarPor;
+    finally
+        oConfiguracoes.Free;
+    end;
 end;
 
 end.

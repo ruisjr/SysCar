@@ -1,6 +1,7 @@
 inherited FrmCadFormaPagto: TFrmCadFormaPagto
   Caption = 'Cadastro de Formas de Pagamento'
   ClientWidth = 725
+  Color = clBtnFace
   Constraints.MaxHeight = 725
   Constraints.MinWidth = 725
   ExplicitWidth = 725
@@ -16,7 +17,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       Height = 20
       Caption = 'C'#243'digo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -29,7 +30,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       Height = 20
       Caption = 'Nome'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -42,7 +43,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       Height = 20
       Caption = 'Tipo Forma Pagto.'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -55,7 +56,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       Height = 20
       Caption = 'Tipo Recebimento'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -68,44 +69,45 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       Height = 20
       Caption = 'Moeda'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clBlack
       Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     inherited pnlTitulo: TJvPanel
-      Width = 717
+      Width = 715
       Caption = 'Cadastro de Formas de Pagamento'
       TabOrder = 3
-      ExplicitWidth = 717
+      ExplicitWidth = 715
       inherited btnClose: TAeroSpeedButton
-        Left = 679
+        Left = 677
         ExplicitLeft = 679
       end
     end
     inherited pnlBotoes: TJvPanel
-      Width = 717
+      Width = 715
       TabOrder = 8
-      ExplicitWidth = 717
+      ExplicitWidth = 715
       inherited btnLocalizar: TAeroSpeedButton
-        Left = 664
+        Left = 662
         ExplicitLeft = 664
       end
       inherited btnExcluir: TAeroSpeedButton
-        Left = 524
+        Left = 522
         ExplicitLeft = 580
       end
       inherited btnSalvar: TAeroSpeedButton
-        Left = 608
+        Left = 606
+        ExplicitLeft = 608
       end
       inherited btnInserir: TAeroSpeedButton
-        Left = 468
+        Left = 466
         ExplicitLeft = 524
       end
       inherited pnlDivisor: TPanel
-        Left = 580
-        ExplicitLeft = 580
+        Left = 578
+        ExplicitLeft = 578
       end
     end
     object edtCodigo: TAdvEdit
@@ -146,11 +148,17 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
     object tglAtivo: TToggleSwitch
       Left = 114
       Top = 85
-      Width = 91
+      Width = 101
       Height = 22
-      Color = clWhite
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       StateCaptions.CaptionOn = 'Ativo'
-      StateCaptions.CaptionOff = 'Ativo'
+      StateCaptions.CaptionOff = 'Inativo'
       TabOrder = 9
     end
     object edtNome: TAdvEdit
@@ -272,6 +280,12 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
         Top = 25
         Width = 200
         Height = 20
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
         Alignment = taLeftJustify
         Caption = 'Contas a Pagar'
@@ -283,6 +297,12 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
         Top = 51
         Width = 200
         Height = 20
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 1
         Alignment = taLeftJustify
         Caption = 'Contas a Receber'
@@ -305,7 +325,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
         Height = 20
         Caption = 'Dia Venc.'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Style = []
@@ -318,7 +338,7 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
         Height = 20
         Caption = 'Parcelas'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Style = []
@@ -398,6 +418,12 @@ inherited FrmCadFormaPagto: TFrmCadFormaPagto
       Top = 201
       Width = 200
       Height = 20
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 5
       Alignment = taLeftJustify
       Caption = 'Permite Troco'
