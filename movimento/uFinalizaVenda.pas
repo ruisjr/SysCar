@@ -61,7 +61,7 @@ type
     pnlPagamentosRealizados: TPanel;
     grdPagamentos: TJvDBGrid;
     Panel1: TPanel;
-    btnMenuContato: TAdvGlowButton;
+    btnMenuPagamento: TAdvGlowButton;
     pnlCliente: TPanel;
     Label1: TLabel;
     edtCodigoMensalista: TAdvEdit;
@@ -71,6 +71,11 @@ type
     lblSaldoPagar: TLabel;
     edtSaldoPagar: TAdvEdit;
     cdsProdutosquantidade: TIntegerField;
+    Panel3: TPanel;
+    btnIncluirProduto: TAdvGlowButton;
+    ppmMenuProdutos: TAdvPopupMenu;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
     procedure pnlTituloMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure btnCloseClick(Sender: TObject);
     procedure edtValorDescontoChange(Sender: TObject);
@@ -82,9 +87,10 @@ type
     procedure edtCodigoMensalistaKeyPress(Sender: TObject; var Key: Char);
     procedure slbFormaPagamentoDblClick(Sender: TObject);
     procedure grdPagamentosKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure btnMenuContatoClick(Sender: TObject);
+    procedure btnMenuPagamentoClick(Sender: TObject);
     procedure mnInserirPagamentoClick(Sender: TObject);
     procedure cdsPagamentosAfterPost(DataSet: TDataSet);
+    procedure btnIncluirProdutoClick(Sender: TObject);
   private
     { Private declarations }
     DAO: iSimpleDao<TFormaPagamento>;
@@ -227,7 +233,12 @@ begin
     Close;
 end;
 
-procedure TFrmFinalizaVenda.btnMenuContatoClick(Sender: TObject);
+procedure TFrmFinalizaVenda.btnIncluirProdutoClick(Sender: TObject);
+begin
+    SubMenuPopUp(Sender, ppmMenuProdutos);
+end;
+
+procedure TFrmFinalizaVenda.btnMenuPagamentoClick(Sender: TObject);
 begin
     SubMenuPopUp(Sender, ppmMenuLateral);
 end;

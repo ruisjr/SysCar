@@ -18,18 +18,28 @@ implementation
 
 { TCallForm }
 
+uses uUtil, uLogs;
+
 class procedure TCallForm.CallFormCad(const aForm: String; aId: Integer = 0);
 var
     oForm: TfrmFormDefault;
     oFormClass: TFormClass;
 begin
-    oFormClass := TFormClass(FindClass(aForm));
-    oForm := TfrmFormDefault(oFormClass.Create(Application));
     try
-        oForm.setID(aId);
-        oForm.ShowModal();
-    finally
-        FreeAndNil(oForm);
+        oFormClass := TFormClass(FindClass(aForm));
+        oForm := TfrmFormDefault(oFormClass.Create(Application));
+        try
+            oForm.setID(aId);
+            oForm.ShowModal();
+        finally
+            FreeAndNil(oForm);
+        end;
+    except
+        on E: Exception do
+        begin
+            ErrorMessage('SysCar', Format('Não foi possível abrir a tela %s.', [aForm]));
+            TLog.New.error(Format('Não foi possível abrir a tela %s.', [aForm]) + #13+#10 + E.Message);
+        end;
     end;
 end;
 

@@ -495,6 +495,12 @@ object FrmFiltroDefault: TFrmFiltroDefault
         Width = 34
         Height = 20
         Caption = 'Filtro'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
       end
       object Label2: TLabel
         Left = 166
@@ -502,6 +508,12 @@ object FrmFiltroDefault: TFrmFiltroDefault
         Width = 56
         Height = 20
         Caption = 'Pesquisa'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
       end
       object Label3: TLabel
         Left = 511
@@ -509,6 +521,12 @@ object FrmFiltroDefault: TFrmFiltroDefault
         Width = 30
         Height = 20
         Caption = 'Tipo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
       end
       object Label4: TLabel
         Left = 697
@@ -516,6 +534,12 @@ object FrmFiltroDefault: TFrmFiltroDefault
         Width = 41
         Height = 20
         Caption = 'Limite'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
       end
       object cbxFiltro: TAdvComboBox
         Left = 10

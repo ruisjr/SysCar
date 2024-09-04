@@ -6,6 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormDefault, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls, Vcl.ComCtrls,
   AdvDateTimePicker, Vcl.WinXCtrls, Vcl.StdCtrls, AdvEdit, Vcl.Mask, AdvCombo, AdvGlowButton, AdvPageControl,
+  IdBaseComponent, IdComponent, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL, IdSSLOpenSSL,
   { Classes de negocio }
   uPessoa, SimpleInterface, SimpleDao, SimpleAttributes, uMunicipio, uPais;
 
@@ -33,7 +34,7 @@ type
     edtCnpj: TAdvMaskEdit;
     [Bind('inscr_municipal')]
     edtInscricaoMunicipal: TAdvEdit;
-    [Bind('logradouro')]
+    [Bind('logradouro'), BindCep('logradouro')]
     edtLogradouro: TAdvEdit;
     [Bind('numero')]
     edtNumero: TAdvEdit;
@@ -74,11 +75,13 @@ type
     btnCep: TAdvGlowButton;
     btnPais: TAdvGlowButton;
     btnMunicipio: TAdvGlowButton;
+    IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
     procedure btnInserirClick(Sender: TObject);
     procedure btnMunicipioClick(Sender: TObject);
     procedure btnPaisClick(Sender: TObject);
     procedure btnLocalizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnCepClick(Sender: TObject);
   private
     { Private declarations }
     DAOEmpresa: iSimpleDAO<TPessoa>;
@@ -97,10 +100,28 @@ implementation
 
 {$R *.dfm}
 
-uses uCallForm, uDataModule, uUtil;
+uses uCallForm, uDataModule, uUtil, uCep, System.JSON;
 
 
 { TfrmCadEmpresa }
+
+procedure TfrmCadEmpresa.btnCepClick(Sender: TObject);
+var
+    oCep: TCep;
+    aCep: String;
+    LJsonObj: TJSONObject;
+begin
+  inherited;
+    oCep := TCep.Create;
+    try
+        aCep := StringReplace(edtCep.Text, '-', '', [rfReplaceAll]);
+        LJsonObj := oCep.GetCep(aCep);
+        edtLogradouro.Text := LJsonObj.Get('logradouro').JsonValue.Value;
+    finally
+        oCep.Free;
+    end;
+
+end;
 
 procedure TfrmCadEmpresa.btnInserirClick(Sender: TObject);
 begin

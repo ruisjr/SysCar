@@ -36,7 +36,14 @@ uses
   uFiltroEmpresa in 'cadastro\uFiltroEmpresa.pas' {FrmFiltroEmpresa},
   uFiltroMunicipio in 'cadastro\uFiltroMunicipio.pas' {FrmFiltroMunicipio},
   uCadConfiguracoes in 'cadastro\uCadConfiguracoes.pas' {frmConfiguracoes},
-  uConfiguracoes in 'classes\uConfiguracoes.pas';
+  uConfiguracoes in 'classes\uConfiguracoes.pas',
+  uTicket in 'classes\uTicket.pas',
+  uCep in 'classes\uCep.pas',
+  uCadUsuario in 'cadastro\uCadUsuario.pas' {frmCadUsuario},
+  uUsuario in 'classes\uUsuario.pas',
+  uGerenciamentoUsuarios in 'cadastro\uGerenciamentoUsuarios.pas' {frmGerenciamentoUsuario},
+  uCadPerfilUsuario in 'cadastro\uCadPerfilUsuario.pas' {frmCadPerfilUsuario},
+  uCadRegrasSeguranca in 'cadastro\uCadRegrasSeguranca.pas' {frmCadRegrasSeguranca};
 
 {$R *.res}
 
@@ -45,6 +52,8 @@ begin
     Application.MainFormOnTaskbar := True;
     Application.CreateForm(TDM, DM);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmCadPerfilUsuario, frmCadPerfilUsuario);
+  Application.CreateForm(TfrmCadRegrasSeguranca, frmCadRegrasSeguranca);
   TLog.New.info('Inicializando a aplicação');
 
     Application.Run;

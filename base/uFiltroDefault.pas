@@ -99,6 +99,8 @@ begin
 
     self.Fields := 'id, nome';
 
+    loadConfig;
+
     FDsDados := TDataSource.Create(nil);
     grdFiltro.DataSource := FDSDados;
 
@@ -114,8 +116,6 @@ end;
 procedure TFrmFiltroDefault.FormShow(Sender: TObject);
 begin
     edtPesquisa.SetFocus;
-
-    loadConfig;
 end;
 
 procedure TFrmFiltroDefault.pnlTituloMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);

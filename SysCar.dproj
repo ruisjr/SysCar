@@ -202,6 +202,25 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="classes\uConfiguracoes.pas"/>
+        <DCCReference Include="classes\uTicket.pas"/>
+        <DCCReference Include="classes\uCep.pas"/>
+        <DCCReference Include="cadastro\uCadUsuario.pas">
+            <Form>frmCadUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\uUsuario.pas"/>
+        <DCCReference Include="cadastro\uGerenciamentoUsuarios.pas">
+            <Form>frmGerenciamentoUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uCadPerfilUsuario.pas">
+            <Form>frmCadPerfilUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uCadRegrasSeguranca.pas">
+            <Form>frmCadRegrasSeguranca</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

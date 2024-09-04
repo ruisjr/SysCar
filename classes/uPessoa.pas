@@ -31,6 +31,7 @@ Type
     FMensalista: Boolean;
     FEmpresa: Boolean;
     FPais: String;
+    FNomeResumido: string;
   public
     constructor Create;
     destructor Destroy; override;
@@ -39,13 +40,15 @@ Type
     property Id: Integer read FId write FId;
     [DBField('nome'), NotNull]
     property Nome: string read fNome write FNome;
+    [DBField('nome_resumido'), Display('Nome Resumido')]
+    property NomeResumido: string read FNomeResumido write FNomeResumido;
     [DBField('dt_cadastro')]
     property DataCadastro: TDateTime read FDataCadastro write FDataCadastro;
     [DBField('ativo')]
     property Ativo: Boolean read FAtivo write FAtivo;
     [DBField('email')]
     property Email: String read FEmail write FEmail;
-    [DBField('dt_nascimento')]
+    [DBField('dt_nascimento'), Display('Data de Nascimento')]
     property DataNascimento: TDateTime read FDataNascimento write FDataNascimento;
     [DBField('cpf_cnpj')]
     property Cpf: String read FCPF write FCPF;

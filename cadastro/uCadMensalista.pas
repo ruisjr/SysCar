@@ -26,35 +26,39 @@ type
     [Bind('sexo')]
     cbxSexo: TAdvComboBox;
     [Bind('telefone')]
+    edtTelefone: TAdvMaskEdit;
     [Bind('celular')]
-    gbxEndereco: TGroupBox;
+    edtCelular: TAdvMaskEdit;
     [Bind('logradouro')]
     edtLogradouro: TAdvEdit;
     [Bind('numero')]
     edtNumero: TAdvEdit;
-    lblCep: TLabel;
     [Bind('cep')]
     edtCep: TAdvMaskEdit;
-    btnCep: TAdvGlowButton;
-    lblLogradouro: TLabel;
-    lblNumero: TLabel;
     [Bind('bairro')]
     edtBairro: TAdvEdit;
-    lblBairro: TLabel;
-    lblCidade: TLabel;
     [Bind('cidade')]
-    edtCidade: TAdvEdit;
+    edtMunicipio: TAdvEdit;
     [Bind('estado')]
     cbxUF: TAdvComboBox;
-    lblUF: TLabel;
-    lblComplemento: TLabel;
     [Bind('complemento')]
     edtComplemento: TAdvEdit;
     [Bind('ativo')]
     tglAtivo: TToggleSwitch;
     [Bind('email')]
-
     edtEmail: TAdvEdit;
+    [Bind('pais')]
+    edtPais: TAdvEdit;
+
+    btnCep: TAdvGlowButton;
+    gbxEndereco: TGroupBox;
+    lblLogradouro: TLabel;
+    lblNumero: TLabel;
+    lblCep: TLabel;
+    lblBairro: TLabel;
+    lblCidade: TLabel;
+    lblUF: TLabel;
+    lblComplemento: TLabel;
     lblCelular: TLabel;
     lblTelefone: TLabel;
     lblSexo: TLabel;
@@ -64,13 +68,13 @@ type
     lblDataCadastro: TLabel;
     lblCodigo: TLabel;
     lblEmail: TLabel;
-    edtTelefone: TAdvMaskEdit;
-    edtCelular: TAdvMaskEdit;
 
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnLocalizarClick(Sender: TObject);
     procedure edtCodigoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure btnMunicipioClick(Sender: TObject);
+    procedure btnPaisClick(Sender: TObject);
   private
     { Private declarations }
     DAO: iSimpleDAO<TPessoa>;
@@ -92,7 +96,7 @@ implementation
 {$R *.dfm}
 
 uses
-    uUtil, uDataModule, uFiltroPessoa, uCallForm;
+    uUtil, uDataModule, uFiltroPessoa, uCallForm, uMunicipio, uPais;
 
 
 procedure TfrmCadMensalista.btnLocalizarClick(Sender: TObject);
@@ -106,6 +110,48 @@ begin
         FPessoa := DAO.Find(aRetorno);
         FPessoa.Loads(Self, FPessoa);
         self.ID := FPessoa.Id;
+    end;
+end;
+
+procedure TfrmCadMensalista.btnMunicipioClick(Sender: TObject);
+var
+    aRetorno: Integer;
+    oMunicipio: TMunicipio;
+    DaoMunicipio: iSimpleDao<TMunicipio>;
+begin
+    TCallForm.CallFormPesq('TFrmFiltroMunicipio', 'Município', aRetorno);
+    inherited;
+
+    if aRetorno > 0 then
+    begin
+        DaoMunicipio := TSimpleDao<TMunicipio>.New(DM.GetConn);
+        oMunicipio := DAOMunicipio.Find(aRetorno);
+        try
+            edtMunicipio.Text := oMunicipio.Nome;
+        finally
+            oMunicipio.Free;
+        end;
+    end;
+end;
+
+procedure TfrmCadMensalista.btnPaisClick(Sender: TObject);
+var
+    aRetorno: Integer;
+    oPais: TPais;
+    DaoPais: iSimpleDao<TPais>;
+begin
+    TCallForm.CallFormPesq('TFrmFiltroPais', 'Pais', aRetorno);
+    inherited;
+
+    if aRetorno > 0 then
+    begin
+        DaoPais := TSimpleDao<TPais>.New(DM.GetConn);
+        oPais := DaoPais.Find(aRetorno);
+        try
+            edtPais.Text := oPais.Nome;
+        finally
+            oPais.Free;
+        end;
     end;
 end;
 

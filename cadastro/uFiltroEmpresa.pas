@@ -15,6 +15,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    Fields: String;
     DAO: iSimpleDao<TPessoa>;
   public
     { Public declarations }
@@ -35,7 +36,7 @@ begin
     inherited;
     if edtPesquisa.Text.IsEmpty then
     begin
-        DAO.SQL.Fields('id, nome, nome_reduzido')
+        DAO.SQL.Fields(self.Fields)
           .Where('empresa=True')
           .OrderBy('id').Limit(edtLimite.Text)
           .&end
@@ -45,8 +46,8 @@ begin
     begin
         if cbxFiltro.ItemIndex = cPESQ_CODIGO then
         begin
-            DAO.SQL.Fields('id, nome, nome_reduzido')
-              .Where(getWhere('id', edtPesquisa.Text) + ' AMD empresa=True')
+            DAO.SQL.Fields(self.Fields)
+              .Where(getWhere('id', edtPesquisa.Text) + ' AND empresa=True')
               .OrderBy('id').Limit(edtLimite.Text)
               .&end
             .find;
@@ -54,8 +55,8 @@ begin
         else
         begin
             DAO.SQL
-                .Fields('id, nome, nome_reduzido')
-                    .Where(getWhere('nome', edtPesquisa.Text, cPESQ_NOME) + ' AMD empresa=True')
+                .Fields(self.Fields)
+                    .Where(getWhere('nome', edtPesquisa.Text, cPESQ_NOME) + ' AND empresa=True')
                     .OrderBy('nome').Limit(edtLimite.Text)
                 .&end
             .find;
@@ -66,9 +67,10 @@ end;
 procedure TFrmFiltroEmpresa.FormCreate(Sender: TObject);
 begin
   inherited;
+    self.Fields := 'id, nome, nome_reduzido, cpf_cnpj';
     DAO := TSimpleDao<TPessoa>.New(DM.GetConn).DataSource(self.DSDados);
     grdFiltro.DataSource := self.DSDados;
-    DAO.SQL.Fields('id, nome, nome_reduzido').OrderBy('id').Limit(edtLimite.Text).&end.find;
+    DAO.SQL.Fields(self.fields).OrderBy('id').Limit(edtLimite.Text).&end.find;
 end;
 
 initialization

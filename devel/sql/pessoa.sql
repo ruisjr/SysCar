@@ -11,7 +11,7 @@ CREATE SEQUENCE pessoa_seq
 CREATE TABLE pessoa (
 	id				bigint NOT NULL DEFAULT nextval('pessoa_seq'),
 	nome 			varchar(100) not null,
-	nome_reduzido   varchar(50),
+	nome_resumido   varchar(50),
 	dt_cadastro 	date not null default now(),
 	ativo			boolean not null default True,
 	email       	varchar(150),
@@ -38,3 +38,11 @@ CREATE TABLE pessoa (
 alter table pessoa add constraint pk_pessoa primary key (id);
 
 select * from pessoa;
+
+Obrigatoriedade
+Tipo incorreto - String numérica
+Quantidade de caracteres divergente
+Campo não pode ser vazio
+Campo não pode ser nulo
+Representa o caso onde o conteúdo do cpf não correspondea um número de cpf válido.
+Representa o caso onde o conteúdo do CNPJ não corresponde a um número de CNPJ válido.

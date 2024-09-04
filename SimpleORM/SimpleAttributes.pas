@@ -52,6 +52,15 @@ type
     property Field : String read FField write SetField;
   end;
 
+  BindCep = class(TCustomAttribute)
+  private
+    FField: String;
+    procedure SetField(const Value: String);
+  public
+    constructor Create (aField : String);
+    property Field : String read FField write SetField;
+  end;
+
   Display = class(TCustomAttribute)
   private
     FName: string;
@@ -182,6 +191,18 @@ end;
 constructor Enumerator.Create(aTipo: string);
 begin
   FTipo := aTipo;
+end;
+
+{ BindCep }
+
+constructor BindCep.Create(aField: String);
+begin
+    FField := aField;
+end;
+
+procedure BindCep.SetField(const Value: String);
+begin
+    FField := Value;
 end;
 
 end.

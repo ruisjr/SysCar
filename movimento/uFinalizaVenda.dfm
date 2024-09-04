@@ -453,9 +453,9 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
     end
     object pnlValores: TPanel
       AlignWithMargins = True
-      Left = 960
+      Left = 970
       Top = 49
-      Width = 337
+      Width = 327
       Height = 533
       Align = alRight
       BevelOuter = bvNone
@@ -470,19 +470,21 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       object Panel7: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 190
-        Width = 331
-        Height = 81
+        Top = 195
+        Width = 321
+        Height = 80
         Align = alTop
         TabOrder = 0
         object Label8: TLabel
-          Left = 8
-          Top = 12
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
           Width = 313
           Height = 20
+          Align = alTop
           Alignment = taRightJustify
           AutoSize = False
-          Caption = 'R$ Total a pagar'
+          Caption = 'R$ Total a pagar  '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -493,7 +495,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         object edtTotalpagar: TAdvEdit
           Left = 8
           Top = 40
-          Width = 313
+          Width = 305
           Height = 33
           EditAlign = eaRight
           EditType = etFloat
@@ -515,13 +517,14 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Font.Name = 'Tahoma'
           Lookup.Font.Style = []
           Lookup.Separator = ';'
+          Align = alCustom
           BorderStyle = bsNone
           CharCase = ecUpperCase
           Color = clWindow
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
-          Font.Height = -24
+          Font.Height = -20
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -534,25 +537,30 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       object Panel6: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 277
-        Width = 331
-        Height = 81
+        Top = 281
+        Width = 321
+        Height = 80
         Align = alTop
         TabOrder = 1
         object Label2: TLabel
-          Left = 8
-          Top = 12
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
           Width = 313
           Height = 20
+          Align = alTop
           Alignment = taRightJustify
           AutoSize = False
-          Caption = 'R$ Descontos'
+          Caption = 'R$ Descontos  '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitLeft = 1
+          ExplicitTop = 1
+          ExplicitWidth = 319
         end
         object Label4: TLabel
           Left = 8
@@ -583,7 +591,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         object edtValorDesconto: TAdvEdit
           Left = 184
           Top = 38
-          Width = 137
+          Width = 129
           Height = 37
           EditAlign = eaRight
           EditType = etFloat
@@ -609,7 +617,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Color = clWindow
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -24
+          Font.Height = -20
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -648,7 +656,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Color = clWindow
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -24
+          Font.Height = -20
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -662,31 +670,36 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       object Panel8: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 364
-        Width = 331
-        Height = 81
+        Top = 367
+        Width = 321
+        Height = 80
         Align = alTop
         TabOrder = 2
         object lblTroco: TLabel
-          Left = 8
-          Top = 12
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
           Width = 313
           Height = 20
+          Align = alTop
           Alignment = taRightJustify
           AutoSize = False
-          Caption = 'R$ Troco'
+          Caption = 'R$ Troco  '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitLeft = 8
+          ExplicitTop = 12
+          ExplicitWidth = 310
         end
         object edtTroco: TAdvEdit
           Left = 8
           Top = 38
-          Width = 313
-          Height = 37
+          Width = 305
+          Height = 32
           EditAlign = eaRight
           EditType = etMoney
           EmptyText = '0,00'
@@ -694,7 +707,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           FlatLineColor = 8017159
           FocusColor = 8017159
           FocusFontColor = clWhite
-          DisabledColor = clBtnFace
+          DisabledColor = clWindow
           Precision = 2
           Prefix = 'R$ '
           LabelFont.Charset = DEFAULT_CHARSET
@@ -708,13 +721,14 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Font.Name = 'Tahoma'
           Lookup.Font.Style = []
           Lookup.Separator = ';'
+          Align = alCustom
           BorderStyle = bsNone
           CharCase = ecUpperCase
           Color = clWindow
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
-          Font.Height = -24
+          Font.Height = -20
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -728,8 +742,8 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 331
-        Height = 181
+        Width = 321
+        Height = 186
         Align = alTop
         Caption = 'Tempo decorrido'
         Font.Charset = DEFAULT_CHARSET
@@ -771,7 +785,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         end
         object Label10: TLabel
           Left = 8
-          Top = 102
+          Top = 112
           Width = 313
           Height = 32
           Alignment = taCenter
@@ -787,7 +801,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         object lblEntrada: TLabel
           Left = 116
           Top = 54
-          Width = 205
+          Width = 200
           Height = 18
           Alignment = taRightJustify
           AutoSize = False
@@ -801,7 +815,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         object lblSaida: TLabel
           Left = 116
           Top = 78
-          Width = 205
+          Width = 200
           Height = 18
           Alignment = taRightJustify
           AutoSize = False
@@ -814,7 +828,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         end
         object lblTempoTotal: TLabel
           Left = 8
-          Top = 140
+          Top = 150
           Width = 313
           Height = 30
           Alignment = taCenter
@@ -846,7 +860,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         object lblTicket: TLabel
           Left = 116
           Top = 30
-          Width = 205
+          Width = 200
           Height = 18
           Alignment = taRightJustify
           AutoSize = False
@@ -862,31 +876,36 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       object Panel2: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 451
-        Width = 331
-        Height = 81
+        Top = 453
+        Width = 321
+        Height = 80
         Align = alTop
         TabOrder = 4
         object lblSaldoPagar: TLabel
-          Left = 8
-          Top = 12
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
           Width = 313
           Height = 20
+          Align = alTop
           Alignment = taRightJustify
           AutoSize = False
-          Caption = 'R$ Saldo a Pagar'
+          Caption = 'R$ Saldo a Pagar  '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitLeft = 1
+          ExplicitTop = 2
+          ExplicitWidth = 319
         end
         object edtSaldoPagar: TAdvEdit
           Left = 8
           Top = 38
-          Width = 313
-          Height = 37
+          Width = 305
+          Height = 32
           EditAlign = eaRight
           EditType = etMoney
           EmptyText = '0,00'
@@ -894,7 +913,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           FlatLineColor = 11250603
           FocusColor = clWindow
           FocusFontColor = 3881787
-          DisabledColor = clBtnFace
+          DisabledColor = clWindow
           Precision = 2
           Prefix = 'R$ '
           LabelFont.Charset = DEFAULT_CHARSET
@@ -908,13 +927,14 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Lookup.Font.Name = 'Tahoma'
           Lookup.Font.Style = []
           Lookup.Separator = ';'
+          Align = alCustom
           BorderStyle = bsNone
           CharCase = ecUpperCase
           Color = clWindow
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
-          Font.Height = -24
+          Font.Height = -20
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -928,7 +948,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
     object pnlLateralEsquerda: TPanel
       Left = 0
       Top = 46
-      Width = 957
+      Width = 967
       Height = 539
       Align = alClient
       BevelOuter = bvNone
@@ -941,12 +961,18 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         Height = 480
         Align = alLeft
         Caption = 'Produtos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
         TabOrder = 0
         object grdProduto: TJvDBGrid
           AlignWithMargins = True
           Left = 5
           Top = 25
-          Width = 490
+          Width = 460
           Height = 450
           Align = alClient
           DataSource = dsProdutos
@@ -985,7 +1011,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
               Title.Font.Height = -20
               Title.Font.Name = 'Segoe UI'
               Title.Font.Style = []
-              Width = 200
+              Width = 175
               Visible = True
             end
             item
@@ -1027,21 +1053,96 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
               Visible = True
             end>
         end
+        object Panel3: TPanel
+          Left = 468
+          Top = 22
+          Width = 30
+          Height = 456
+          Align = alRight
+          BevelOuter = bvNone
+          ParentBackground = False
+          TabOrder = 1
+          object btnIncluirProduto: TAdvGlowButton
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 24
+            Height = 24
+            Align = alTop
+            NotesFont.Charset = DEFAULT_CHARSET
+            NotesFont.Color = clWindowText
+            NotesFont.Height = -12
+            NotesFont.Name = 'Tahoma'
+            NotesFont.Style = []
+            Picture.Data = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              6100000006624B474400FF00FF00FFA0BDA793000000394944415438116360A0
+              103082F4C7C4C41481E8254B96F44547475B00D9C5408C173132321E07A967C2
+              AB6A48488E860103C368180C8B300000FD67240D61A3EFB30000000049454E44
+              AE426082}
+            PopupMenu = ppmMenuProdutos
+            Rounded = True
+            TabOrder = 0
+            OnClick = btnIncluirProdutoClick
+            Appearance.BorderColor = 11382963
+            Appearance.BorderColorHot = 11565130
+            Appearance.BorderColorCheckedHot = 11565130
+            Appearance.BorderColorDown = 11565130
+            Appearance.BorderColorChecked = 13744549
+            Appearance.BorderColorDisabled = 13948116
+            Appearance.Color = clWhite
+            Appearance.ColorTo = clWhite
+            Appearance.ColorChecked = 13744549
+            Appearance.ColorCheckedTo = 13744549
+            Appearance.ColorDisabled = clWhite
+            Appearance.ColorDisabledTo = clNone
+            Appearance.ColorDown = 11565130
+            Appearance.ColorDownTo = 11565130
+            Appearance.ColorHot = 16444643
+            Appearance.ColorHotTo = 16444643
+            Appearance.ColorMirror = clWhite
+            Appearance.ColorMirrorTo = clWhite
+            Appearance.ColorMirrorHot = 16444643
+            Appearance.ColorMirrorHotTo = 16444643
+            Appearance.ColorMirrorDown = 11565130
+            Appearance.ColorMirrorDownTo = 11565130
+            Appearance.ColorMirrorChecked = 13744549
+            Appearance.ColorMirrorCheckedTo = 13744549
+            Appearance.ColorMirrorDisabled = clWhite
+            Appearance.ColorMirrorDisabledTo = clNone
+            Appearance.GradientHot = ggVertical
+            Appearance.GradientMirrorHot = ggVertical
+            Appearance.GradientDown = ggVertical
+            Appearance.GradientMirrorDown = ggVertical
+            Appearance.GradientChecked = ggVertical
+            Appearance.TextColorChecked = 3750459
+            Appearance.TextColorDown = 2303013
+            Appearance.TextColorHot = 2303013
+            Appearance.TextColorDisabled = 13948116
+            DropDownWidth = 15
+          end
+        end
       end
       object GroupBox2: TGroupBox
         AlignWithMargins = True
         Left = 509
         Top = 56
-        Width = 445
+        Width = 455
         Height = 480
         Align = alClient
         Caption = 'Pagamentos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
         TabOrder = 1
         object pnlFormaPagamento: TPanel
           AlignWithMargins = True
           Left = 5
           Top = 25
-          Width = 435
+          Width = 445
           Height = 220
           Align = alTop
           BevelOuter = bvNone
@@ -1049,7 +1150,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           object slbFormaPagamento: TAdvSmoothListBox
             Left = 0
             Top = 0
-            Width = 435
+            Width = 445
             Height = 220
             Cursor = crHandPoint
             Fill.Color = clWhite
@@ -1948,7 +2049,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
             Header.Fill.Rounding = 0
             Header.Fill.ShadowOffset = 0
             Header.Fill.Glow = gmNone
-            Header.Caption = 'Header'
+            Header.Caption = 'Formas de Pagamento'
             Header.Font.Charset = DEFAULT_CHARSET
             Header.Font.Color = 4474440
             Header.Font.Height = -13
@@ -2028,7 +2129,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         object pnlPagamentosRealizados: TPanel
           Left = 2
           Top = 248
-          Width = 441
+          Width = 451
           Height = 230
           Align = alClient
           BevelOuter = bvNone
@@ -2037,7 +2138,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 405
+            Width = 415
             Height = 224
             Align = alClient
             DataSource = DSPagamentos
@@ -2090,16 +2191,15 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
               end>
           end
           object Panel1: TPanel
-            Left = 411
+            Left = 421
             Top = 0
             Width = 30
             Height = 230
             Align = alRight
             BevelOuter = bvNone
-            Color = clBlack
             ParentBackground = False
             TabOrder = 1
-            object btnMenuContato: TAdvGlowButton
+            object btnMenuPagamento: TAdvGlowButton
               AlignWithMargins = True
               Left = 3
               Top = 3
@@ -2117,9 +2217,10 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
                 103082F4C7C4C41481E8254B96F44547475B00D9C5408C173132321E07A967C2
                 AB6A48488E860103C368180C8B300000FD67240D61A3EFB30000000049454E44
                 AE426082}
+              PopupMenu = ppmMenuLateral
               Rounded = True
               TabOrder = 0
-              OnClick = btnMenuContatoClick
+              OnClick = btnMenuPagamentoClick
               Appearance.BorderColor = 11382963
               Appearance.BorderColorHot = 11565130
               Appearance.BorderColorCheckedHot = 11565130
@@ -2164,7 +2265,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 951
+        Width = 961
         Height = 47
         Align = alTop
         TabOrder = 2
@@ -2454,5 +2555,75 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
     DataSet = cdsProdutos
     Left = 233
     Top = 220
+  end
+  object ppmMenuProdutos: TAdvPopupMenu
+    Version = '2.7.1.12'
+    UIStyle = tsWindows8
+    Left = 424
+    Top = 96
+    object MenuItem1: TMenuItem
+      Bitmap.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFEFEFFFCFCFFFBFBFFFAFAFFFAFAFFFBFBFFFCFCFFFEFEFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFEFEFFFBFBFFF8F8FFF8F8FFF9F9FFF9F9FFF9F9FFF9F9FFF8F8FF
+        F8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFDFDFFF9F9FFF8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFEFEFFFBFBFFF8F8FFF9F9FFFDFDFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFFF8F8FFF9F9FFFEFEFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9FFF8F8FFFDFDFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9FFF9F9FFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFF9F9FFF9F9FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF8
+        F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFEFEFFF8F8FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFEFEFFF8F8FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFFB
+        FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF8F8FFFEFEFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFCFCFFF8F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF8
+        F8FFFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF9F9FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFF9F9FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFAFAFFF9F9FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFBFBFFFAFAFFFAFAFFF9F9FFF9F9FFFAFAFFFAFAFF
+        FBFBFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9FFFAFAFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFAFAFFF9F9FFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFFAFAFFFAFAFFF9F9FFF9
+        F9FFFAFAFFFAFAFFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9FFFAFAFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFBFBFFF9F9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9
+        F9FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFFF8F8FFFEFEFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFEFEFFF8F8FFFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF8F8FFFB
+        FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFFBFBFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF8F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFBFBFFF8F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF8F8FFFBFBFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9FFF9F9FFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9FFF9F9FFFE
+        FEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFFF8F8FFF9F9FF
+        FEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9
+        FFF8F8FFFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFDFDFFF9F9FFF8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFF
+        FBFBFFF8F8FFF9F9FFFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFFBFBFFF8F8FFF8F8FFF9F9FFF9F9FFF9
+        F9FFF9F9FFF8F8FFF8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFFCFC
+        FFFBFBFFFAFAFFFAFAFFFBFBFFFCFCFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      Caption = '&Adicionar'
+      OnClick = mnInserirPagamentoClick
+    end
+    object MenuItem2: TMenuItem
+      Caption = '&Remover'
+    end
   end
 end

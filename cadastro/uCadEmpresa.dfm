@@ -821,6 +821,7 @@ inherited frmCadEmpresa: TfrmCadEmpresa
               CC7CD50000000049454E44AE426082}
             Rounded = True
             TabOrder = 8
+            OnClick = btnCepClick
             Appearance.BorderColor = 11382963
             Appearance.BorderColorHot = 11565130
             Appearance.BorderColorCheckedHot = 11565130
@@ -1163,5 +1164,17 @@ inherited frmCadEmpresa: TfrmCadEmpresa
         end
       end
     end
+  end
+  object IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL
+    MaxLineAction = maException
+    Port = 0
+    DefaultPort = 0
+    SSLOptions.Method = sslvSSLv2
+    SSLOptions.SSLVersions = [sslvSSLv2]
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 664
+    Top = 224
   end
 end

@@ -100,13 +100,13 @@ inherited FrmFiltroEmpresa: TFrmFiltroEmpresa
           CheckFalse = 'N'
           CheckTrue = 'Y'
           Color = clWindow
-          FieldName = 'codigo'
+          FieldName = 'cpf_cnpj'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = []
-          Header = 'C'#243'd. IBGE'
+          Header = 'CNPJ'
           HeaderFont.Charset = DEFAULT_CHARSET
           HeaderFont.Color = clBlack
           HeaderFont.Height = -15
@@ -118,13 +118,13 @@ inherited FrmFiltroEmpresa: TFrmFiltroEmpresa
           PrintFont.Height = -15
           PrintFont.Name = 'Segoe UI'
           PrintFont.Style = []
-          Width = 100
+          Width = 150
         end>
       ColWidths = (
         20
         100
         300
-        100)
+        150)
     end
   end
 end

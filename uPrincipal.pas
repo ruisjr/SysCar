@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, AdvPanel, JvExExtCtrls, JvExtComponent, JvPanel,
   Vcl.Imaging.pngimage, AeroButtons,
   { Classes de negócio }
-  uLogs, SimpleInterface, SimpleQueryFiredac, Vcl.ComCtrls, JvExComCtrls, JvStatusBar, Vcl.AppEvnts;
+  uLogs, SimpleInterface, SimpleQueryFiredac, Vcl.ComCtrls, JvExComCtrls, JvStatusBar, Vcl.AppEvnts, ACBrBase, ACBrSocket, ACBrCEP;
 
 type
   TfrmPrincipal = class(TForm)
@@ -26,6 +26,7 @@ type
     ApplicationEvents1: TApplicationEvents;
     btnFormasPagamento: TAeroSpeedButton;
     btnEmpresa: TAeroSpeedButton;
+    btnUsuarios: TAeroSpeedButton;
     procedure btnCloseMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure btnCloseClick(Sender: TObject);
     procedure btnVeiculosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -45,6 +46,9 @@ type
     procedure JvPanel1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure btnConfigClick(Sender: TObject);
     procedure JvPanel1DblClick(Sender: TObject);
+    procedure btnFormaPagamentoClick(Sender: TObject);
+    procedure btnUsuariosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure btnUsuariosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,7 +63,7 @@ implementation
 {$R *.dfm}
 
 uses
-    uUtil, uCallForm, uMovimento;
+    uUtil, uCallForm, uMovimento, uTicket;
 
 procedure TfrmPrincipal.btnVeiculosClick(Sender: TObject);
 begin
@@ -104,6 +108,16 @@ end;
 procedure TfrmPrincipal.btnProdutosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
     btnProdutos.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.btnUsuariosClick(Sender: TObject);
+begin
+    TCallForm.CallFormCad('TfrmGerenciamentoUsuario', 0);
+end;
+
+procedure TfrmPrincipal.btnUsuariosMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+    btnUsuarios.Cursor := crHandPoint;
 end;
 
 procedure TfrmPrincipal.ApplicationEvents1Exception(Sender: TObject; E: Exception);
@@ -159,6 +173,84 @@ end;
 procedure TfrmPrincipal.btnEmpresaMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
     btnEmpresa.Cursor := crHandPoint;
+end;
+
+procedure TfrmPrincipal.btnFormaPagamentoClick(Sender: TObject);
+var
+    iRetorno: integer;
+begin
+    iRetorno := TTicket.getTicket;
+    if iRetorno = 0 then
+    Application.MessageBox( 'Erro de Comunicação !', 'Erro',MB_IconError + MB_OK);
+
+  If iRetorno = -1 Then
+    Application.MessageBox( 'Erro de Execução na Função. Verifique!', 'Erro', MB_IconError + MB_OK);
+
+  if iRetorno = -2  then
+    Application.MessageBox( 'Parâmetro Inválido !', 'Erro',MB_IconError + MB_OK);
+
+  if iRetorno = -3  then
+    Application.MessageBox( 'Alíquota não programada !', 'Atenção',MB_IconInformation + MB_OK);
+
+  If iRetorno = -4 Then
+    Application.MessageBox( 'Arquivo BemaFI32.INI não encontrado. Verifique!', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  If iRetorno = -5 Then
+    Application.MessageBox( 'Erro ao Abrir a Porta de Comunicação', 'Erro',
+                                MB_IconError + MB_OK);
+
+  If iRetorno = -6 Then
+    Application.MessageBox( 'Impressora Desligada ou Desconectada', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  If iRetorno = -7 Then
+    Application.MessageBox( 'Banco Não Cadastrado no Arquivo BemaFI32.ini', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  If iRetorno = -8 Then
+    Application.MessageBox( 'Erro ao Criar ou Gravar no Arquivo Retorno.txt ou Status.txt', 'Erro',
+                                MB_IconError + MB_OK);
+
+  if iRetorno = -18 then
+    Application.MessageBox( 'Não foi possível abrir arquivo INTPOS.001 !', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -19 then
+    Application.MessageBox( 'Parâmetro diferentes !', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -20 then
+    Application.MessageBox( 'Transação cancelada pelo Operador !', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -21 then
+    Application.MessageBox( 'A Transação não foi aprovada !', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -22 then
+    Application.MessageBox( 'Não foi possível terminal a Impressão !', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -23 then
+    Application.MessageBox( 'Não foi possível terminal a Operação !', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -24 then
+    Application.MessageBox( 'Forma de pagamento não programada.', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -25 then
+    Application.MessageBox( 'Totalizador não fiscal não programado.', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -26 then
+    Application.MessageBox( 'Transação já Efetuada !', 'Atenção',
+                                MB_IconInformation + MB_OK);
+
+  if iRetorno = -28 then
+    Application.MessageBox( 'Não há Informações para serem Impressas !', 'Atenção',
+                                MB_IconInformation + MB_OK);
 end;
 
 procedure TfrmPrincipal.btnFormasPagamentoClick(Sender: TObject);
