@@ -1,5 +1,5 @@
 object DM: TDM
-  Height = 304
-  Width = 503
-  PixelsPerInch = 120
+  OnCreate = DataModuleCreate
+  Height = 243
+  Width = 402
 end
