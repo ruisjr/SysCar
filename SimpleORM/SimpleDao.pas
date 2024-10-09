@@ -136,7 +136,7 @@ begin
             FQuery.SQL.Clear;
             FQuery.SQL.Add(aSQL);
             TLog.New.debug(aSQL);
-            TSimpleRTTI<T>.New(nil).BindFormToClass(FForm, Entity);
+            TSimpleRTTI<T>.New(FForm).BindFormToClass(FForm, Entity);
             Self.FillParameter(Entity);
             FQuery.ExecSQL;
         finally
@@ -185,10 +185,10 @@ end;
 function TSimpleDAO<T>.Find(aBindList: Boolean = True): iSimpleDAO<T>;
 var
     aSQL: String;
-    aObjeto: TObject;
+    aInstance: T;
 begin
     Result := Self;
-    TSimpleSQL<T>.New(nil).Fields(FSQLAttribute.Fields).Join(FSQLAttribute.Join)
+    TSimpleSQL<T>.New(aInstance).Fields(FSQLAttribute.Fields).Join(FSQLAttribute.Join)
       .Where(FSQLAttribute.Where).GroupBy(FSQLAttribute.GroupBy)
       .OrderBy(FSQLAttribute.OrderBy).Limit(FSQLAttribute.Limit).Select(aSQL);
     FQuery.DataSet.DisableControls;
@@ -197,7 +197,7 @@ begin
     FQuery.Open(aSQL);
 
     if aBindList then
-        TSimpleRTTI<T>.New(nil).DataSetToEntityList(FQuery.DataSet, FList);
+        TSimpleRTTI<T>.New(aInstance).DataSetToEntityList(FQuery.DataSet, FList);
 
     FSQLAttribute.Clear;
     FQuery.DataSet.EnableControls;
@@ -206,15 +206,16 @@ end;
 function TSimpleDAO<T>.Find(aId: Integer): T;
 var
     aSQL: String;
+    aInstance: T;
 begin
     Result := T.Create;
-    TSimpleSQL<T>.New(nil).SelectId(aSQL);
+    TSimpleSQL<T>.New(aInstance).SelectId(aSQL);
     FQuery.SQL.Clear;
     FQuery.SQL.Add(aSQL);
     TLog.New.debug(aSQL);
     Self.FillParameter(Result, aId);
     FQuery.Open;
-    TSimpleRTTI<T>.New(nil).DataSetToEntity(FQuery.DataSet, Result);
+    TSimpleRTTI<T>.New(aInstance).DataSetToEntity(FQuery.DataSet, Result);
 end;
 {$IFNDEF CONSOLE}
 
@@ -231,7 +232,7 @@ begin
             FQuery.SQL.Clear;
             FQuery.SQL.Add(aSQL);
             TLog.New.debug(aSQL);
-            TSimpleRTTI<T>.New(nil).BindFormToClass(FForm, Entity);
+            TSimpleRTTI<T>.New(FForm).BindFormToClass(FForm, Entity);
 
             TSimpleValidator.Validate(Entity);
 
@@ -271,14 +272,15 @@ end;
 function TSimpleDAO<T>.Find(var aList: TObjectList<T>): iSimpleDAO<T>;
 var
     aSQL: String;
+    aInstance: T;
 begin
     Result := Self;
-    TSimpleSQL<T>.New(nil).Fields(FSQLAttribute.Fields).Join(FSQLAttribute.Join)
+    TSimpleSQL<T>.New(FForm).Fields(FSQLAttribute.Fields).Join(FSQLAttribute.Join)
       .Where(FSQLAttribute.Where).GroupBy(FSQLAttribute.GroupBy)
       .OrderBy(FSQLAttribute.OrderBy).Limit(FSQLAttribute.Limit).Select(aSQL);
     TLog.New.debug(aSQL);
     FQuery.Open(aSQL);
-    TSimpleRTTI<T>.New(nil).DataSetToEntityList(FQuery.DataSet, aList);
+    TSimpleRTTI<T>.New(FForm).DataSetToEntityList(FQuery.DataSet, aList);
     FSQLAttribute.Clear;
 end;
 
@@ -317,8 +319,7 @@ begin
     begin
 {$IFNDEF CONSOLE}
         if Assigned(FForm) then
-            TSimpleRTTI<T>.New(nil).BindClassToForm(FForm,
-              FList[FDataSource.DataSet.RecNo - 1]);
+            TSimpleRTTI<T>.New(nil).BindClassToForm(FForm, FList[FDataSource.DataSet.RecNo - 1]);
 {$ENDIF}
     end;
 end;
@@ -327,6 +328,7 @@ function TSimpleDAO<T>.SQL: iSimpleDAOSQLAttribute<T>;
 begin
     Result := FSQLAttribute;
 end;
+
 {$IFNDEF CONSOLE}
 
 function TSimpleDAO<T>.Update: iSimpleDAO<T>;
@@ -451,9 +453,10 @@ end;
 function TSimpleDAO<T>.Find(aKey: String; aValue: Variant): iSimpleDAO<T>;
 var
     aSQL: String;
+    aInstance: T;
 begin
     Result := Self;
-    TSimpleSQL<T>.New(nil).Where(aKey + ' = :' + aKey).Select(aSQL);
+    TSimpleSQL<T>.New(aInstance).Where(aKey + ' = :' + aKey).Select(aSQL);
     FQuery.SQL.Clear;
     FQuery.SQL.Add(aSQL);
     TLog.New.debug(aSQL);
@@ -464,14 +467,15 @@ end;
 function TSimpleDAO<T>.Find(aWhere: string): T;
 var
     aSQL: String;
+    aInstance: T;
 begin
     Result := T.Create;
-    TSimpleSQL<T>.New(nil).Where(aWhere).Select(aSQL);
+    TSimpleSQL<T>.New(aInstance).Where(aWhere).Select(aSQL);
     FQuery.SQL.Clear;
     FQuery.SQL.Add(aSQL);
     TLog.New.debug(aSQL);
     FQuery.Open;
-    TSimpleRTTI<T>.New(nil).DataSetToEntity(FQuery.DataSet, Result);
+    TSimpleRTTI<T>.New(aInstance).DataSetToEntity(FQuery.DataSet, Result);
 end;
 
 end.

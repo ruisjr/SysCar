@@ -9,7 +9,8 @@ uses
       FMX.Forms, FMX.StdCtrls, FMX.DateTimeCtrls,
     {$ELSE}
       Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, AdvLabel, AdvEdit, AdvCombo, AdvDateTimePicker,
-      AdvToggle, System.Rtti, Vcl.WinXCtrls, JvRadioGroup, AdvOfficeButtons, Vcl.ExtCtrls,
+      AdvToggle, System.Rtti, Vcl.WinXCtrls, JvRadioGroup, AdvOfficeButtons, AdvGroupBox, Vcl.ExtCtrls,
+      Vcl.Samples.Spin,
     {$ENDIF}
   {$ENDIF}
   SimpleEntity;
@@ -213,6 +214,8 @@ begin
         Exit((aComponent as TRadioGroup).ItemIndex)
     else if (aComponent is TJvRadioGroup) then
         Exit((aComponent as TJvRadioGroup).ItemIndex)
+    else if (aComponent is TSpinEdit) then
+        Exit(TSpinEdit(aComponent).Value)
 end;
 
 class function TSimpleUtil.GetBooleanFromComponent(aComponent: TComponent): Boolean;
@@ -223,6 +226,8 @@ begin
         Exit((aComponent as TToggleSwitch).State = tssOn);
      if aComponent is TToggleSwitch then
         Exit(((aComponent as TToggleSwitch).State = tssOn));
+     if aComponent is TAdvGroupBox then
+        Exit(TAdvGroupBox(aComponent).CheckBox.Checked);
 end;
 
 class procedure TSimpleUtil.SetFormFromObject(const aForm: TForm; const aObject: TObject);
@@ -264,6 +269,8 @@ begin
                     (Component as TAdvLabel).Text := prpRtti.GetValue(aObject).AsVariant;
                 if Component is TAdvEdit then
                     (Component as TAdvEdit).Text := prpRtti.GetValue(aObject).AsVariant;
+                if Component is TSpinEdit then
+                    TSpinEdit(Component).Value := prpRtti.GetValue(aObject).AsInteger;
                 if Component is TAdvComboBox then
                 begin
                     if not prpRtti.GetValue(aObject).IsEmpty then
@@ -295,6 +302,9 @@ begin
                     (Component as TRadioGroup).ItemIndex := prpRtti.GetValue(aObject).AsInteger;
                 if Component is TAdvOfficeCheckBox then
                     (Component as TAdvOfficeCheckBox).Checked := prpRtti.GetValue(aObject).AsBoolean;
+                if Component is TAdvGroupBox then
+                    TAdvGroupBox(Component).CheckBox.Checked := prpRtti.GetValue(aObject).AsBoolean;
+
             end;
         end;
     finally

@@ -12,7 +12,7 @@ uses
   uDataModule in 'base\uDataModule.pas' {DM: TDataModule},
   uFiltroDefault in 'base\uFiltroDefault.pas' {FrmFiltroDefault},
   uFiltroPessoa in 'cadastro\uFiltroPessoa.pas' {frmFiltroPessoa},
-  uFormDefault in 'base\uFormDefault.pas' {frmFormDefault},
+  uFormSingleDefault in 'base\uFormSingleDefault.pas' {frmSingleFormDefault},
   uCadVeiculo in 'cadastro\uCadVeiculo.pas' {frmCadVeiculo},
   uCallForm in 'base\uCallForm.pas',
   uVeiculo in 'classes\uVeiculo.pas',
@@ -43,7 +43,12 @@ uses
   uUsuario in 'classes\uUsuario.pas',
   uGerenciamentoUsuarios in 'cadastro\uGerenciamentoUsuarios.pas' {frmGerenciamentoUsuario},
   uCadPerfilUsuario in 'cadastro\uCadPerfilUsuario.pas' {frmCadPerfilUsuario},
-  uCadRegrasSeguranca in 'cadastro\uCadRegrasSeguranca.pas' {frmCadRegrasSeguranca};
+  uCadRegrasSeguranca in 'cadastro\uCadRegrasSeguranca.pas' {frmCadRegrasSeguranca},
+  uRegrasSeguranca in 'cadastro\uRegrasSeguranca.pas',
+  login in 'config\login.pas' {frmLogin},
+  uFormDefault in 'base\uFormDefault.pas' {frmFormDefault},
+  uVendaProduto in 'movimento\uVendaProduto.pas' {frmVendaProduto},
+  uFinalizaVendaPagamento in 'movimento\uFinalizaVendaPagamento.pas' {frmFinalizaVendaPagamento};
 
 {$R *.res}
 
@@ -52,8 +57,9 @@ begin
     Application.MainFormOnTaskbar := True;
     Application.CreateForm(TDM, DM);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmCadPerfilUsuario, frmCadPerfilUsuario);
-  Application.CreateForm(TfrmCadRegrasSeguranca, frmCadRegrasSeguranca);
+  Application.CreateForm(TfrmFormDefault, frmFormDefault);
+  Application.CreateForm(TfrmVendaProduto, frmVendaProduto);
+  Application.CreateForm(TfrmFinalizaVendaPagamento, frmFinalizaVendaPagamento);
   TLog.New.info('Inicializando a aplicação');
 
     Application.Run;

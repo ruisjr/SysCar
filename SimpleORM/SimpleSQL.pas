@@ -55,7 +55,7 @@ var
   aClassName, aWhere : String;
 begin
     Result := Self;
-    TSimpleRTTI<T>.New(FInstance).TableName(aClassName)  .Where(aWhere);
+    TSimpleRTTI<T>.New(FInstance).TableName(aClassName).Where(aWhere);
     aSQL := aSQL + 'DELETE FROM ' + aClassName;
     aSQL := aSQL + ' WHERE ' + aWhere;
 end;

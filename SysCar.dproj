@@ -130,8 +130,8 @@
             <Form>frmFiltroPessoa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="base\uFormDefault.pas">
-            <Form>frmFormDefault</Form>
+        <DCCReference Include="base\uFormSingleDefault.pas">
+            <Form>frmSingleFormDefault</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="cadastro\uCadVeiculo.pas">
@@ -219,6 +219,23 @@
         </DCCReference>
         <DCCReference Include="cadastro\uCadRegrasSeguranca.pas">
             <Form>frmCadRegrasSeguranca</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uRegrasSeguranca.pas"/>
+        <DCCReference Include="config\login.pas">
+            <Form>frmLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="base\uFormDefault.pas">
+            <Form>frmFormDefault</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="movimento\uVendaProduto.pas">
+            <Form>frmVendaProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="movimento\uFinalizaVendaPagamento.pas">
+            <Form>frmFinalizaVendaPagamento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

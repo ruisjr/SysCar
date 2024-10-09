@@ -579,7 +579,7 @@ begin
         typRtti := ctxRtti.GetType(Info);
         for prpRtti in typRtti.GetProperties do
         begin
-            if prpRtti.IsIgnore then
+            if not prpRtti.IsNotNull and prpRtti.IsIgnore then
                 Continue;
 
             case prpRtti.PropertyType.TypeKind of
@@ -667,7 +667,7 @@ begin
         typRtti := ctxRtti.GetType(Info);
         for prpRtti in typRtti.GetProperties do
         begin
-            if prpRtti.IsIgnore then
+            if not prpRtti.IsNotNull and prpRtti.IsIgnore then
                 Continue;
 
             case prpRtti.PropertyType.TypeKind of
@@ -741,7 +741,7 @@ begin
             if prpRtti.IsAutoInc then
                 Continue;
 
-            if prpRtti.IsIgnore then
+            if not prpRtti.IsNotNull and prpRtti.IsIgnore then
                 Continue;
 
             if prpRtti.IsForeignKey then
@@ -813,7 +813,7 @@ begin
         typRtti := ctxRtti.GetType(Info);
         for prpRtti in typRtti.GetProperties do
         begin
-            if prpRtti.IsIgnore then
+            if not prpRtti.IsNotNull and prpRtti.IsIgnore then
                 Continue;
 
             if prpRtti.IsAutoInc then
