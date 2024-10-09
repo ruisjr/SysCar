@@ -10,7 +10,8 @@ CREATE SEQUENCE config_seq
 CREATE TABLE config (
 	id				bigint NOT NULL DEFAULT nextval('config_seq'),
 	tipo_pesquisa	integer,
-	filtrar_por		integer
+	filtrar_por		integer,
+	arredondamento integer default 0
 );
 
 alter table config add constraint pk_config primary key (id);

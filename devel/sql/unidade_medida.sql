@@ -46,4 +46,7 @@ INSERT INTO unidade_medida (nome, sigla) values ('Hora', 'H');
 INSERT INTO unidade_medida (nome, sigla) values ('Minuto', 'MIN');
 INSERT INTO unidade_medida (nome, sigla) values ('Dia', 'DIA');
 
+--Medidas de unidade
+INSERT INTO unidade_medida (nome, sigla) values ('Unidade', 'UN');
+
 SELECT * FROM unidade_medida;

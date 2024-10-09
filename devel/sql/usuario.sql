@@ -14,9 +14,14 @@ CREATE TABLE usuario (
 	login   	varchar(30),
 	ativo		boolean not null default True,
 	email       varchar(150),
-	perfil 		integer
+	perfil 		integer,
+	ult_acesso	timestamp,
+	senha		varchar(30) not null,
+	bloqueado   boolean not null default False
 );
 
 alter table usuario add constraint pk_usuario primary key (id);
 
 select * from usuario;
+
+INSERT INTO usuario (nome, login, ativo, perfil, senha) values ('BULLTECH', 'BULLTECH', True, 1, 'SENHA');
