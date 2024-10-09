@@ -3,23 +3,45 @@ unit uUtil;
 interface
 
 uses
-    System.SysUtils, Vcl.Controls, System.Types, Vcl.Forms, AdvMenus, System.Classes, System.Win.Registry, Winapi.Windows,
+    System.SysUtils, Vcl.Controls, System.DateUtils, System.Types, Vcl.Forms, AdvMenus, System.Classes, System.Win.Registry, Winapi.Windows,
+    System.NetEncoding, System.Math,
     { Classes de négócio }
     uLogs, uMessages;
 
-    { Functions }
+    { Messages }
     function InfoMessage(aCaption: String; aMessage: String): Integer;
     function ErrorMessage(aCaption: String; aMessage: String): Integer;
     function WarningMessage(aCaption: String; aMessage: String): Integer;
     function QuestionMessage(aCaption: String; aMessage: String): Integer;
     function getProcessReturn(aReturn: TMessageReturn): Integer;
+
+    { Date Functions }
     function getDataAtual: TDate;
-    function Split(aDelimiter: Char; aValue: String; aLeft: Boolean = True): String;
+
+    { SO Functions }
     function GetWindowsVersion: string;
+    function GetEnvironmentVar(const cVarName: String): String;
     function GetSOVersion: String;
+
+    { Text Functions }
+    function Split(aDelimiter: Char; aValue: String; aLeft: Boolean = True): String;
+
+    { Number Functions}
+    function IsNumber(const aValue: String): Boolean;
+    function OnlyNymbers(const aValue: String): Integer;
+
+    { Criptografia }
+    function getEncodeBase64(aValue: String): String;
+    function getDecodeBase64(aValue: String): String;
+
+    { Senha diária }
+    function getSenhaDiaria: Integer;
 
     { Procedures }
     procedure SubMenuPopUp(Sender: TObject; var advMenu: TAdvPopupMenu);
+
+    { Matemáticas }
+    function GetRoundTo(const Value: Extended; const digits: Integer): Extended;
 
 
 const
@@ -32,8 +54,13 @@ const
     cPESQ_CODIGO = 0;
     cPESQ_NOME = 1;
 
+const
+    cKey = 'RuiGiovannaNatã201019821987';
+
 implementation
 
+uses
+    uDataModule, uConfiguracoes;
 
 function getDataAtual: TDate;
 begin
@@ -140,10 +167,13 @@ begin
     aListString.Delimiter       := aDelimiter;
     aListString.StrictDelimiter := True; // Requires D2006 or newer.
     aListString.DelimitedText   := aValue;
+
     if aLeft then
         Result := aListString[0].Trim
+    else if aListString.Count > 1 then
+        Result := aListString[1].Trim
     else
-        Result := aListString[1].Trim;
+        Result := aListString[0].Trim;
 end;
 
 function GetWindowsVersion: string;
@@ -165,6 +195,11 @@ begin
         0: result := 'Windows 10';
       end;
   end;
+end;
+
+function GetEnvironmentVar(const cVarName: String): String;
+begin
+    Result := GetEnvironmentVariable(PChar(cVarName));
 end;
 
 function GetSOVersion: String;
@@ -196,5 +231,85 @@ begin
         Reg.Free;
     end;
 end;
+
+function getEncodeBase64(aValue: String): String;
+var
+    aBase64: TBase64Encoding;
+begin
+    aBase64 := TBase64Encoding.Create(0);
+    Result := aBase64.Encode(aValue + ' || ' + cKey);
+end;
+
+function getDecodeBase64(aValue: String): String;
+var
+    aBase64: TNetEncoding;
+    aDecode: String;
+    aArray: TStringList;
+begin
+    aBase64 := TNetEncoding.Create;
+    aDecode := TNetEncoding.Base64.Decode(avalue);
+    Result := Split('|', aDecode);
+end;
+
+function getSenhaDiaria: Integer;
+var
+    myDate : TDateTime;
+    myYear, myMonth, myDay : Word;
+    myHour, myMin, mySec, myMilli : Word;
+    aSenha: Integer;
+begin
+    myDate := Now;
+    DecodeDateTime(myDate, myYear, myMonth, myDay, myHour, myMin, mySec, myMilli);
+
+    aSenha := myYear - 1000;
+    aSenha := aSenha + (myMonth + myYear);
+    aSenha := aSenha + (myMonth * myDay);
+    aSenha := aSenha + (myDay + myMonth + myYear);
+    aSenha := aSenha + (myDay * myDay) + myMonth;
+
+    Result := aSenha;
+end;
+
+function IsNumber(const aValue: String): Boolean;
+begin
+    Result := True;
+    if StrToIntDef(aValue, 0) = 0 then
+        Result := False;
+end;
+
+function OnlyNymbers(const aValue: String): Integer;
+var
+    aText: PChar;
+    aTextResult: String;
+begin
+    aText := PChar(aValue);
+    Result := 0;
+
+    while (aText^ <> #0) do
+    begin
+        {$IFDEF UNICODE}
+        if CharInSet(aText^, ['0'..'9']) then
+        {$ELSE}
+        if vText^ in ['0'..'9'] then
+        {$ENDIF}
+          aTextResult := aTextResult + aText^;
+
+        Inc(aText);
+    end;
+    Result := StrToInt(aTextResult);
+end;
+
+function GetRoundTo(const Value: Extended; const digits: Integer): Extended;
+var
+    sFrac, sInt, Valor: String;
+begin
+    Result := RoundTo(Value, digits);
+
+    if DM.ModoArredondamento = ARRD_TRUNCATE then
+    begin
+        Result := Trunc(Value * 100) / 100;
+    end;
+end;
+
 
 end.
