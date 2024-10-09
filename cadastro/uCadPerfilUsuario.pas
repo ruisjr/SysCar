@@ -5,9 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormDefault, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls, Vcl.WinXCtrls, Vcl.StdCtrls,
-  AdvEdit,
+  AdvEdit, System.Generics.Collections,
   {Classes de negócio}
-  uUsuario, SimpleInterface, SimpleDao, SimpleAttributes;
+  uUsuario, SimpleInterface, SimpleDao, SimpleAttributes, Vcl.ComCtrls;
 
 type
   TfrmCadPerfilUsuario = class(TfrmFormDefault)
@@ -20,13 +20,21 @@ type
 
     lblCodigo: TLabel;
     lblNome: TLabel;
+    tvPerfil: TTreeView;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure tvPerfilDblClick(Sender: TObject);
+    procedure btnInserirClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
   private
     { Private declarations }
     FPerfil: TPerfilUsuario;
     DAOPerfil: iSimpleDao<TPerfilUsuario>;
+
+    procedure FillPerfil;
   public
     { Public declarations }
     procedure Insert; override;
@@ -45,16 +53,62 @@ uses uDataModule, uUtil;
 
 { TfrmCadPerfilUsuario }
 
+procedure TfrmCadPerfilUsuario.btnExcluirClick(Sender: TObject);
+begin
+  inherited;
+    Self.FillPerfil;
+end;
+
+procedure TfrmCadPerfilUsuario.btnInserirClick(Sender: TObject);
+begin
+  inherited;
+    edtNome.SetFocus;
+end;
+
+procedure TfrmCadPerfilUsuario.btnSalvarClick(Sender: TObject);
+begin
+  inherited;
+    Self.FillPerfil;
+end;
+
 procedure TfrmCadPerfilUsuario.Delete;
 begin
   inherited;
     DAOPerfil.Delete('id', self.ID.ToString);
 end;
 
+procedure TfrmCadPerfilUsuario.FillPerfil;
+var
+    ix: Integer;
+    oLista: TObjectList<TPerfilUsuario>;
+begin
+  inherited;
+    tvPerfil.Items.Clear;
+
+    oLista := TObjectList<TPerfilUsuario>.Create;
+    try
+        DAOPerfil.SQL.Fields('id, nome').OrderBy('nome ASC').&End.Find(oLista);
+        for ix := 0 to oLista.count -1 do
+        begin
+            tvPerfil.Items.Add(Nil, oLista[ix].ID.ToString + ' - ' + oLista[ix].Nome)
+        end;
+    finally
+        oLista.Free;
+    end;
+end;
+
 procedure TfrmCadPerfilUsuario.FormCreate(Sender: TObject);
 begin
   inherited;
-    DAOPerfil := TSimpleDAO<TPerfilUsuario>.New(DM.GetConn);
+    DAOPerfil := TSimpleDao<TPerfilUsuario>.New(DM.GetConn);
+
+    Self.FillPerfil;
+end;
+
+procedure TfrmCadPerfilUsuario.FormDestroy(Sender: TObject);
+begin
+    FPerfil.Free;
+  inherited;
 end;
 
 procedure TfrmCadPerfilUsuario.FormShow(Sender: TObject);
@@ -80,6 +134,14 @@ begin
   inherited;
     FPerfil.Parse(self);
     DAOPerfil.Insert(FPerfil);
+end;
+
+procedure TfrmCadPerfilUsuario.tvPerfilDblClick(Sender: TObject);
+begin
+  inherited;
+    edtCodigo.Value := Split('-', tvPerfil.Selected.Text);
+    edtNome.Value := Split('-', tvPerfil.Selected.Text, False);
+    tglAtivo.State := tssOn;
 end;
 
 procedure TfrmCadPerfilUsuario.Update;

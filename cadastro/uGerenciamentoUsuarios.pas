@@ -56,7 +56,8 @@ uses uCallForm, uDataModule;
 procedure TfrmGerenciamentoUsuario.btnSegurancaClick(Sender: TObject);
 begin
   inherited;
-    TCallForm.CallFormCad('TfrmCadRegrasSeguranca', 0);
+    TCallForm.CallFormCad('TfrmCadRegrasSeguranca', 1);
+    Self.AtualizaLista;
 end;
 
 procedure TfrmGerenciamentoUsuario.btnSegurancaMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -68,13 +69,11 @@ end;
 procedure TfrmGerenciamentoUsuario.AtualizaLista;
 var
     ix: Integer;
-    DAO: iSimpleDao<TUsuario>;
     oLista: TObjectList<TUsuario>;
 begin
-    DAO := TSimpleDao<TUsuario>.New(DM.GetConn);
     oLista := TObjectList<TUsuario>.Create;
     try
-        DAO.SQL.OrderBy('nome').&End.Find(oLista);
+        DAOUsuario.SQL.Fields('id, nome, login, ativo').OrderBy('nome').&End.Find(oLista);
         with cdsUsuarios do
         begin
             if Active then
@@ -152,9 +151,8 @@ end;
 procedure TfrmGerenciamentoUsuario.FormCreate(Sender: TObject);
 begin
   inherited;
-    grdFiltro.DataSource := self.DSDados;
-    DAOUsuario := TSimpleDao<TUsuario>.New(DM.GetConn).DataSource(self.DSDados);
-    DAOUsuario.SQL.Fields('id, nome, login, ativo').OrderBy('nome').&End.Find;
+    DAOUsuario := TSimpleDao<TUsuario>.New(DM.GetConn);
+    Self.AtualizaLista;
 end;
 
 procedure TfrmGerenciamentoUsuario.FormShow(Sender: TObject);

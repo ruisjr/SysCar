@@ -82,6 +82,7 @@ type
     procedure btnLocalizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCepClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
     DAOEmpresa: iSimpleDAO<TPessoa>;
@@ -208,6 +209,12 @@ begin
         on E: Exception do
             ErrorMessage(self.Caption, 'Ocorreu um erro: ' + #13+#10 + E.Message);
     end;
+end;
+
+procedure TfrmCadEmpresa.FormDestroy(Sender: TObject);
+begin
+    FPessoa.Free;
+  inherited;
 end;
 
 procedure TfrmCadEmpresa.Insert;

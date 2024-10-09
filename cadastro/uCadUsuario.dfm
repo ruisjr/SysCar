@@ -1,16 +1,20 @@
 inherited frmCadUsuario: TfrmCadUsuario
   Caption = 'frmCadUsuario'
-  ClientHeight = 360
+  ClientHeight = 355
   ClientWidth = 640
+  Constraints.MaxHeight = 355
+  Constraints.MaxWidth = 640
+  Constraints.MinHeight = 355
+  Constraints.MinWidth = 640
   OnShow = FormShow
   ExplicitWidth = 640
-  ExplicitHeight = 360
+  ExplicitHeight = 355
   TextHeight = 20
   inherited pnlFundo: TPanel
     Width = 640
-    Height = 360
+    Height = 355
     ExplicitWidth = 640
-    ExplicitHeight = 360
+    ExplicitHeight = 355
     object lblCodigo: TLabel [0]
       Left = 8
       Top = 55
@@ -93,10 +97,10 @@ inherited frmCadUsuario: TfrmCadUsuario
       end
     end
     inherited pnlBotoes: TJvPanel
-      Top = 302
+      Top = 297
       Width = 630
       TabOrder = 2
-      ExplicitTop = 302
+      ExplicitTop = 297
       ExplicitWidth = 630
       inherited btnLocalizar: TAeroSpeedButton
         Left = 577

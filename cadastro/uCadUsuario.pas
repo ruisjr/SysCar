@@ -32,6 +32,7 @@ type
     imgFoto: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
     DAOUsuario: iSimpleDAO<TUsuario>;
@@ -96,6 +97,12 @@ begin
   inherited;
     DAOUsuario := TSimpleDAO<TUsuario>.New(DM.GetConn).DataSource(self.dsDados);
     Self.FillPerfil;
+end;
+
+procedure TfrmCadUsuario.FormDestroy(Sender: TObject);
+begin
+    FUsuario.Free;
+  inherited;
 end;
 
 procedure TfrmCadUsuario.FormShow(Sender: TObject);

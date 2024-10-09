@@ -7,10 +7,10 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormDefault, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls, Vcl.StdCtrls, AdvEdit,
   Vcl.WinXCtrls, Vcl.ComCtrls, AdvDateTimePicker, AdvCombo, System.Generics.Collections,
   { Classes de Negócio }
-  uProduto, SimpleInterface, SimpleDao, SimpleAttributes, JvRadioGroup, Vcl.Mask, AdvSpin;
+  uProduto, SimpleInterface, SimpleDao, SimpleAttributes, JvRadioGroup, Vcl.Mask, AdvSpin, uFormSingleDefault;
 
 type
-  TfrmCadProduto = class(TfrmFormDefault)
+  TfrmCadProduto = class(TfrmSingleFormDefault)
 
     [Bind('id')]
     edtCodigo: TAdvEdit;

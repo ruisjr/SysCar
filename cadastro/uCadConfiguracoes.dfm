@@ -9,10 +9,12 @@ inherited frmConfiguracoes: TfrmConfiguracoes
       inherited btnLocalizar: TAeroSpeedButton
         Left = 514
         Visible = False
+        ExplicitLeft = 514
       end
       inherited btnExcluir: TAeroSpeedButton
         Left = 430
         Visible = False
+        ExplicitLeft = 430
       end
       inherited btnSalvar: TAeroSpeedButton
         Left = 570
@@ -25,9 +27,11 @@ inherited frmConfiguracoes: TfrmConfiguracoes
       inherited btnInserir: TAeroSpeedButton
         Left = 374
         Visible = False
+        ExplicitLeft = 374
       end
       inherited pnlDivisor: TPanel
         Left = 486
+        ExplicitLeft = 486
       end
     end
     object pgcPrincipal: TAdvPageControl
@@ -70,10 +74,11 @@ inherited frmConfiguracoes: TfrmConfiguracoes
         TabColor = clBtnFace
         TabColorTo = clNone
         object grpPesquisa: TGroupBox
-          Left = 3
-          Top = 3
-          Width = 294
+          Left = 0
+          Top = 0
+          Width = 800
           Height = 118
+          Align = alTop
           Caption = ' Pesquisa '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -82,6 +87,9 @@ inherited frmConfiguracoes: TfrmConfiguracoes
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          ExplicitLeft = 3
+          ExplicitTop = 3
+          ExplicitWidth = 294
           object lblTipoPesquisa: TLabel
             Left = 16
             Top = 32
@@ -145,6 +153,31 @@ inherited frmConfiguracoes: TfrmConfiguracoes
             LabelFont.Name = 'Segoe UI'
             LabelFont.Style = []
             TabOrder = 1
+          end
+        end
+        object GroupBox1: TGroupBox
+          Left = 0
+          Top = 118
+          Width = 800
+          Height = 201
+          Align = alClient
+          Caption = 'Op'#231#245'es'
+          TabOrder = 1
+          ExplicitLeft = 3
+          ExplicitTop = 127
+          ExplicitWidth = 185
+          ExplicitHeight = 105
+          object rgArredondamento: TRadioGroup
+            Left = 8
+            Top = 25
+            Width = 262
+            Height = 65
+            Caption = 'Arredondamento'
+            Columns = 2
+            Items.Strings = (
+              'Arredondar'
+              'Truncar')
+            TabOrder = 0
           end
         end
       end

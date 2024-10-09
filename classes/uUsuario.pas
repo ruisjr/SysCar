@@ -18,6 +18,8 @@ Type
     FNome: String;
     FEmail: String;
     FAtivo: Boolean;
+    FUltimoAcesso: TDateTime;
+    FBloqueado: Boolean;
   public
     constructor Create;
     destructor Destroy; override;
@@ -36,6 +38,10 @@ Type
     property Ativo: Boolean read FAtivo write FAtivo;
     [DBField('perfil')]
     property Perfil: Integer read FPerfil write FPerfil;
+    [DBField('ult_acesso')]
+    property UltimoAcesso: TDateTime read FUltimoAcesso write FUltimoAcesso;
+    [DBField('bloqueado')]
+    property Bloqueado: Boolean read FBloqueado write FBloqueado;
   end;
 
   [Table('perfil_usuario')]
@@ -44,6 +50,8 @@ Type
     FAtivo: Boolean;
     FID: Integer;
     FNome: String;
+    FUltimoAcesso: TDateTime;
+    FSenha: string;
   public
     constructor Create;
     destructor Destroy; override;

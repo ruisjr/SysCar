@@ -5,19 +5,58 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormDefault, AeroButtons, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.ExtCtrls, Vcl.ComCtrls,
-  System.Generics.Collections,
+  Vcl.Samples.Spin, Vcl.StdCtrls, AdvGroupBox, AdvOfficeButtons,
   {Classes de negócio}
-  uUsuario, SimpleInterface, SimpleDao, SimpleAttributes;
+  uRegrasSeguranca, SimpleInterface, SimpleDao, SimpleAttributes;
 
 type
   TfrmCadRegrasSeguranca = class(TfrmFormDefault)
-    tvPerfil: TTreeView;
-    procedure FormCreate(Sender: TObject);
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+
+    [Bind('habilita_regra_bloqueio')]
+    grpRegrasBloqueio: TAdvGroupBox;
+    [Bind('habilita_regra_senha')]
+    grpRegrasSenha: TAdvGroupBox;
+
+    [Bind('qtd_minima_caracter')]
+    spMinimoCaracter: TSpinEdit;
+    [Bind('qtd_maxima_caracter')]
+    spMaximoCaracter: TSpinEdit;
+    [Bind('qtd_minima_numerico')]
+    spMinimoNumerico: TSpinEdit;
+    [Bind('qtd_minima_maiuscula')]
+    spMinimoMaisculo: TSpinEdit;
+    [Bind('qtd_minima_minuscula')]
+    spMinimoMinusculo: TSpinEdit;
+    [Bind('qtd_minima_especial')]
+    spMinimoEspecial: TSpinEdit;
+    [Bind('qtd_retentativas')]
+    spRetentativa: TSpinEdit;
+    [Bind('periodo_maximo_inatividade')]
+    spInatividade: TSpinEdit;
+    [Bind('periodo_expiracao')]
+    spExpiracao: TSpinEdit;
+    [Bind('qtd_senha_historico')]
+    spHistorico: TSpinEdit;
+    procedure FormShow(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure grpRegrasBloqueioCheckBoxClick(Sender: TObject);
   private
     { Private declarations }
-    DAOPerfil: iSimpleDao<TPerfilUsuario>;
+    FRegra: TRegraSeguranca;
+    DAORegra: iSimpleDao<TRegraSeguranca>;
   public
     { Public declarations }
+    procedure Update; override;
   end;
 
 var
@@ -29,25 +68,45 @@ implementation
 
 uses uDataModule;
 
-procedure TfrmCadRegrasSeguranca.FormCreate(Sender: TObject);
-var
-    ix: Integer;
-    oLista: TObjectList<TPerfilUsuario>;
+procedure TfrmCadRegrasSeguranca.FormDestroy(Sender: TObject);
+begin
+    FRegra.Free;
+  inherited;
+end;
+
+procedure TfrmCadRegrasSeguranca.FormShow(Sender: TObject);
 begin
   inherited;
-    tvPerfil.Items.Clear;
+    DAORegra := TSimpleDao<TRegraSeguranca>.New(DM.GetConn);
+    FRegra := DAORegra.SQL.OrderBy('id').&End.Find(self.ID);
+    FRegra.Loads(Self, FRegra);
+end;
 
-    oLista := TObjectList<TPerfilUsuario>.Create;
-    try
-        DAOPerfil := TSimpleDao<TPerfilUsuario>.New(DM.GetConn);
-        DAOPerfil.SQL.Fields('id, nome').OrderBy('nome ASC').&End.Find(oLista);
-        for ix := 0 to oLista.count -1 do
+procedure TfrmCadRegrasSeguranca.grpRegrasBloqueioCheckBoxClick(Sender: TObject);
+var
+    nIndex: Integer;
+begin
+  inherited;
+    if grpRegrasBloqueio.CheckBox.Checked then
+    begin
+        for nIndex := 0 to grpRegrasBloqueio.ControlCount -1 do
         begin
-            tvPerfil.Items.Add(Nil, oLista[ix].Nome)
+            if grpRegrasBloqueio.Controls[nIndex] is TSpinEdit then
+            begin
+                TSpinEdit(grpRegrasBloqueio.Controls[nIndex]).Refresh;
+                if TSpinEdit(grpRegrasBloqueio.Controls[nIndex]).Value = Null then
+                    TSpinEdit(grpRegrasBloqueio.Controls[nIndex]).Value := (grpRegrasBloqueio.Controls[nIndex] as TSpinEdit).MinValue;
+            end;
         end;
-    finally
-        oLista.Free;
     end;
+end;
+
+procedure TfrmCadRegrasSeguranca.Update;
+begin
+  inherited;
+    FRegra.Parse(self);
+    FRegra.ID := Self.ID;
+    DAORegra.Update(FRegra);
 end;
 
 initialization

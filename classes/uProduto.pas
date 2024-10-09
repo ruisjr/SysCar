@@ -59,7 +59,7 @@ Type
         property DataCadastro: TDateTime read FDataCadastro write FDataCadastro;
         [DBField('ativo'), NotNull]
         property Ativo: Boolean read FAtivo write FAtivo;
-        [DBField('tipo'), NotNull]
+        [DBField('tipo'), NotNull, Ignore]
         property Tipo: Integer read FTipo write FTipo;
         [DBField('preco_unit'), NotNull]
         property PrecoUnitario: Currency read FPrecoUnitario write FPrecoUnitario;

@@ -86,18 +86,9 @@ inherited frmCadProduto: TfrmCadProduto
     inherited pnlTitulo: TJvPanel
       Caption = 'Cadastro de Produto'
       TabOrder = 8
-      ExplicitLeft = 5
-      ExplicitTop = 5
-      ExplicitWidth = 808
     end
     inherited pnlBotoes: TJvPanel
       TabOrder = 9
-      ExplicitLeft = 5
-      ExplicitTop = 411
-      ExplicitWidth = 808
-      inherited pnlDivisor: TPanel
-        ExplicitLeft = 727
-      end
     end
     object edtCodigo: TAdvEdit
       Left = 8

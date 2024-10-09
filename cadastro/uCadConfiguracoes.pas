@@ -21,6 +21,8 @@ type
     grpPesquisa: TGroupBox;
     lblTipoPesquisa: TLabel;
     lblFiltrarPor: TLabel;
+    GroupBox1: TGroupBox;
+    rgArredondamento: TRadioGroup;
 
     procedure FormCreate(Sender: TObject);
   private

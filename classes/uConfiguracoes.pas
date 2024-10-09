@@ -14,6 +14,7 @@ Type
     FId: Integer;
     FTipoPesquisa: integer;
     FFiltrarPor: Integer;
+    FArredondamento: Integer;
   public
     constructor Create;
     destructor Destroy; override;
@@ -24,7 +25,13 @@ Type
     property TipoPesquisa: Integer read FTipoPesquisa write FTipoPesquisa;
     [DBField('filtrar_por'), NotNull]
     property FiltrarPor: Integer read FFiltrarPor write FFiltrarPor;
+    [DBField('arredondamento')]
+    property Arredondamento: Integer read FArredondamento write FArredondamento;
   end;
+
+const
+    ARRD_ROUNDED = 0;
+    ARRD_TRUNCATE = 1;
 
 implementation
 

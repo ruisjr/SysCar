@@ -1,41 +1,45 @@
 inherited frmGerenciamentoUsuario: TfrmGerenciamentoUsuario
   Caption = 'frmGerenciamentoUsuario'
-  ClientHeight = 604
-  ClientWidth = 792
+  ClientHeight = 580
+  ClientWidth = 865
+  Constraints.MaxHeight = 580
+  Constraints.MaxWidth = 865
+  Constraints.MinHeight = 580
+  Constraints.MinWidth = 865
   OnShow = FormShow
-  ExplicitWidth = 792
-  ExplicitHeight = 604
+  ExplicitWidth = 865
+  ExplicitHeight = 580
   TextHeight = 20
   inherited pnlFundo: TPanel
-    Width = 792
-    Height = 604
+    Width = 865
+    Height = 580
     ExplicitWidth = 792
     ExplicitHeight = 604
     inherited pnlTitulo: TJvPanel
-      Width = 782
+      Width = 855
       Caption = 'Gerenciamento de Usu'#225'rios'
       ExplicitWidth = 782
       inherited btnClose: TAeroSpeedButton
-        Left = 744
+        Left = 817
         ExplicitLeft = 744
       end
     end
     inherited pnlBotoes: TJvPanel
-      Top = 546
-      Width = 782
+      Top = 522
+      Width = 855
       Visible = False
       ExplicitTop = 546
       ExplicitWidth = 782
       inherited btnLocalizar: TAeroSpeedButton
-        Left = 729
+        Left = 802
         ExplicitLeft = 729
       end
       inherited btnExcluir: TAeroSpeedButton
-        Left = 645
+        Left = 718
         ExplicitLeft = 645
       end
       inherited btnSalvar: TAeroSpeedButton
-        Left = 589
+        Left = 662
         Glyph.Data = {
           52270000424D5227000000000000420000002800000032000000320000000100
           20000300000010270000130B0000130B000000000000000000000000FF0000FF
@@ -355,11 +359,11 @@ inherited frmGerenciamentoUsuario: TfrmGerenciamentoUsuario
         ExplicitLeft = 589
       end
       inherited btnInserir: TAeroSpeedButton
-        Left = 533
+        Left = 606
         ExplicitLeft = 533
       end
       inherited pnlDivisor: TPanel
-        Left = 701
+        Left = 774
         ExplicitLeft = 701
       end
     end
@@ -368,10 +372,11 @@ inherited frmGerenciamentoUsuario: TfrmGerenciamentoUsuario
       Left = 5
       Top = 51
       Width = 130
-      Height = 489
+      Height = 465
       Align = alLeft
       BevelOuter = bvLowered
       TabOrder = 2
+      ExplicitHeight = 489
       object btnUsuarios: TAeroSpeedButton
         AlignWithMargins = True
         Left = 5
@@ -734,17 +739,19 @@ inherited frmGerenciamentoUsuario: TfrmGerenciamentoUsuario
       AlignWithMargins = True
       Left = 141
       Top = 51
-      Width = 646
-      Height = 489
+      Width = 719
+      Height = 465
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 3
+      ExplicitWidth = 646
+      ExplicitHeight = 489
       object grdFiltro: TJvDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 640
-        Height = 483
+        Width = 713
+        Height = 459
         Align = alClient
         DataSource = DSDados
         Font.Charset = DEFAULT_CHARSET
