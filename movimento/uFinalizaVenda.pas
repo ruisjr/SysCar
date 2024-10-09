@@ -8,7 +8,7 @@ uses
   AdvSmoothListBox, AdvUtil, Vcl.Grids, AdvObj, BaseGrid, AdvGrid, Data.DB, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvExStdCtrls, JvGroupBox,
   AdvGlowButton, System.Generics.Collections, Datasnap.DBClient, Datasnap.Provider,Vcl.Menus, AdvMenus,
   { Classes de negpocio }
-  SimpleInterface, SimpleDao, uFormaPagamento, ucMovimento, uLancamento;
+  SimpleInterface, SimpleDao, uFormaPagamento, ucMovimento, uLancamento, uProduto;
 
 type
   TFrmFinalizaVenda = class(TForm)
@@ -18,19 +18,7 @@ type
     pnlBotoes: TJvPanel;
     btnFinalizar: TAeroSpeedButton;
     pnlValores: TPanel;
-    Panel7: TPanel;
-    Label8: TLabel;
-    edtTotalpagar: TAdvEdit;
-    Panel6: TPanel;
-    Label2: TLabel;
-    edtValorDesconto: TAdvEdit;
-    Panel8: TPanel;
-    lblTroco: TLabel;
-    edtTroco: TAdvEdit;
-    JvGroupBox1: TJvGroupBox;
-    edtPercentualDesconto: TAdvEdit;
-    Label4: TLabel;
-    Label5: TLabel;
+    pnlTempoDecorrido: TJvGroupBox;
     cdsPagamentos: TClientDataSet;
     DSPagamentos: TDataSource;
     cdsPagamentosid: TIntegerField;
@@ -38,73 +26,66 @@ type
     cdsPagamentosvalor: TFloatField;
     Label7: TLabel;
     Label9: TLabel;
-    Label10: TLabel;
     lblEntrada: TLabel;
     lblSaida: TLabel;
-    lblTempoTotal: TLabel;
     Label6: TLabel;
     lblTicket: TLabel;
     ppmMenuLateral: TAdvPopupMenu;
     mnInserirPagamento: TMenuItem;
     mnExcluirPagamento: TMenuItem;
     cdsProdutos: TClientDataSet;
-    IntegerField1: TIntegerField;
-    StringField1: TStringField;
-    FloatField1: TFloatField;
+    id: TIntegerField;
+    nome_reduzido: TStringField;
+    preco_unit: TFloatField;
     dsProdutos: TDataSource;
     pnlLateralEsquerda: TPanel;
     GroupBox1: TGroupBox;
     grdProduto: TJvDBGrid;
-    GroupBox2: TGroupBox;
-    pnlFormaPagamento: TPanel;
-    slbFormaPagamento: TAdvSmoothListBox;
-    pnlPagamentosRealizados: TPanel;
-    grdPagamentos: TJvDBGrid;
-    Panel1: TPanel;
-    btnMenuPagamento: TAdvGlowButton;
     pnlCliente: TPanel;
-    Label1: TLabel;
+    lblNomeCliente: TLabel;
     edtCodigoMensalista: TAdvEdit;
     pnlNomeMensalista: TPanel;
     btnConsultaCliente: TAdvGlowButton;
-    Panel2: TPanel;
-    lblSaldoPagar: TLabel;
-    edtSaldoPagar: TAdvEdit;
-    cdsProdutosquantidade: TIntegerField;
+    quantidade: TIntegerField;
     Panel3: TPanel;
-    btnIncluirProduto: TAdvGlowButton;
-    ppmMenuProdutos: TAdvPopupMenu;
-    MenuItem1: TMenuItem;
-    MenuItem2: TMenuItem;
+    btnRemoverProduto: TAdvGlowButton;
+    lblTempoTotal: TLabel;
+    Label1: TLabel;
+    Panel1: TPanel;
+    JvGroupBox1: TJvGroupBox;
+    lblTotalPagar: TLabel;
+    JvGroupBox2: TJvGroupBox;
+    lblTotalServicos: TLabel;
+    JvGroupBox3: TJvGroupBox;
+    lblTotalProdutos: TLabel;
+    tipo: TIntegerField;
+    cdsProdutostotal: TFloatField;
+    btnAdicionarProduto: TAdvGlowButton;
     procedure pnlTituloMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtValorDescontoChange(Sender: TObject);
-    procedure edtPercentualDescontoChange(Sender: TObject);
     procedure btnFinalizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnConsultaClienteClick(Sender: TObject);
-    procedure edtCodigoMensalistaKeyPress(Sender: TObject; var Key: Char);
-    procedure slbFormaPagamentoDblClick(Sender: TObject);
     procedure grdPagamentosKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnMenuPagamentoClick(Sender: TObject);
-    procedure mnInserirPagamentoClick(Sender: TObject);
-    procedure cdsPagamentosAfterPost(DataSet: TDataSet);
-    procedure btnIncluirProdutoClick(Sender: TObject);
+    procedure cdsProdutosCalcFields(DataSet: TDataSet);
+    procedure btnAdicionarProdutoClick(Sender: TObject);
+    procedure edtCodigoMensalistaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure btnRemoverProdutoClick(Sender: TObject);
   private
     { Private declarations }
-    DAO: iSimpleDao<TFormaPagamento>;
     DAOMov: iSimpleDao<TMovimento>;
+    DAOProduto: iSimpleDAO<TProduto>;
     DSFP: TDataSource;
     Ticket: Integer;
 
     { Procedimentos }
     procedure PesquisaMensalista(aCodigo: Integer; aSendMsg: Boolean = False);
-    procedure CarregarFormasPagamento;
     procedure CarregarProdutos(aIdProduto: Integer; aQuantidade: Integer);
     procedure AtualizarPagamentos;
     procedure CalcularTotais;
-    procedure CalcularTroco;
+    procedure CalcularProdutos;
     procedure InserirLancamento(oMovimento: TMovimento);
     procedure InserirPagamento(aFormaPagamento: String; aValor: Currency);
     procedure AtualizarBaixa(aHoraEntrada, aDataEntrada: TDateTime; aHoraSaida, aDataSaida: TDateTime);
@@ -123,7 +104,32 @@ implementation
 {$R *.dfm}
 
 uses
-    uDataModule, uPessoa, uCallForm, uUtil, uFinalizaVendaFormaPagto, DateUtils, uProduto, uLogs;
+    uDataModule, uPessoa, uCallForm, uUtil, uFinalizaVendaFormaPagto, DateUtils, uLogs;
+
+procedure TFrmFinalizaVenda.btnAdicionarProdutoClick(Sender: TObject);
+var
+   aCodProduto: Integer;
+   oProduto: TProduto;
+begin
+    TCallForm.CallFormPesq('TfrmVendaProduto', 'Consulta de Produto', aCodProduto);
+    if aCodProduto > 0 then
+    begin
+        oProduto := DAOProduto.Find(aCodProduto);
+        try
+            cdsProdutos.Append;
+            cdsProdutos.FieldByName('id').AsInteger := oProduto.ID;
+            cdsProdutos.FieldByName('nome_reduzido').AsString := oProduto.NomeReduzido;
+            cdsProdutos.FieldByName('quantidade').AsInteger := 1;
+            cdsProdutos.FieldByName('preco_unit').AsFloat := oProduto.PrecoUnitario;
+            cdsProdutos.FieldByName('tipo').AsInteger := oProduto.Tipo;
+            cdsProdutos.Post;
+
+            CalcularProdutos;
+        finally
+            oProduto.Free;
+        end;
+    end;
+end;
 
 procedure TFrmFinalizaVenda.AtualizarBaixa(aHoraEntrada, aDataEntrada: TDateTime; aHoraSaida, aDataSaida: TDateTime);
 var
@@ -207,35 +213,32 @@ end;
 procedure TFrmFinalizaVenda.btnFinalizarClick(Sender: TObject);
 var
     oMovimento: TMovimento;
+    aRetorno: Integer;
 begin
-    DAOMov := TSimpleDao<TMovimento>.New(DM.GetConn);
-    oMovimento := DAOMov.Find('ticket = ' + lblTicket.Caption);
-    try
-        try
-            oMovimento.DataSaida := Now.GetDate;
-            oMovimento.HoraSaida := Now.GetTime;
-            oMovimento.Situacao := 'F';
-
-            { Realiza os Movimentos Financeiros }
-            InserirLancamento(oMovimento);
-            DaoMov.Update(oMovimento);
-        except
-            On E: Exception do
-            begin
-                ErrorMessage(self.Caption, 'Não foi possível finalizar a venda de número: ' + lblTicket.Caption + '.' + #13+#10 + 'Motivo: ' + E.Message);
-                abort;
-            end;
-        end;
-    finally
-        oMovimento.Free;
-    end;
-
-    Close;
-end;
-
-procedure TFrmFinalizaVenda.btnIncluirProdutoClick(Sender: TObject);
-begin
-    SubMenuPopUp(Sender, ppmMenuProdutos);
+    TCallForm.CallFormPesq('TfrmFinalizaVendaPagamento', 'Pagamento', aRetorno);
+//    DAOMov := TSimpleDao<TMovimento>.New(DM.GetConn);
+//    oMovimento := DAOMov.Find('ticket = ' + lblTicket.Caption);
+//    try
+//        try
+//            oMovimento.DataSaida := Now.GetDate;
+//            oMovimento.HoraSaida := Now.GetTime;
+//            oMovimento.Situacao := 'F';
+//
+//            { Realiza os Movimentos Financeiros }
+//            InserirLancamento(oMovimento);
+//            DaoMov.Update(oMovimento);
+//        except
+//            On E: Exception do
+//            begin
+//                ErrorMessage(self.Caption, 'Não foi possível finalizar a venda de número: ' + lblTicket.Caption + '.' + #13+#10 + 'Motivo: ' + E.Message);
+//                abort;
+//            end;
+//        end;
+//    finally
+//        oMovimento.Free;
+//    end;
+//
+//    Close;
 end;
 
 procedure TFrmFinalizaVenda.btnMenuPagamentoClick(Sender: TObject);
@@ -243,33 +246,54 @@ begin
     SubMenuPopUp(Sender, ppmMenuLateral);
 end;
 
-procedure TFrmFinalizaVenda.CalcularTroco;
-var
-    aTotal: Currency;
+procedure TFrmFinalizaVenda.btnRemoverProdutoClick(Sender: TObject);
 begin
-    aTotal := 0;
-    with cdsPagamentos do
+    if cdsProdutos.FieldByName('id').AsInteger > 0 then
     begin
-        DisableControls;
-        try
-            First;
-            while not Eof do
-            begin
-                aTotal := aTotal + FieldByName('valor').AsFloat;
-                Next;
-            end;
-        finally
-            EnableControls;
+        if QuestionMessage(self.Caption, Format('Deseja remover o produto %s?', [cdsProdutos.FieldByName('nome_reduzido').AsString])) = RET_YES then
+        begin
+            cdsProdutos.Delete;
+            cdsProdutos.Post;
         end;
     end;
-    if aTotal > StrToFloat(edtTotalpagar.Text) then
-        edtTroco.Value := aTotal - StrToFloat(edtTotalpagar.Text);
+end;
+
+procedure TFrmFinalizaVenda.CalcularProdutos;
+var
+    aTotalGeral,
+    aTotalProdutos,
+    aTotalServicos: Currency;
+begin
+    aTotalProdutos := 0;
+    aTotalServicos := 0;
+    aTotalGeral := 0;
+
+    cdsProdutos.DisableControls;
+    try
+        cdsProdutos.First;
+        while not cdsProdutos.Eof do
+        begin
+            if cdsProdutos.FieldByName('tipo').AsInteger = 0 then
+                aTotalProdutos := aTotalProdutos + (cdsProdutos.FieldByName('total').AsFloat)
+            else
+                aTotalServicos := aTotalServicos + cdsProdutos.FieldByName('total').AsFloat;
+
+            aTotalGeral := aTotalGeral + cdsProdutos.FieldByName('total').AsFloat;
+            cdsProdutos.Next;
+        end;
+    finally
+        cdsProdutos.EnableControls;
+    end;
+
+    lblTotalServicos.Caption := FloatToStrF(aTotalServicos, ffCurrency, 10, 2);
+    lblTotalProdutos.Caption := FloatToStrF(aTotalProdutos, ffCurrency, 10, 2);
+
 end;
 
 procedure TFrmFinalizaVenda.CalcularTotais;
 var
-    DAOProduto: iSimpleDao<TProduto>;
     oProduto: TProduto;
+    DAOProduto: iSimpleDao<TProduto>;
     aDias,
     aHoras,
     aMinutos: Integer;
@@ -280,7 +304,8 @@ begin
         begin
             oProduto := DAOProduto.Find('tipo = 1 AND unidade_medida = ' + QuotedStr('H'));
             aHoras := HoursBetween(Now, StrToDateTime(lblEntrada.Caption));
-            edtTotalPagar.Value := aHoras * oProduto.PrecoUnitario;
+            lblTotalPagar.Caption := FloatToStrF(aHoras * oProduto.PrecoUnitario, ffCurrency, 10, 2);
+
             CarregarProdutos(oProduto.ID, aHoras);
         end
         else
@@ -290,49 +315,17 @@ begin
             aMinutos := MinutesBetween(Now, StrToDateTime(lblEntrada.Caption));
 
             if aMinutos <= oProduto.Tolerancia then
-                edtTotalpagar.Value := 0
+                lblTotalpagar.Caption := '0,00'
             else
-                edtTotalPagar.Value := aDias * oProduto.PrecoUnitario;
+                lblTotalpagar.Caption := FloatToStrF(aDias * oProduto.PrecoUnitario, ffCurrency, 10, 2);
 
             CarregarProdutos(oProduto.ID, aDias);
         end;
+
+        CalcularProdutos;
     finally
         if Assigned(oProduto) then
             oProduto.Free;
-    end;
-end;
-
-procedure TFrmFinalizaVenda.CarregarFormasPagamento;
-var
-    ix: Integer;
-    aName: String;
-    oLista: TObjectList<TFormaPagamento>;
-begin
-    oLista := TObjectList<TFormaPagamento>.Create;
-    try
-        DSFP := TDataSource.Create(self);
-        DAO := TSimpleDao<TFormaPagamento>.New(DM.GetConn).DataSource(DSFP);
-
-        DAO.SQL.Fields('id, nome').Where('ativo = True').OrderBy('id ASC').&End.Find(oLista);
-        slbFormaPagamento.Items.Clear;
-        for ix := 0 to oLista.Count -1 do
-        begin
-            slbFormaPagamento.Items.Insert(ix);
-            with slbFormaPagamento.Items[ix] do
-            begin
-                aName := oLista[ix].ID.ToString + ' - ' + oLista[ix].Nome;
-                Caption := aName;
-                DisplayName := aName;
-                CaptionFont.Size := 12;
-                CaptionSelectedFont.Size := 12;
-                CaptionSelectedFont.Style := [TFontStyle.fsBold];
-            end;
-        end;
-
-        cdsPagamentos.CreateDataSet;
-        cdsPagamentos.Open;
-    finally
-        FreeAndNil(oLista);
     end;
 end;
 
@@ -340,15 +333,12 @@ procedure TFrmFinalizaVenda.CarregarProdutos(aIdProduto: Integer; aQuantidade: I
 var
     ix: Integer;
     oLista: TObjectList<TProduto>;
-    DaoProduto: iSimpleDao<TProduto>;
 begin
     oLista := TObjectList<TProduto>.Create;
     try
         cdsProdutos.CreateDataSet;
 
-        DAOProduto := TSimpleDao<TProduto>.New(DM.GetConn);
-
-        DAOProduto.SQL.Fields('id, nome_reduzido, preco_unit').Where('ativo = True AND id = ' + IntToStr(aIdProduto)).OrderBy('id ASC').&End.Find(oLista);
+        DAOProduto.SQL.Fields('id, nome_reduzido, preco_unit, tipo').Where('ativo = True AND id = ' + IntToStr(aIdProduto)).OrderBy('id ASC').&End.Find(oLista);
         for ix := 0 to oLista.Count -1 do
         begin
             with cdsProdutos do
@@ -360,6 +350,7 @@ begin
                     FieldByName('nome_reduzido').AsString := oLista[ix].NomeReduzido;
                     FieldByName('quantidade').AsInteger := aQuantidade;
                     FieldByName('preco_unit').AsFloat := oLista[ix].PrecoUnitario;
+                    FieldByName('tipo').AsInteger := oLista[ix].Tipo;
                     Post;
                 finally
                     EnableControls;
@@ -373,9 +364,9 @@ begin
     end;
 end;
 
-procedure TFrmFinalizaVenda.cdsPagamentosAfterPost(DataSet: TDataSet);
+procedure TFrmFinalizaVenda.cdsProdutosCalcFields(DataSet: TDataSet);
 begin
-    CalcularTroco;
+    DataSet.FieldByName('total').AsFloat := DataSet.FieldByName('quantidade').AsFloat * DataSet.FieldByName('preco_unit').AsFloat;
 end;
 
 constructor TFrmFinalizaVenda.Create(AWoner: TComponent; aTicket: Integer);
@@ -384,19 +375,10 @@ begin
     self.Ticket := aTicket;
 end;
 
-procedure TFrmFinalizaVenda.edtValorDescontoChange(Sender: TObject);
-var
-    saldo:  Currency;
-begin
-    saldo := (StrToFloat(edtTotalpagar.Text) * StrToFloat(edtValorDesconto.Text)) / 100;
-    edtSaldoPagar.Text := FloatToStr(StrToFloat(edtTotalPagar.Text) - saldo);
-
-    edtPercentualDesconto.Text := FloatToStr((StrToFloat(edtValorDesconto.Text) / StrToFloat(edtTotalpagar.Text)) * 100);
-end;
-
 procedure TFrmFinalizaVenda.FormCreate(Sender: TObject);
 begin
-    CarregarFormasPagamento;
+    DAOProduto := TSimpleDao<TProduto>.New(DM.GetConn);
+
     AtualizarPagamentos;
     CalcularTotais;
 end;
@@ -412,7 +394,6 @@ begin
     begin
         if QuestionMessage('Exclusão de Pagamento', 'Deseja excluir a forma de pagamento ' + cdsPagamentos.FieldByName('nome').AsString + '?') = RET_YES then
         begin
-            edtSaldoPagar.Text := FloatToStr(StrToFloat(edtSaldoPagar.Text) - cdsPagamentos.FieldByName('valor').AsFloat);
             cdsPagamentos.Delete;
         end;
     end;
@@ -437,7 +418,6 @@ begin
         oLancamento.Data := Now;
         oLancamento.Documento := oMovimento.Ticket.ToString;
         oLancamento.Movimento := oMovimento.ID;
-        oLancamento.Valor := edtSaldoPagar.Value;
         oLancamento.Tipo := LANC_TIPO_ENTRADA;
         DaoLancamento.Insert(oLancamento);
         oLancamento := DaoLancamento.Find('movimento = ' + oMovimento.ID.ToString + ' AND data = ' + QuotedStr(DateTimeToStr(oLancamento.Data)));
@@ -454,7 +434,6 @@ begin
                     oLancamentoProduto.Lancamento := oLancamento.ID;
                     oLancamentoProduto.Valor := FieldByName('preco_unit').AsFloat * FieldByName('quantidade').AsFloat;
                     oLancamentoProduto.PrecoUnitario := FieldByName('preco_unit').AsFloat;
-                    oLancamentoProduto.Desconto := (edtPercentualDesconto.Value * oLancamentoProduto.Valor) / 100;
                     oLancamentoProduto.Produto := FieldByName('id').AsInteger;
                     DaoLancamentoProduto.Insert(oLancamentoProduto);
                     Next;
@@ -470,45 +449,31 @@ begin
 end;
 
 procedure TFrmFinalizaVenda.InserirPagamento(aFormaPagamento: String; aValor: Currency);
-var
-    Frm: TfrmFinalizaVendaFormaPagto;
+//var
+//    Frm: TfrmFinalizaVendaFormaPagto;
 begin
-    Frm := TfrmFinalizaVendaFormaPagto.Create(nil, aFormaPagamento, aValor);
-    try
-        Frm.ShowModal;
-        if Frm.Valor > 0 then
-        begin
-            with cdsPagamentos do
-            begin
-                DisableControls;
-                try
-                    Append;
-                    FieldByName('id').AsInteger := Frm.FormaPagtoId;
-                    FieldByName('nome').AsString := Frm.FormaPagtoNome;
-                    FieldByName('valor').AsFloat := Frm.Valor;
-                    Post;
-                finally
-                    EnableControls;
-                end;
-            end;
-
-            edtSaldoPagar.Text := FloatToStr(StrToFloat(edtSaldoPagar.Text) + Frm.Valor);
-        end;
-        CalcularTroco;
-    finally
-        FreeAndNil(Frm);
-    end;
-end;
-
-procedure TFrmFinalizaVenda.mnInserirPagamentoClick(Sender: TObject);
-var
-    aValor: Currency;
-begin
-    aValor := (StrToFloat(edtTotalPagar.Text) - StrToFloat(edtSaldoPagar.Text));
-    if aValor < 0 then
-        aValor := 0;
-
-    InserirPagamento('', aValor);
+//    Frm := TfrmFinalizaVendaFormaPagto.Create(nil, aFormaPagamento, aValor);
+//    try
+//        Frm.ShowModal;
+//        if Frm.Valor > 0 then
+//        begin
+//            with cdsPagamentos do
+//            begin
+//                DisableControls;
+//                try
+//                    Append;
+//                    FieldByName('id').AsInteger := Frm.FormaPagtoId;
+//                    FieldByName('nome').AsString := Frm.FormaPagtoNome;
+//                    FieldByName('valor').AsFloat := Frm.Valor;
+//                    Post;
+//                finally
+//                    EnableControls;
+//                end;
+//            end;
+//        end;
+//    finally
+//        FreeAndNil(Frm);
+//    end;
 end;
 
 procedure TFrmFinalizaVenda.PesquisaMensalista(aCodigo: Integer; aSendMsg: Boolean = False);
@@ -539,18 +504,15 @@ begin
     end;
 end;
 
-procedure TFrmFinalizaVenda.edtCodigoMensalistaKeyPress(Sender: TObject; var Key: Char);
-begin
-    if Key = #13 then
-        PesquisaMensalista(StrToInt(edtCodigoMensalista.Text), True);
-end;
-
-procedure TFrmFinalizaVenda.edtPercentualDescontoChange(Sender: TObject);
+procedure TFrmFinalizaVenda.edtCodigoMensalistaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
-    saldo: Currency;
+    aRetorno: Integer;
 begin
-    saldo := (StrToFloat(edtTotalpagar.Text) * StrToFloat(edtPercentualDesconto.Text)) / 100;
-    edtValorDesconto.Text := FloatToStr(saldo);
+    if key = VK_RETURN then
+    begin
+        TCallForm.CallFormPesq('TfrmFiltroPessoa', 'Mensalista', aRetorno);
+        PesquisaMensalista(aRetorno, True);
+    end;
 end;
 
 procedure TFrmFinalizaVenda.pnlTituloMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -559,20 +521,6 @@ const
 begin
     ReleaseCapture;
     Perform(wm_SysCommand, sc_DragMove, 0);
-end;
-
-procedure TFrmFinalizaVenda.slbFormaPagamentoDblClick(Sender: TObject);
-var
-    ix: Integer;
-    aValor: Currency;
-begin
-    ix := slbFormaPagamento.SelectedItemIndex;
-
-    aValor := (StrToFloat(edtTotalPagar.Text) - StrToFloat(edtSaldoPagar.Text));
-    if aValor < 0 then
-        aValor := 0;
-
-    InserirPagamento(slbFormaPagamento.Items[ix].Caption, aValor);
 end;
 
 end.

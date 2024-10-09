@@ -3,9 +3,13 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
   Top = 0
   BorderStyle = bsNone
   Caption = 'Finalizar Venda'
-  ClientHeight = 644
-  ClientWidth = 1300
+  ClientHeight = 625
+  ClientWidth = 905
   Color = clBtnFace
+  Constraints.MaxHeight = 625
+  Constraints.MaxWidth = 905
+  Constraints.MinHeight = 625
+  Constraints.MinWidth = 905
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clBlack
   Font.Height = -12
@@ -19,8 +23,8 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
   object pnlFundo: TPanel
     Left = 0
     Top = 0
-    Width = 1300
-    Height = 644
+    Width = 905
+    Height = 625
     Align = alClient
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
@@ -35,7 +39,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 1294
+      Width = 899
       Height = 40
       HotTrackFont.Charset = DEFAULT_CHARSET
       HotTrackFont.Color = clWindowText
@@ -59,7 +63,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       OnMouseDown = pnlTituloMouseDown
       object btnClose: TAeroSpeedButton
         AlignWithMargins = True
-        Left = 1256
+        Left = 861
         Top = 8
         Width = 30
         Height = 24
@@ -175,8 +179,8 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
     object pnlBotoes: TJvPanel
       AlignWithMargins = True
       Left = 3
-      Top = 588
-      Width = 1294
+      Top = 569
+      Width = 899
       Height = 53
       HotTrackFont.Charset = DEFAULT_CHARSET
       HotTrackFont.Color = clWindowText
@@ -197,7 +201,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       TabOrder = 1
       object btnFinalizar: TAeroSpeedButton
         AlignWithMargins = True
-        Left = 1056
+        Left = 661
         Top = 3
         Width = 235
         Height = 47
@@ -453,11 +457,11 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
     end
     object pnlValores: TPanel
       AlignWithMargins = True
-      Left = 970
-      Top = 49
-      Width = 327
-      Height = 533
-      Align = alRight
+      Left = 3
+      Top = 398
+      Width = 899
+      Height = 165
+      Align = alBottom
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -467,284 +471,13 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
-      object Panel7: TPanel
-        AlignWithMargins = True
-        Left = 3
-        Top = 195
-        Width = 321
-        Height = 80
-        Align = alTop
-        TabOrder = 0
-        object Label8: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 4
-          Width = 313
-          Height = 20
-          Align = alTop
-          Alignment = taRightJustify
-          AutoSize = False
-          Caption = 'R$ Total a pagar  '
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -15
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object edtTotalpagar: TAdvEdit
-          Left = 8
-          Top = 40
-          Width = 305
-          Height = 33
-          EditAlign = eaRight
-          EditType = etFloat
-          EmptyText = '0,00'
-          EmptyTextStyle = []
-          FlatLineColor = 11250603
-          FocusColor = 8017159
-          FocusFontColor = clWhite
-          DisabledColor = clBtnFace
-          Precision = 2
-          LabelFont.Charset = DEFAULT_CHARSET
-          LabelFont.Color = clWindowText
-          LabelFont.Height = -15
-          LabelFont.Name = 'Tahoma'
-          LabelFont.Style = []
-          Lookup.Font.Charset = DEFAULT_CHARSET
-          Lookup.Font.Color = clWhite
-          Lookup.Font.Height = -11
-          Lookup.Font.Name = 'Tahoma'
-          Lookup.Font.Style = []
-          Lookup.Separator = ';'
-          Align = alCustom
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Color = clWindow
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          Text = '45,00'
-          Visible = True
-          Version = '4.0.5.0'
-        end
-      end
-      object Panel6: TPanel
-        AlignWithMargins = True
-        Left = 3
-        Top = 281
-        Width = 321
-        Height = 80
-        Align = alTop
-        TabOrder = 1
-        object Label2: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 4
-          Width = 313
-          Height = 20
-          Align = alTop
-          Alignment = taRightJustify
-          AutoSize = False
-          Caption = 'R$ Descontos  '
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -15
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          ExplicitLeft = 1
-          ExplicitTop = 1
-          ExplicitWidth = 319
-        end
-        object Label4: TLabel
-          Left = 8
-          Top = 42
-          Width = 23
-          Height = 29
-          Caption = '%'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -24
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label5: TLabel
-          Left = 120
-          Top = 42
-          Width = 45
-          Height = 29
-          Caption = '/ R$'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -24
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-        end
-        object edtValorDesconto: TAdvEdit
-          Left = 184
-          Top = 38
-          Width = 129
-          Height = 37
-          EditAlign = eaRight
-          EditType = etFloat
-          EmptyText = '0,00'
-          EmptyTextStyle = []
-          FlatLineColor = clWhite
-          FocusColor = clWhite
-          FocusFontColor = clBlack
-          Precision = 2
-          LabelFont.Charset = DEFAULT_CHARSET
-          LabelFont.Color = clWindowText
-          LabelFont.Height = -15
-          LabelFont.Name = 'Tahoma'
-          LabelFont.Style = []
-          Lookup.Font.Charset = DEFAULT_CHARSET
-          Lookup.Font.Color = clWhite
-          Lookup.Font.Height = -11
-          Lookup.Font.Name = 'Tahoma'
-          Lookup.Font.Style = []
-          Lookup.Separator = ';'
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Color = clWindow
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          Text = '0,00'
-          Visible = True
-          OnChange = edtValorDescontoChange
-          Version = '4.0.5.0'
-        end
-        object edtPercentualDesconto: TAdvEdit
-          Left = 37
-          Top = 38
-          Width = 70
-          Height = 37
-          EditAlign = eaRight
-          EditType = etFloat
-          EmptyText = '0,00'
-          EmptyTextStyle = []
-          FlatLineColor = clWhite
-          FocusColor = clWhite
-          FocusFontColor = clBlack
-          Precision = 2
-          LabelFont.Charset = DEFAULT_CHARSET
-          LabelFont.Color = clWindowText
-          LabelFont.Height = -15
-          LabelFont.Name = 'Tahoma'
-          LabelFont.Style = []
-          Lookup.Font.Charset = DEFAULT_CHARSET
-          Lookup.Font.Color = clWhite
-          Lookup.Font.Height = -11
-          Lookup.Font.Name = 'Tahoma'
-          Lookup.Font.Style = []
-          Lookup.Separator = ';'
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Color = clWindow
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          Text = '0,00'
-          Visible = True
-          OnChange = edtPercentualDescontoChange
-          Version = '4.0.5.0'
-        end
-      end
-      object Panel8: TPanel
-        AlignWithMargins = True
-        Left = 3
-        Top = 367
-        Width = 321
-        Height = 80
-        Align = alTop
-        TabOrder = 2
-        object lblTroco: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 4
-          Width = 313
-          Height = 20
-          Align = alTop
-          Alignment = taRightJustify
-          AutoSize = False
-          Caption = 'R$ Troco  '
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -15
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          ExplicitLeft = 8
-          ExplicitTop = 12
-          ExplicitWidth = 310
-        end
-        object edtTroco: TAdvEdit
-          Left = 8
-          Top = 38
-          Width = 305
-          Height = 32
-          EditAlign = eaRight
-          EditType = etMoney
-          EmptyText = '0,00'
-          EmptyTextStyle = []
-          FlatLineColor = 8017159
-          FocusColor = 8017159
-          FocusFontColor = clWhite
-          DisabledColor = clWindow
-          Precision = 2
-          Prefix = 'R$ '
-          LabelFont.Charset = DEFAULT_CHARSET
-          LabelFont.Color = clWindowText
-          LabelFont.Height = -15
-          LabelFont.Name = 'Tahoma'
-          LabelFont.Style = []
-          Lookup.Font.Charset = DEFAULT_CHARSET
-          Lookup.Font.Color = clWhite
-          Lookup.Font.Height = -11
-          Lookup.Font.Name = 'Tahoma'
-          Lookup.Font.Style = []
-          Lookup.Separator = ';'
-          Align = alCustom
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Color = clWindow
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          Text = '0,00'
-          Visible = True
-          Version = '4.0.5.0'
-        end
-      end
-      object JvGroupBox1: TJvGroupBox
+      object pnlTempoDecorrido: TJvGroupBox
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 321
-        Height = 186
-        Align = alTop
+        Width = 470
+        Height = 159
+        Align = alLeft
         Caption = 'Tempo decorrido'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -752,15 +485,15 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 0
         object Label7: TLabel
+          AlignWithMargins = True
           Left = 8
-          Top = 54
-          Width = 102
+          Top = 64
+          Width = 145
           Height = 18
-          Alignment = taRightJustify
           AutoSize = False
-          Caption = 'Entrada........:'
+          Caption = 'Entrada................:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -769,13 +502,13 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           ParentFont = False
         end
         object Label9: TLabel
+          AlignWithMargins = True
           Left = 8
-          Top = 78
-          Width = 102
+          Top = 88
+          Width = 145
           Height = 18
-          Alignment = taRightJustify
           AutoSize = False
-          Caption = 'Sa'#237'da...........:'
+          Caption = 'Sa'#237'da...................:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -783,28 +516,11 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label10: TLabel
-          Left = 8
-          Top = 112
-          Width = 313
-          Height = 32
-          Alignment = taCenter
-          AutoSize = False
-          Caption = 'Tempo Total'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -24
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
         object lblEntrada: TLabel
-          Left = 116
-          Top = 54
-          Width = 200
-          Height = 18
-          Alignment = taRightJustify
-          AutoSize = False
+          Left = 159
+          Top = 64
+          Width = 5
+          Height = 21
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -17
@@ -813,11 +529,10 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           ParentFont = False
         end
         object lblSaida: TLabel
-          Left = 116
-          Top = 78
+          Left = 159
+          Top = 88
           Width = 200
           Height = 18
-          Alignment = taRightJustify
           AutoSize = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -826,30 +541,14 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Font.Style = []
           ParentFont = False
         end
-        object lblTempoTotal: TLabel
-          Left = 8
-          Top = 150
-          Width = 313
-          Height = 30
-          Alignment = taCenter
-          AutoSize = False
-          Caption = '0'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          WordWrap = True
-        end
         object Label6: TLabel
+          AlignWithMargins = True
           Left = 8
-          Top = 32
-          Width = 102
+          Top = 42
+          Width = 145
           Height = 18
-          Alignment = taRightJustify
           AutoSize = False
-          Caption = 'Ticket..........:'
+          Caption = 'Ticket..................:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -858,11 +557,10 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           ParentFont = False
         end
         object lblTicket: TLabel
-          Left = 116
-          Top = 30
+          Left = 159
+          Top = 40
           Width = 200
           Height = 18
-          Alignment = taRightJustify
           AutoSize = False
           Caption = '0'
           Font.Charset = DEFAULT_CHARSET
@@ -872,84 +570,159 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           Font.Style = []
           ParentFont = False
         end
-      end
-      object Panel2: TPanel
-        AlignWithMargins = True
-        Left = 3
-        Top = 453
-        Width = 321
-        Height = 80
-        Align = alTop
-        TabOrder = 4
-        object lblSaldoPagar: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 4
-          Width = 313
-          Height = 20
-          Align = alTop
-          Alignment = taRightJustify
+        object lblTempoTotal: TLabel
+          Left = 159
+          Top = 112
+          Width = 300
+          Height = 18
           AutoSize = False
-          Caption = 'R$ Saldo a Pagar  '
+          Caption = '0'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -17
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          WordWrap = True
+        end
+        object Label1: TLabel
+          AlignWithMargins = True
+          Left = 8
+          Top = 112
+          Width = 145
+          Height = 18
+          AutoSize = False
+          Caption = 'Tempo Decorrido..:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitLeft = 1
-          ExplicitTop = 2
-          ExplicitWidth = 319
         end
-        object edtSaldoPagar: TAdvEdit
-          Left = 8
-          Top = 38
-          Width = 305
-          Height = 32
-          EditAlign = eaRight
-          EditType = etMoney
-          EmptyText = '0,00'
-          EmptyTextStyle = []
-          FlatLineColor = 11250603
-          FocusColor = clWindow
-          FocusFontColor = 3881787
-          DisabledColor = clWindow
-          Precision = 2
-          Prefix = 'R$ '
-          LabelFont.Charset = DEFAULT_CHARSET
-          LabelFont.Color = clWindowText
-          LabelFont.Height = -15
-          LabelFont.Name = 'Tahoma'
-          LabelFont.Style = []
-          Lookup.Font.Charset = DEFAULT_CHARSET
-          Lookup.Font.Color = clWhite
-          Lookup.Font.Height = -11
-          Lookup.Font.Name = 'Tahoma'
-          Lookup.Font.Style = []
-          Lookup.Separator = ';'
-          Align = alCustom
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Color = clWindow
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
+      end
+      object Panel1: TPanel
+        Left = 479
+        Top = 0
+        Width = 420
+        Height = 165
+        Align = alRight
+        BevelOuter = bvNone
+        TabOrder = 1
+        object JvGroupBox1: TJvGroupBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 115
+          Width = 414
+          Height = 50
+          Align = alTop
+          Caption = 'Total (Servi'#231'os + Produtos)'
+          DefaultHeaderFont = False
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clBlack
+          HeaderFont.Height = -15
+          HeaderFont.Name = 'Tahoma'
+          HeaderFont.Style = []
           TabOrder = 0
-          Text = '0,00'
-          Visible = True
-          Version = '4.0.5.0'
+          object lblTotalPagar: TLabel
+            AlignWithMargins = True
+            Left = 5
+            Top = 23
+            Width = 404
+            Height = 22
+            Align = alClient
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = '0,00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ExplicitLeft = 7
+            ExplicitTop = 25
+            ExplicitHeight = 41
+          end
+        end
+        object JvGroupBox2: TJvGroupBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 414
+          Height = 50
+          Align = alTop
+          Caption = 'Total (Servi'#231'os)'
+          DefaultHeaderFont = False
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clWhite
+          HeaderFont.Height = -15
+          HeaderFont.Name = 'Tahoma'
+          HeaderFont.Style = []
+          TabOrder = 1
+          object lblTotalServicos: TLabel
+            AlignWithMargins = True
+            Left = 5
+            Top = 23
+            Width = 404
+            Height = 22
+            Align = alClient
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = '0,00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ExplicitLeft = 7
+            ExplicitTop = 3
+          end
+        end
+        object JvGroupBox3: TJvGroupBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 59
+          Width = 414
+          Height = 50
+          Align = alTop
+          Caption = 'Total (Produtos )'
+          DefaultHeaderFont = False
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clBlack
+          HeaderFont.Height = -15
+          HeaderFont.Name = 'Tahoma'
+          HeaderFont.Style = []
+          TabOrder = 2
+          object lblTotalProdutos: TLabel
+            AlignWithMargins = True
+            Left = 5
+            Top = 23
+            Width = 404
+            Height = 22
+            Align = alClient
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = '0,00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ExplicitLeft = 7
+            ExplicitTop = 25
+            ExplicitHeight = 41
+          end
         end
       end
     end
     object pnlLateralEsquerda: TPanel
       Left = 0
       Top = 46
-      Width = 967
-      Height = 539
+      Width = 905
+      Height = 349
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 3
@@ -957,9 +730,9 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         AlignWithMargins = True
         Left = 3
         Top = 56
-        Width = 500
-        Height = 480
-        Align = alLeft
+        Width = 899
+        Height = 290
+        Align = alClient
         Caption = 'Produtos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -972,8 +745,8 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           AlignWithMargins = True
           Left = 5
           Top = 25
-          Width = 460
-          Height = 450
+          Width = 859
+          Height = 260
           Align = alClient
           DataSource = dsProdutos
           Font.Charset = DEFAULT_CHARSET
@@ -989,12 +762,13 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           TitleFont.Height = -15
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          ScrollBars = ssVertical
           SelectColumnsDialogStrings.Caption = 'Select columns'
           SelectColumnsDialogStrings.OK = '&OK'
           SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
           EditControls = <>
           RowsHeight = 24
-          TitleRowHeight = 32
+          TitleRowHeight = 27
           Columns = <
             item
               Expanded = False
@@ -1005,13 +779,12 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
               Font.Name = 'Segoe UI'
               Font.Style = []
               Title.Caption = 'Nome'
-              Title.Color = clCream
               Title.Font.Charset = DEFAULT_CHARSET
               Title.Font.Color = clBlack
-              Title.Font.Height = -20
+              Title.Font.Height = -17
               Title.Font.Name = 'Segoe UI'
               Title.Font.Style = []
-              Width = 175
+              Width = 370
               Visible = True
             end
             item
@@ -1024,13 +797,13 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
               Font.Name = 'Segoe UI'
               Font.Style = []
               Title.Alignment = taCenter
-              Title.Color = clCream
+              Title.Caption = 'Quantidade'
               Title.Font.Charset = DEFAULT_CHARSET
               Title.Font.Color = clBlack
-              Title.Font.Height = -20
+              Title.Font.Height = -17
               Title.Font.Name = 'Segoe UI'
               Title.Font.Style = []
-              Width = 100
+              Width = 150
               Visible = True
             end
             item
@@ -1042,32 +815,45 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
               Font.Name = 'Segoe UI'
               Font.Style = []
               Title.Alignment = taCenter
-              Title.Caption = 'Valor'
-              Title.Color = clCream
+              Title.Caption = 'Pre'#231'o Unit'#225'rio'
               Title.Font.Charset = DEFAULT_CHARSET
               Title.Font.Color = clBlack
-              Title.Font.Height = -20
+              Title.Font.Height = -17
               Title.Font.Name = 'Segoe UI'
               Title.Font.Style = []
+              Width = 150
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'total'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlue
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Title.Alignment = taCenter
+              Title.Caption = 'Total'
               Width = 150
               Visible = True
             end>
         end
         object Panel3: TPanel
-          Left = 468
+          Left = 867
           Top = 22
           Width = 30
-          Height = 456
+          Height = 266
           Align = alRight
           BevelOuter = bvNone
           ParentBackground = False
           TabOrder = 1
-          object btnIncluirProduto: TAdvGlowButton
+          object btnRemoverProduto: TAdvGlowButton
             AlignWithMargins = True
             Left = 3
-            Top = 3
+            Top = 33
             Width = 24
             Height = 24
+            Hint = 'Remover produto ou servi'#231'o selecionado'
             Align = alTop
             NotesFont.Charset = DEFAULT_CHARSET
             NotesFont.Color = clWindowText
@@ -1075,15 +861,111 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
             NotesFont.Name = 'Tahoma'
             NotesFont.Style = []
             Picture.Data = {
-              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-              6100000006624B474400FF00FF00FFA0BDA793000000394944415438116360A0
-              103082F4C7C4C41481E8254B96F44547475B00D9C5408C173132321E07A967C2
-              AB6A48488E860103C368180C8B300000FD67240D61A3EFB30000000049454E44
-              AE426082}
-            PopupMenu = ppmMenuProdutos
+              89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+              F400000006624B474400FF00FF00FFA0BDA79300000237494441545809ED964B
+              2F245118864B47C2426B0943E2BA424432AEB1C7CA8EB45F242116426C2C58B3
+              1A996426E2BAE33758F486C425212C10B745E379E39C4AA9E8541D5D332221EF
+              53EF5755DFF7D6A9EAD278DEF7CF273F8112C7EBB7D39F8511A8856A902ED99C
+              C13AAC420E12552F69DBF01C934DFABAA1689592300F79D0C575978BD4A3D009
+              3F0CAAC7A897E01CD4AB99596A6560EEAA62640B14F6804F411AA25449C33468
+              46B37A1A19F69D5446F71E28E000FF09AEEA6240B3CFF82E28138BA745DA3478
+              8437C247D5C4E009286B018FA501BA9EE0167AA058F5137007CAECC323B54387
+              563C8127A5498294A9F781B2B0DA39A5C60B3CCE0B475B2C65E8BA0465B7E2BE
+              527EF55A8CBF9AB78ADF4052BA22E83748596D2CE1050C99136BC693349B391C
+              0C4D0577A89B41DAD726616CA6BDC6BBF1371CD5E7548187A5E32E84E7D31CD0
+              FC35EE2BFC04EC1F2735FA4DFFB2082FE0D45CACDE78D0B4381782B3AA1BB481
+              13F0155EC09139D3613C49B399C7C1D0F00236CCC951E3499ACDD4FF0C0573FF
+              FB17D17B2BD9E6A05EC2093C294D11A44CFB84D92DAC1E4EE5E116546345A99F
+              E97B5066171E4B737469C57A291BA93FAA2606F5D62B6B863AB65274FE050D5E
+              E083E0AA210634AB8C3FD429705286EE2D50C0033E03D510A51A1A66E11134BB
+              892B0B73572923F39007855DE3CB9085362837A81EA75E01F5A8573373EC2B03
+              2B4EBD8CDBDF0E8547A1BBEE66265225911D6F1BF43DA1BB1FE1700BD48174C6
+              E6D0F3BC0DF80539F8D6D778022F4BDA9119FEEA7CD00000000049454E44AE42
+              6082}
             Rounded = True
+            Transparent = True
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
-            OnClick = btnIncluirProdutoClick
+            OnClick = btnRemoverProdutoClick
+            Appearance.BorderColor = 11382963
+            Appearance.BorderColorHot = 11565130
+            Appearance.BorderColorCheckedHot = 11565130
+            Appearance.BorderColorDown = 11565130
+            Appearance.BorderColorChecked = 13744549
+            Appearance.BorderColorDisabled = 13948116
+            Appearance.Color = clWhite
+            Appearance.ColorTo = clWhite
+            Appearance.ColorChecked = 13744549
+            Appearance.ColorCheckedTo = 13744549
+            Appearance.ColorDisabled = clWhite
+            Appearance.ColorDisabledTo = clNone
+            Appearance.ColorDown = 11565130
+            Appearance.ColorDownTo = 11565130
+            Appearance.ColorHot = 16444643
+            Appearance.ColorHotTo = 16444643
+            Appearance.ColorMirror = clWhite
+            Appearance.ColorMirrorTo = clWhite
+            Appearance.ColorMirrorHot = 16444643
+            Appearance.ColorMirrorHotTo = 16444643
+            Appearance.ColorMirrorDown = 11565130
+            Appearance.ColorMirrorDownTo = 11565130
+            Appearance.ColorMirrorChecked = 13744549
+            Appearance.ColorMirrorCheckedTo = 13744549
+            Appearance.ColorMirrorDisabled = clWhite
+            Appearance.ColorMirrorDisabledTo = clNone
+            Appearance.GradientHot = ggVertical
+            Appearance.GradientMirrorHot = ggVertical
+            Appearance.GradientDown = ggVertical
+            Appearance.GradientMirrorDown = ggVertical
+            Appearance.GradientChecked = ggVertical
+            Appearance.TextColorChecked = 3750459
+            Appearance.TextColorDown = 2303013
+            Appearance.TextColorHot = 2303013
+            Appearance.TextColorDisabled = 13948116
+            DropDownWidth = 15
+          end
+          object btnAdicionarProduto: TAdvGlowButton
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 24
+            Height = 24
+            Hint = 'Inclus'#227'o de produtos e servi'#231'os'
+            Align = alTop
+            NotesFont.Charset = DEFAULT_CHARSET
+            NotesFont.Color = clWindowText
+            NotesFont.Height = -12
+            NotesFont.Name = 'Tahoma'
+            NotesFont.Style = []
+            Picture.Data = {
+              89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+              F400000006624B474400FF00FF00FFA0BDA7930000024B494441545809ED963B
+              4B1C511886C765410B7503DEC0A8A9A28810AFD86B2A3B65FD458262218A8D85
+              D65A294282784B177F83858D818D8261B788E2ADD8E8F3EA39CB7A703D33EE68
+              1094F799F79B33EFF7CDD971BC04C1FBD77F7E021511EFDF413E0D23D0087520
+              E5389CC026ACC101C4AA3EA6EDC24D48B6C9F540D94A32611EF2A09BEB532E52
+              8F42173418548F512FC11F50563DB3D49A8145D7075A7640C3AEF029A8019F6A
+              094C837AD4ABA791E23C922A49EF81061CE25F20AABA6950EF0DFE1334130BA7
+              45626ACCE02DF05CB5D278049AB58087D220A97F700EBD50AE061870019AD98F
+              7BF58384763C81FBA49CF0E5260928A7F781B2B43AB8A460160FF3C2292B883F
+              A9145773A0EC67BCA044A1BA2FC6EF2D58C3CF202EFD65D03A48691D2CEE0686
+              CD850DE3719A9DF9B57868A2F884BA0DA47D1D62C6CEB4F77874FC19ABFA3E55
+              E3AEB41E05B7BF8605F59FE205B94FC0FE7152B0107AC9C2DDC0B1B959B3F162
+              D3E65CEC75775DE7F69AF58FA638327E67EE063277AB41D0693C4EB3337F170F
+              7537B0652E8E1A8FD3EC4CFDCF5072EEABFF227A6C27BB2CEA259CC07D524EF8
+              72530494B34F98D3D2EAE5521ECE4135569606E8BE04CDECC643698E9476AC97
+              B285FAB96AA5516FBD66CD50875682E4775063161F82A81AA641BD9AF18D3A01
+              919422BD031A7085CF401DF8544F6016AE41BDDBB86661D195A4651EF2A061A7
+              F832A4A11DAA0CAAC7A957401965D533C7B96660E5A98F76FBD3A1E13EF4A97B
+              E8F1AAC29B7818D0EF097DFA11963F411348271C7E0541B005AB7000EF7A1B4F
+              E016748C990F86B338C80000000049454E44AE426082}
+            Rounded = True
+            Transparent = True
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            OnClick = btnAdicionarProdutoClick
             Appearance.BorderColor = 11382963
             Appearance.BorderColorHot = 11565130
             Appearance.BorderColorCheckedHot = 11565130
@@ -1123,1153 +1005,15 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           end
         end
       end
-      object GroupBox2: TGroupBox
-        AlignWithMargins = True
-        Left = 509
-        Top = 56
-        Width = 455
-        Height = 480
-        Align = alClient
-        Caption = 'Pagamentos'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -15
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 1
-        object pnlFormaPagamento: TPanel
-          AlignWithMargins = True
-          Left = 5
-          Top = 25
-          Width = 445
-          Height = 220
-          Align = alTop
-          BevelOuter = bvNone
-          TabOrder = 0
-          object slbFormaPagamento: TAdvSmoothListBox
-            Left = 0
-            Top = 0
-            Width = 445
-            Height = 220
-            Cursor = crHandPoint
-            Fill.Color = clWhite
-            Fill.ColorTo = 16765615
-            Fill.ColorMirror = clNone
-            Fill.ColorMirrorTo = clNone
-            Fill.GradientType = gtSolid
-            Fill.GradientMirrorType = gtSolid
-            Fill.BorderColor = clNone
-            Fill.Rounding = 0
-            Fill.ShadowOffset = 0
-            Fill.Glow = gmNone
-            Items = <
-              item
-                Caption = 'Item 0'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 1'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 2'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 3'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 4'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 5'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 6'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 7'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 8'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 9'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 10'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 11'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 12'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 13'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 14'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 15'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 16'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 17'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 18'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 19'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end
-              item
-                Caption = 'Item 20'
-                CaptionFont.Charset = DEFAULT_CHARSET
-                CaptionFont.Color = clBlack
-                CaptionFont.Height = -20
-                CaptionFont.Name = 'Segoe UI'
-                CaptionFont.Style = []
-                CaptionSelectedFont.Charset = DEFAULT_CHARSET
-                CaptionSelectedFont.Color = clBlack
-                CaptionSelectedFont.Height = -11
-                CaptionSelectedFont.Name = 'Segoe UI'
-                CaptionSelectedFont.Style = []
-                InfoFont.Charset = DEFAULT_CHARSET
-                InfoFont.Color = clBlack
-                InfoFont.Height = -11
-                InfoFont.Name = 'Segoe UI'
-                InfoFont.Style = []
-                InfoSelectedFont.Charset = DEFAULT_CHARSET
-                InfoSelectedFont.Color = clBlack
-                InfoSelectedFont.Height = -11
-                InfoSelectedFont.Name = 'Segoe UI'
-                InfoSelectedFont.Style = []
-                NotesFont.Charset = DEFAULT_CHARSET
-                NotesFont.Color = clBlack
-                NotesFont.Height = -11
-                NotesFont.Name = 'Segoe UI'
-                NotesFont.Style = []
-                NotesSelectedFont.Charset = DEFAULT_CHARSET
-                NotesSelectedFont.Color = clBlack
-                NotesSelectedFont.Height = -11
-                NotesSelectedFont.Name = 'Segoe UI'
-                NotesSelectedFont.Style = []
-                ProgressMaximum = 100.000000000000000000
-                ButtonColor = 12895944
-              end>
-            ItemAppearance.FillAlternate.Color = clWhite
-            ItemAppearance.FillAlternate.ColorTo = clNone
-            ItemAppearance.FillAlternate.ColorMirror = clNone
-            ItemAppearance.FillAlternate.ColorMirrorTo = clNone
-            ItemAppearance.FillAlternate.GradientType = gtVertical
-            ItemAppearance.FillAlternate.GradientMirrorType = gtVertical
-            ItemAppearance.FillAlternate.BorderColor = clNone
-            ItemAppearance.FillAlternate.Rounding = 0
-            ItemAppearance.FillAlternate.RoundingType = rtNone
-            ItemAppearance.FillAlternate.ShadowOffset = 0
-            ItemAppearance.FillAlternate.Glow = gmNone
-            ItemAppearance.Fill.Color = clWhite
-            ItemAppearance.Fill.ColorTo = clNone
-            ItemAppearance.Fill.ColorMirror = clNone
-            ItemAppearance.Fill.ColorMirrorTo = clNone
-            ItemAppearance.Fill.GradientType = gtVertical
-            ItemAppearance.Fill.GradientMirrorType = gtVertical
-            ItemAppearance.Fill.BorderColor = clNone
-            ItemAppearance.Fill.Rounding = 0
-            ItemAppearance.Fill.RoundingType = rtNone
-            ItemAppearance.Fill.ShadowOffset = 0
-            ItemAppearance.Fill.Glow = gmNone
-            ItemAppearance.FillSelected.Color = 15917525
-            ItemAppearance.FillSelected.ColorTo = clNone
-            ItemAppearance.FillSelected.ColorMirror = clNone
-            ItemAppearance.FillSelected.ColorMirrorTo = clNone
-            ItemAppearance.FillSelected.GradientType = gtVertical
-            ItemAppearance.FillSelected.GradientMirrorType = gtVertical
-            ItemAppearance.FillSelected.BorderColor = 15917525
-            ItemAppearance.FillSelected.Rounding = 0
-            ItemAppearance.FillSelected.ShadowOffset = 0
-            ItemAppearance.FillSelected.Glow = gmNone
-            ItemAppearance.FillSelected.GlowGradientColor = clNone
-            ItemAppearance.FillSelectedAlternate.Color = 15917525
-            ItemAppearance.FillSelectedAlternate.ColorTo = clNone
-            ItemAppearance.FillSelectedAlternate.ColorMirror = clNone
-            ItemAppearance.FillSelectedAlternate.ColorMirrorTo = clNone
-            ItemAppearance.FillSelectedAlternate.GradientType = gtVertical
-            ItemAppearance.FillSelectedAlternate.GradientMirrorType = gtVertical
-            ItemAppearance.FillSelectedAlternate.BorderColor = 15917525
-            ItemAppearance.FillSelectedAlternate.Rounding = 0
-            ItemAppearance.FillSelectedAlternate.ShadowOffset = 0
-            ItemAppearance.FillSelectedAlternate.Glow = gmNone
-            ItemAppearance.FillSelectedAlternate.GlowGradientColor = clNone
-            ItemAppearance.FillDisabled.Color = clWhite
-            ItemAppearance.FillDisabled.ColorTo = clNone
-            ItemAppearance.FillDisabled.ColorMirror = clNone
-            ItemAppearance.FillDisabled.ColorMirrorTo = clNone
-            ItemAppearance.FillDisabled.GradientType = gtVertical
-            ItemAppearance.FillDisabled.GradientMirrorType = gtVertical
-            ItemAppearance.FillDisabled.BorderColor = 13948116
-            ItemAppearance.FillDisabled.Rounding = 0
-            ItemAppearance.FillDisabled.ShadowOffset = 0
-            ItemAppearance.FillDisabled.Glow = gmNone
-            ItemAppearance.ProgressAppearance.BackGroundFill.Color = 16250613
-            ItemAppearance.ProgressAppearance.BackGroundFill.ColorTo = 16250613
-            ItemAppearance.ProgressAppearance.BackGroundFill.ColorMirror = clNone
-            ItemAppearance.ProgressAppearance.BackGroundFill.ColorMirrorTo = clNone
-            ItemAppearance.ProgressAppearance.BackGroundFill.GradientType = gtVertical
-            ItemAppearance.ProgressAppearance.BackGroundFill.GradientMirrorType = gtSolid
-            ItemAppearance.ProgressAppearance.BackGroundFill.BorderColor = 15000546
-            ItemAppearance.ProgressAppearance.BackGroundFill.Rounding = 0
-            ItemAppearance.ProgressAppearance.BackGroundFill.ShadowOffset = 0
-            ItemAppearance.ProgressAppearance.BackGroundFill.Glow = gmNone
-            ItemAppearance.ProgressAppearance.ProgressFill.Color = 16244937
-            ItemAppearance.ProgressAppearance.ProgressFill.ColorTo = clNone
-            ItemAppearance.ProgressAppearance.ProgressFill.ColorMirror = clNone
-            ItemAppearance.ProgressAppearance.ProgressFill.ColorMirrorTo = clNone
-            ItemAppearance.ProgressAppearance.ProgressFill.GradientType = gtVertical
-            ItemAppearance.ProgressAppearance.ProgressFill.GradientMirrorType = gtVertical
-            ItemAppearance.ProgressAppearance.ProgressFill.BorderColor = clNone
-            ItemAppearance.ProgressAppearance.ProgressFill.Rounding = 0
-            ItemAppearance.ProgressAppearance.ProgressFill.ShadowOffset = 0
-            ItemAppearance.ProgressAppearance.ProgressFill.Glow = gmNone
-            ItemAppearance.ProgressAppearance.Font.Charset = DEFAULT_CHARSET
-            ItemAppearance.ProgressAppearance.Font.Color = clWindowText
-            ItemAppearance.ProgressAppearance.Font.Height = -11
-            ItemAppearance.ProgressAppearance.Font.Name = 'Tahoma'
-            ItemAppearance.ProgressAppearance.Font.Style = []
-            ItemAppearance.ProgressAppearance.ProgressFont.Charset = DEFAULT_CHARSET
-            ItemAppearance.ProgressAppearance.ProgressFont.Color = clWindowText
-            ItemAppearance.ProgressAppearance.ProgressFont.Height = -11
-            ItemAppearance.ProgressAppearance.ProgressFont.Name = 'Tahoma'
-            ItemAppearance.ProgressAppearance.ProgressFont.Style = []
-            ItemAppearance.ProgressAppearance.ValueFormat = '%.0f%%'
-            ItemAppearance.ButtonAppearance.Font.Charset = DEFAULT_CHARSET
-            ItemAppearance.ButtonAppearance.Font.Color = clWindowText
-            ItemAppearance.ButtonAppearance.Font.Height = -20
-            ItemAppearance.ButtonAppearance.Font.Name = 'Tahoma'
-            ItemAppearance.ButtonAppearance.Font.Style = []
-            ItemAppearance.ButtonAppearance.SimpleLayout = False
-            ItemAppearance.Height = 50
-            ItemAppearance.InfoFill.ColorMirror = clNone
-            ItemAppearance.InfoFill.ColorMirrorTo = clNone
-            ItemAppearance.InfoFill.GradientType = gtVertical
-            ItemAppearance.InfoFill.GradientMirrorType = gtSolid
-            ItemAppearance.InfoFill.BorderColor = clNone
-            ItemAppearance.InfoFill.Rounding = 0
-            ItemAppearance.InfoFill.ShadowOffset = 0
-            ItemAppearance.InfoFill.Glow = gmNone
-            ItemAppearance.InfoFillSelected.ColorMirror = clNone
-            ItemAppearance.InfoFillSelected.ColorMirrorTo = clNone
-            ItemAppearance.InfoFillSelected.GradientType = gtVertical
-            ItemAppearance.InfoFillSelected.GradientMirrorType = gtSolid
-            ItemAppearance.InfoFillSelected.BorderColor = clNone
-            ItemAppearance.InfoFillSelected.Rounding = 0
-            ItemAppearance.InfoFillSelected.ShadowOffset = 0
-            ItemAppearance.InfoFillSelected.Glow = gmNone
-            ItemAppearance.InfoFillDisabled.ColorMirror = clNone
-            ItemAppearance.InfoFillDisabled.ColorMirrorTo = clNone
-            ItemAppearance.InfoFillDisabled.GradientType = gtVertical
-            ItemAppearance.InfoFillDisabled.GradientMirrorType = gtSolid
-            ItemAppearance.InfoFillDisabled.BorderColor = clNone
-            ItemAppearance.InfoFillDisabled.Rounding = 0
-            ItemAppearance.InfoFillDisabled.ShadowOffset = 0
-            ItemAppearance.InfoFillDisabled.Glow = gmNone
-            ItemAppearance.DeleteButtonCaption = 'Delete'
-            ItemAppearance.DeleteButtonFont.Charset = DEFAULT_CHARSET
-            ItemAppearance.DeleteButtonFont.Color = clWhite
-            ItemAppearance.DeleteButtonFont.Height = -11
-            ItemAppearance.DeleteButtonFont.Name = 'Tahoma'
-            ItemAppearance.DeleteButtonFont.Style = [fsBold]
-            LookupBar.ColorTo = clNone
-            LookupBar.DisabledFont.Charset = DEFAULT_CHARSET
-            LookupBar.DisabledFont.Color = clSilver
-            LookupBar.DisabledFont.Height = -11
-            LookupBar.DisabledFont.Name = 'Tahoma'
-            LookupBar.DisabledFont.Style = []
-            LookupBar.Font.Charset = DEFAULT_CHARSET
-            LookupBar.Font.Color = clBlack
-            LookupBar.Font.Height = -11
-            LookupBar.Font.Name = 'Tahoma'
-            LookupBar.Font.Style = []
-            Sections.Font.Charset = DEFAULT_CHARSET
-            Sections.Font.Color = clWindowText
-            Sections.Font.Height = -11
-            Sections.Font.Name = 'Tahoma'
-            Sections.Font.Style = []
-            Sections.BorderColor = clBlack
-            SelectedItemIndex = -1
-            Header.Fill.Color = clWhite
-            Header.Fill.ColorTo = clNone
-            Header.Fill.ColorMirror = clNone
-            Header.Fill.ColorMirrorTo = clNone
-            Header.Fill.GradientType = gtVertical
-            Header.Fill.GradientMirrorType = gtSolid
-            Header.Fill.BorderColor = 12895944
-            Header.Fill.Rounding = 0
-            Header.Fill.ShadowOffset = 0
-            Header.Fill.Glow = gmNone
-            Header.Caption = 'Formas de Pagamento'
-            Header.Font.Charset = DEFAULT_CHARSET
-            Header.Font.Color = 4474440
-            Header.Font.Height = -13
-            Header.Font.Name = 'Tahoma'
-            Header.Font.Style = []
-            Filter.Fill.Color = clWhite
-            Filter.Fill.ColorMirror = clNone
-            Filter.Fill.ColorMirrorTo = clNone
-            Filter.Fill.GradientType = gtSolid
-            Filter.Fill.GradientMirrorType = gtSolid
-            Filter.Fill.BorderColor = 12895944
-            Filter.Fill.Rounding = 0
-            Filter.Fill.ShadowOffset = 0
-            Filter.Fill.Glow = gmNone
-            Filter.Font.Charset = DEFAULT_CHARSET
-            Filter.Font.Color = clWindowText
-            Filter.Font.Height = -12
-            Filter.Font.Name = 'Segoe UI'
-            Filter.Font.Style = []
-            Footer.Fill.Color = clWhite
-            Footer.Fill.ColorTo = clNone
-            Footer.Fill.ColorMirror = clNone
-            Footer.Fill.ColorMirrorTo = clNone
-            Footer.Fill.GradientType = gtVertical
-            Footer.Fill.GradientMirrorType = gtSolid
-            Footer.Fill.BorderColor = 12895944
-            Footer.Fill.Rounding = 0
-            Footer.Fill.ShadowOffset = 0
-            Footer.Fill.Glow = gmNone
-            Footer.Caption = 'Footer'
-            Footer.Font.Charset = DEFAULT_CHARSET
-            Footer.Font.Color = 4474440
-            Footer.Font.Height = -13
-            Footer.Font.Name = 'Tahoma'
-            Footer.Font.Style = []
-            Footer.Visible = False
-            DefaultItem.Caption = 'Item 0'
-            DefaultItem.CaptionFont.Charset = DEFAULT_CHARSET
-            DefaultItem.CaptionFont.Color = clWindowText
-            DefaultItem.CaptionFont.Height = -20
-            DefaultItem.CaptionFont.Name = 'Segoe UI'
-            DefaultItem.CaptionFont.Style = []
-            DefaultItem.CaptionSelectedFont.Charset = DEFAULT_CHARSET
-            DefaultItem.CaptionSelectedFont.Color = clWindowText
-            DefaultItem.CaptionSelectedFont.Height = -11
-            DefaultItem.CaptionSelectedFont.Name = 'Segoe UI'
-            DefaultItem.CaptionSelectedFont.Style = []
-            DefaultItem.InfoFont.Charset = DEFAULT_CHARSET
-            DefaultItem.InfoFont.Color = clWindowText
-            DefaultItem.InfoFont.Height = -11
-            DefaultItem.InfoFont.Name = 'Segoe UI'
-            DefaultItem.InfoFont.Style = []
-            DefaultItem.InfoSelectedFont.Charset = DEFAULT_CHARSET
-            DefaultItem.InfoSelectedFont.Color = clWindowText
-            DefaultItem.InfoSelectedFont.Height = -11
-            DefaultItem.InfoSelectedFont.Name = 'Segoe UI'
-            DefaultItem.InfoSelectedFont.Style = []
-            DefaultItem.NotesFont.Charset = DEFAULT_CHARSET
-            DefaultItem.NotesFont.Color = clWindowText
-            DefaultItem.NotesFont.Height = -11
-            DefaultItem.NotesFont.Name = 'Segoe UI'
-            DefaultItem.NotesFont.Style = []
-            DefaultItem.NotesSelectedFont.Charset = DEFAULT_CHARSET
-            DefaultItem.NotesSelectedFont.Color = clWindowText
-            DefaultItem.NotesSelectedFont.Height = -11
-            DefaultItem.NotesSelectedFont.Name = 'Segoe UI'
-            DefaultItem.NotesSelectedFont.Style = []
-            DefaultItem.ProgressMaximum = 100.000000000000000000
-            CategoryType = custom
-            Categories = <>
-            Align = alClient
-            TabOrder = 0
-            OnDblClick = slbFormaPagamentoDblClick
-            TMSStyle = 0
-          end
-        end
-        object pnlPagamentosRealizados: TPanel
-          Left = 2
-          Top = 248
-          Width = 451
-          Height = 230
-          Align = alClient
-          BevelOuter = bvNone
-          TabOrder = 1
-          object grdPagamentos: TJvDBGrid
-            AlignWithMargins = True
-            Left = 3
-            Top = 3
-            Width = 415
-            Height = 224
-            Align = alClient
-            DataSource = DSPagamentos
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clBlack
-            Font.Height = -20
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-            ParentFont = False
-            TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clBlack
-            TitleFont.Height = -20
-            TitleFont.Name = 'Segoe UI'
-            TitleFont.Style = []
-            OnKeyUp = grdPagamentosKeyUp
-            TitleButtons = True
-            ScrollBars = ssVertical
-            SelectColumnsDialogStrings.Caption = 'Select columns'
-            SelectColumnsDialogStrings.OK = '&OK'
-            SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
-            EditControls = <>
-            RowsHeight = 32
-            TitleRowHeight = 32
-            Columns = <
-              item
-                Expanded = False
-                FieldName = 'nome'
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clBlue
-                Font.Height = -20
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                Title.Caption = 'Pagamento'
-                Width = 210
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'valor'
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clBlue
-                Font.Height = -20
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                Title.Caption = 'Valor'
-                Width = 155
-                Visible = True
-              end>
-          end
-          object Panel1: TPanel
-            Left = 421
-            Top = 0
-            Width = 30
-            Height = 230
-            Align = alRight
-            BevelOuter = bvNone
-            ParentBackground = False
-            TabOrder = 1
-            object btnMenuPagamento: TAdvGlowButton
-              AlignWithMargins = True
-              Left = 3
-              Top = 3
-              Width = 24
-              Height = 24
-              Align = alTop
-              NotesFont.Charset = DEFAULT_CHARSET
-              NotesFont.Color = clWindowText
-              NotesFont.Height = -12
-              NotesFont.Name = 'Tahoma'
-              NotesFont.Style = []
-              Picture.Data = {
-                89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                6100000006624B474400FF00FF00FFA0BDA793000000394944415438116360A0
-                103082F4C7C4C41481E8254B96F44547475B00D9C5408C173132321E07A967C2
-                AB6A48488E860103C368180C8B300000FD67240D61A3EFB30000000049454E44
-                AE426082}
-              PopupMenu = ppmMenuLateral
-              Rounded = True
-              TabOrder = 0
-              OnClick = btnMenuPagamentoClick
-              Appearance.BorderColor = 11382963
-              Appearance.BorderColorHot = 11565130
-              Appearance.BorderColorCheckedHot = 11565130
-              Appearance.BorderColorDown = 11565130
-              Appearance.BorderColorChecked = 13744549
-              Appearance.BorderColorDisabled = 13948116
-              Appearance.Color = clWhite
-              Appearance.ColorTo = clWhite
-              Appearance.ColorChecked = 13744549
-              Appearance.ColorCheckedTo = 13744549
-              Appearance.ColorDisabled = clWhite
-              Appearance.ColorDisabledTo = clNone
-              Appearance.ColorDown = 11565130
-              Appearance.ColorDownTo = 11565130
-              Appearance.ColorHot = 16444643
-              Appearance.ColorHotTo = 16444643
-              Appearance.ColorMirror = clWhite
-              Appearance.ColorMirrorTo = clWhite
-              Appearance.ColorMirrorHot = 16444643
-              Appearance.ColorMirrorHotTo = 16444643
-              Appearance.ColorMirrorDown = 11565130
-              Appearance.ColorMirrorDownTo = 11565130
-              Appearance.ColorMirrorChecked = 13744549
-              Appearance.ColorMirrorCheckedTo = 13744549
-              Appearance.ColorMirrorDisabled = clWhite
-              Appearance.ColorMirrorDisabledTo = clNone
-              Appearance.GradientHot = ggVertical
-              Appearance.GradientMirrorHot = ggVertical
-              Appearance.GradientDown = ggVertical
-              Appearance.GradientMirrorDown = ggVertical
-              Appearance.GradientChecked = ggVertical
-              Appearance.TextColorChecked = 3750459
-              Appearance.TextColorDown = 2303013
-              Appearance.TextColorHot = 2303013
-              Appearance.TextColorDisabled = 13948116
-              DropDownWidth = 15
-            end
-          end
-        end
-      end
       object pnlCliente: TPanel
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 961
+        Width = 899
         Height = 47
         Align = alTop
-        TabOrder = 2
-        object Label1: TLabel
+        TabOrder = 1
+        object lblNomeCliente: TLabel
           Left = 10
           Top = 14
           Width = 49
@@ -2314,13 +1058,13 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           TabOrder = 0
           Text = '0'
           Visible = True
-          OnKeyPress = edtCodigoMensalistaKeyPress
+          OnKeyDown = edtCodigoMensalistaKeyDown
           Version = '4.0.5.0'
         end
         object pnlNomeMensalista: TPanel
           Left = 171
           Top = 10
-          Width = 584
+          Width = 685
           Height = 28
           Alignment = taLeftJustify
           BorderWidth = 2
@@ -2328,7 +1072,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
           TabOrder = 1
         end
         object btnConsultaCliente: TAdvGlowButton
-          Left = 761
+          Left = 862
           Top = 10
           Width = 28
           Height = 28
@@ -2356,6 +1100,7 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
             3B7E0724B9D3E90498535D14C50FC7718EBADD2E335092F3677E032DB18AE461
             CC7CD50000000049454E44AE426082}
           Rounded = True
+          Transparent = True
           TabOrder = 2
           OnClick = btnConsultaClienteClick
           Appearance.BorderColor = 11382963
@@ -2417,9 +1162,8 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    AfterPost = cdsPagamentosAfterPost
-    Left = 625
-    Top = 132
+    Left = 353
+    Top = 196
     object cdsPagamentosid: TIntegerField
       FieldName = 'id'
     end
@@ -2435,14 +1179,14 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
   end
   object DSPagamentos: TDataSource
     DataSet = cdsPagamentos
-    Left = 657
-    Top = 132
+    Left = 385
+    Top = 196
   end
   object ppmMenuLateral: TAdvPopupMenu
     Version = '2.7.1.12'
     UIStyle = tsWindows8
-    Left = 688
-    Top = 136
+    Left = 416
+    Top = 200
     object mnInserirPagamento: TMenuItem
       Bitmap.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
@@ -2502,7 +1246,6 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       Caption = '&Inserir'
-      OnClick = mnInserirPagamentoClick
     end
     object mnExcluirPagamento: TMenuItem
       Caption = '&Excluir'
@@ -2528,102 +1271,51 @@ object FrmFinalizaVenda: TFrmFinalizaVenda
         Name = 'preco_unit'
         DataType = ftFloat
         Precision = 2
+      end
+      item
+        Name = 'tipo'
+        DataType = ftInteger
+      end
+      item
+        Name = 'total'
+        DataType = ftFloat
       end>
     IndexDefs = <>
     Params = <>
     StoreDefs = True
+    OnCalcFields = cdsProdutosCalcFields
     Left = 241
     Top = 172
-    object IntegerField1: TIntegerField
+    object id: TIntegerField
       FieldName = 'id'
     end
-    object StringField1: TStringField
+    object nome_reduzido: TStringField
       FieldName = 'nome_reduzido'
       Size = 100
     end
-    object cdsProdutosquantidade: TIntegerField
+    object quantidade: TIntegerField
       DisplayLabel = 'Qtd.'
       FieldName = 'quantidade'
     end
-    object FloatField1: TFloatField
+    object preco_unit: TFloatField
       FieldName = 'preco_unit'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
+    end
+    object tipo: TIntegerField
+      FieldName = 'tipo'
+    end
+    object cdsProdutostotal: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'total'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Calculated = True
     end
   end
   object dsProdutos: TDataSource
     DataSet = cdsProdutos
     Left = 233
     Top = 220
-  end
-  object ppmMenuProdutos: TAdvPopupMenu
-    Version = '2.7.1.12'
-    UIStyle = tsWindows8
-    Left = 424
-    Top = 96
-    object MenuItem1: TMenuItem
-      Bitmap.Data = {
-        F6060000424DF606000000000000360000002800000018000000180000000100
-        180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFEFEFFFCFCFFFBFBFFFAFAFFFAFAFFFBFBFFFCFCFFFEFEFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFEFEFFFBFBFFF8F8FFF8F8FFF9F9FFF9F9FFF9F9FFF9F9FFF8F8FF
-        F8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFDFDFFF9F9FFF8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFEFEFFFBFBFFF8F8FFF9F9FFFDFDFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFFF8F8FFF9F9FFFEFEFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9FFF8F8FFFDFDFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9FFF9F9FFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFF9F9FFF9F9FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF8
-        F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFEFEFFF8F8FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFEFEFFF8F8FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFFB
-        FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF8F8FFFEFEFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFCFCFFF8F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF8
-        F8FFFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF9F9FFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFF9F9FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFAFAFFF9F9FFFF
-        FFFFFFFFFFFFFFFFFFFFFFFBFBFFFAFAFFFAFAFFF9F9FFF9F9FFFAFAFFFAFAFF
-        FBFBFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9FFFAFAFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFAFAFFF9F9FFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFFAFAFFFAFAFFF9F9FFF9
-        F9FFFAFAFFFAFAFFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9FFFAFAFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFBFBFFF9F9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9
-        F9FFFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFFF8F8FFFEFEFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFAFAFFFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFEFEFFF8F8FFFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF8F8FFFB
-        FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFFFBFBFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFBFBFFF8F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFBFBFFF8F8FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF8F8FFFBFBFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9FFF9F9FFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9FFF9F9FFFE
-        FEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFFF8F8FFF9F9FF
-        FEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFF9F9
-        FFF8F8FFFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFDFDFFF9F9FFF8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFF
-        FBFBFFF8F8FFF9F9FFFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFFBFBFFF8F8FFF8F8FFF9F9FFF9F9FFF9
-        F9FFF9F9FFF8F8FFF8F8FFFBFBFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFFFCFC
-        FFFBFBFFFAFAFFFAFAFFFBFBFFFCFCFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-      Caption = '&Adicionar'
-      OnClick = mnInserirPagamentoClick
-    end
-    object MenuItem2: TMenuItem
-      Caption = '&Remover'
-    end
   end
 end

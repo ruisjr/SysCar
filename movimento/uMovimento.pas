@@ -41,6 +41,7 @@ type
     procedure btnSaidaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure tmrEntradaTimer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     DAO: iSimpleDao<TMovimento>;
@@ -51,6 +52,7 @@ type
     procedure AtualizaMovimento;
   public
     { Public declarations }
+    bFormFechado: Boolean;
   end;
 
 var
@@ -146,6 +148,12 @@ begin
     finally
         FreeAndNil(vFinaliza);
     end;
+end;
+
+procedure TFrmMovimento.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    Action := TCloseAction.caFree;
+    bFormFechado := True;
 end;
 
 procedure TFrmMovimento.FormCreate(Sender: TObject);

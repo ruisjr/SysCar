@@ -14,6 +14,7 @@ object FrmMovimento: TFrmMovimento
   KeyPreview = True
   Position = poDefault
   WindowState = wsMaximized
+  OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   TextHeight = 31
@@ -1960,16 +1961,17 @@ object FrmMovimento: TFrmMovimento
       end
       object pnlDataHora: TPanel
         AlignWithMargins = True
-        Left = 360
+        Left = 286
         Top = 3
-        Width = 551
+        Width = 625
         Height = 119
         Align = alRight
+        Alignment = taLeftJustify
         BevelOuter = bvNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -47
-        Font.Name = 'Segoe UI'
+        Font.Name = 'Neo Sans Pro'
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 0
